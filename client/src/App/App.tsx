@@ -9,18 +9,21 @@ import Appointment from '../features/appointment/Appointment';
 import Doctors from '../features/doctors/Doctors';
 import Services from '../features/services/Services';
 import 'tailwindcss/tailwind.css';
+import ErrorPage from '../features/404/404';
 
 function App(): JSX.Element {
   return (
     <div className="App">
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/price" element={<Price />} />
-        <Route path="/appointment" element={<Appointment />} />
-        <Route path="/doctors" element={<Doctors />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<Main />} />
+          <Route path="price" element={<Price />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="appointment" element={<Appointment />} />
+          <Route path="doctors" element={<Doctors />} />
+          <Route path="services" element={<Services />} />
+        </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
