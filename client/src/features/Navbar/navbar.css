@@ -1,0 +1,50 @@
+.navbar-background-color {
+  background-color: rgb(0, 255, 251);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px; /* Добавим интервал между элементами flex-контейнера */
+  flex-wrap: wrap; /* Разрешим перенос элементов на новую строку, если не хватает места */
+}
+
+.nav-links a {
+  color: darkblue;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px; /* добавим отступ справа для разделения ссылок */
+  transition: color 0.3s; /* Добавляем плавный переход для изменения цвета текста */
+}
+
+.nav-links a:hover {
+  color: #ff5733; /* Изменяем цвет текста при наведении */
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-right: 80px; /* Увеличим отступ справа до 20px для увеличения расстояния между логотипом и ссылками */
+}
+
+@media screen and (max-width: 600px) {
+  .nav-links {
+    flex-direction: column; /* Переключим отображение ссылок на вертикальное расположение */
+    align-items: center; /* Центрируем ссылки по горизонтали */
+  }
+
+  .nav-links a {
+    margin-right: 0; /* Удалите отступ для вертикального отображения */
+    margin-bottom: 5px; /* Добавим отступ между ссылками в вертикальном расположении */
+  }
+}
