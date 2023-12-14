@@ -19,7 +19,7 @@ module.exports = {
         onDelete: 'CASCADE',
       },
       data: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       timeSlot: {
