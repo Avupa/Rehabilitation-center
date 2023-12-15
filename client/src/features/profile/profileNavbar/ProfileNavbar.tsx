@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import logo from '../../../../public/img/logo-Rehabilitation-center.png';
+import iconProfile from '../../../../public/img/profile-icon.png';
 import './profileNavbar.css';
 
 function ProfileNavbar(): JSX.Element {
@@ -15,7 +16,7 @@ function ProfileNavbar(): JSX.Element {
           </div>
         </Link>
         <div className="profile_left_container_links">
-          <Link to="/">
+          <Link to="/profile">
             <img src="" alt="" />
             <p>Главная</p>
           </Link>
@@ -35,13 +36,19 @@ function ProfileNavbar(): JSX.Element {
             <img src="" alt="" />
             <p>Помощь</p>
           </Link>
-          <Link to="#">
+          <Link to="/">
             <img src="" alt="" />
             <p>Выйти</p>
           </Link>
         </div>
       </div>
-      <Outlet />
+      <div className="profile_right_container">
+        <div className="user_info">
+          <p>Имя фамилия</p>
+          <img src={iconProfile} alt="User Avatar" className="logo" />
+        </div>
+        <Outlet />
+      </div>
     </div>
   );
 }

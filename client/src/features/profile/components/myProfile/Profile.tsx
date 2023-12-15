@@ -1,16 +1,11 @@
 import React from 'react';
 import './profile.css';
 import { Link } from 'react-router-dom';
-import iconProfile from '../../../../../public/img/profile-icon.png';
 import TogglePersoneData from '../personalData/Toggle';
 
 function Profile(): JSX.Element {
   return (
-    <div className="profile_right_container">
-      <div className="user_info">
-        <p>Имя фамилия</p>
-        <img src={iconProfile} alt="User Avatar" className="logo" />
-      </div>
+    <div>
       <TogglePersoneData />
       <div>
         <p>ПРЕДСТОЯЩИЕ ПРИЕМЫ</p>
