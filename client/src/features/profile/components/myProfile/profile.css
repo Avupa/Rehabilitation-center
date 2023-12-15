@@ -1,3 +1,7 @@
+.profile_full_container {
+  display: flex;
+}
+
 .profile_right_container {
   height: 100%;
   flex: 1;

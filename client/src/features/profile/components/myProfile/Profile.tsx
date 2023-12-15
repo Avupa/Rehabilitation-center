@@ -1,10 +1,10 @@
 import React from 'react';
+import './profile.css';
 import { Link } from 'react-router-dom';
-import './profileRightContainer.css';
 import iconProfile from '../../../../../public/img/profile-icon.png';
-import TogglePersoneData from '../../personalData/Toggle';
+import TogglePersoneData from '../personalData/Toggle';
 
-function ProfileRightContainer(): JSX.Element {
+function Profile(): JSX.Element {
   return (
     <div className="profile_right_container">
       <div className="user_info">
@@ -35,4 +35,4 @@ function ProfileRightContainer(): JSX.Element {
   );
 }
 
-export default ProfileRightContainer;
+export default Profile;
