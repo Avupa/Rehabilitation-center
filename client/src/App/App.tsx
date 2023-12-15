@@ -17,7 +17,6 @@ import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import Help from '../features/help/Help';
-import MyTest from '../features/profile/components/myTests/MyTest';
 import MyDoctors from '../features/profile/components/myDoctors/MyDoctors';
 import MyAppointment from '../features/profile/components/myAppointment/MyAppointment';
 import ProfileNavbar from '../features/profile/profileNavbar/ProfileNavbar';
@@ -45,7 +44,6 @@ function App(): JSX.Element {
           <Route path="profile" element={<Profile />} />
           <Route path="profile/my/appointment" element={<MyAppointment />} />
           <Route path="profile/my/doctors" element={<MyDoctors />} />
-          <Route path="profile/my/tests" element={<MyTest />} />
           <Route path="help" element={<Help />} />
         </Route>
           <Route path="*" element={<ErrorPage />} />

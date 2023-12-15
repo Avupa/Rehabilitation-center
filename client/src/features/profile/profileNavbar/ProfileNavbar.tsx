@@ -28,10 +28,6 @@ function ProfileNavbar(): JSX.Element {
             <img src="" alt="" />
             <p>Мои врачи</p>
           </Link>
-          <Link to="/profile/my/tests">
-            <img src="" alt="" />
-            <p>Мои анализы</p>
-          </Link>
           <Link to="/help">
             <img src="" alt="" />
             <p>Помощь</p>
