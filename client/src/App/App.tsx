@@ -9,6 +9,8 @@ import Appointment from '../features/appointment/Appointment';
 import Doctors from '../features/doctors/Doctors';
 import Services from '../features/services/Services';
 import 'tailwindcss/tailwind.css';
+import LoginPage from '../features/auth/LoginPage';
+import RegisterPage from '../features/auth/RegisterPage';
 
 function App(): JSX.Element {
   return (
@@ -21,6 +23,8 @@ function App(): JSX.Element {
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/auth/login" element={<LoginPage />} />
+        <Route path="/auth/registration" element={<RegisterPage />} />
       </Routes>
     </div>
   );

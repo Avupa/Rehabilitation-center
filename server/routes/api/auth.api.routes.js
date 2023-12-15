@@ -1,90 +1,130 @@
-const router = require("express").Router();
-const { User } = require("../../db/models");
-const bcrypt = require("bcrypt");
-const cookiesConfig = require("../../config/cookiesConfig");
-const { generateTokens } = require("../../utils/authUtils");
+const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const { User } = require('../../db/models');
+const { generateTokens } = require('../../utils/authUtils');
+const cookiesConfig = require('../../config/cookiesConfig');
+const { Op } = require('sequelize');
 
-router.post("/register", async (req, res) => {
+router.post('/registration', async (req, res) => {
   try {
-    // Получаем данные пользователя из запроса
-    const { email, password } = req.body;
-    if (email && password) {
-      const userInDb = await User.findOne({ where: { email } });
-
-      if (!userInDb) {
-        // Хэшируем пароль
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Сохраняем пользователя в базу данных
-        await User.create({ email, password: hashedPassword });
-
-        // Возвращаем успешный ответ
-        return res.status(201).json({
-          registration: true,
-          url: "/home",
-          message: "User successfully registered",
-        });
-      }
-
-      // Возвращаем ответ в случае вторичного использования почты
-      return res.status(400).json({
-        registration: false,
-        url: "/home",
-        message: "This email is already in use",
+    const { name, lastName, patronymic, telephone, email, password } = req.body;
+    if (name && lastName && telephone && email && password) {
+      let user = await User.findOne({
+        where: {
+          [Op.or]: [{ email }, { telephone }],
+        },
       });
+      if (user) {
+        if (user.email === email) {
+          res.status(400).json({ message: 'Такая почта уже зарегистрирована' });
+        } else {
+          res
+            .status(400)
+            .json({ message: 'Данный телефон уже зарегистрирован' });
+        }
+      } else {
+        const hash = await bcrypt.hash(password, 10);
+        user = await User.create({
+          name,
+          lastName,
+          patronymic,
+          telephone,
+          email,
+          password,
+        });
+
+        const { accessToken, refreshToken } = generateTokens({
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            lastName: user.lastName,
+            patronymic: user.patronymic,
+            telephone: user.telephone,
+          },
+        });
+
+        res
+          .cookie(cookiesConfig.access, accessToken, {
+            maxAge: cookiesConfig.maxAgeAccess,
+            httpOnly: true,
+          })
+          .cookie(cookiesConfig.refresh, refreshToken, {
+            maxAge: cookiesConfig.maxAgeRefresh,
+            httpOnly: true,
+          })
+          .status(201)
+          .json({
+            name,
+            lastName,
+            patronymic,
+            id: user.id,
+            email,
+            telephone,
+          });
+      }
+    } else {
+      res.status(400).json({ message: 'Заполните все необходимые поля' });
     }
-  } catch (error) {
-    // Обрабатываем возможные ошибки
-    res.status(500).json({ message: "Registration failed" });
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
-    // Получаем данные пользователя из запроса
     const { email, password } = req.body;
-
     if (email && password) {
-      // Ищем пользователя в базе данных по имени пользователя
-      const userInDb = await User.findOne({ where: { email }, raw: true });
+      const user = await User.findOne({ where: { email } });
+      if (user && (await bcrypt.compare(password, user.password))) {
+        const { accessToken, refreshToken } = generateTokens({
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            lastName: user.lastName,
+            patronymic: user.patronymic,
+            telephone: user.telephone,
+          },
+        });
 
-      if (userInDb) {
-        // Проверяем правильность пароля
-        const passwordMatch = await bcrypt.compare(password, userInDb.password);
-
-        // Если пароль не совпадает, вернуть клиентскую ошибку без указания точной причины для безопасности
-        if (!passwordMatch) {
-          return res
-            .status(403)
-            .json({ message: "Incorrect password or email" });
-        }
+        res
+          .cookie(cookiesConfig.access, accessToken, {
+            maxAge: cookiesConfig.maxAgeAccess,
+            httpOnly: true,
+          })
+          .cookie(cookiesConfig.refresh, refreshToken, {
+            maxAge: cookiesConfig.maxAgeRefresh,
+            httpOnly: true,
+          })
+          .status(200)
+          .json({ message: 'ok' });
       } else {
-        return res.status(404).json({ message: "Incorrect password or email" });
+        res.status(400).json({ message: 'Неверные данные!' });
       }
-
-      const { accessToken, refreshToken } = generateTokens({
-        user: { id: userInDb.id, email: userInDb.email },
-      });
-
-      // Возвращаем токены в httpOnly cookie при ответе
-      res
-        .cookie(cookiesConfig.refresh, refreshToken, {
-          maxAge: cookiesConfig.maxAgeRefresh,
-          httpOnly: true,
-        })
-        .cookie(cookiesConfig.access, accessToken, {
-          maxAge: cookiesConfig.maxAgeAccess,
-          httpOnly: true,
-        })
-        .json({ login: true, url: "/products" });
     } else {
-      return res.status(400).json({ message: "All fields were not sent" });
+      res.status(400).send('Заполните все поля');
     }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json(err.message);
+  }
+});
+
+router.get('/logout', (req, res) => {
+  try {
+    res.clearCookie(jwtConfig.access.type).clearCookie(jwtConfig.refresh.type);
+    res.sendStatus(204);
   } catch (error) {
-    // Обрабатываем возможные ошибки
-    res
-      .status(500)
-      .json({ message: "Authentication Error", error: error.message });
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get('/check', (req, res) => {
+  if (res.locals.user) {
+    res.json({ message: 'success', user: res.locals.user });
+  } else {
+    res.status(401).json({ message: 'Пользователь не аутентифицирован' });
   }
 });
 
