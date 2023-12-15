@@ -12,6 +12,7 @@ import Admin from '../features/admin/AdminPage';
 import 'tailwindcss/tailwind.css';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
+import { initDoctors } from '../features/doctors/doctorSlice';
 
 
 
@@ -19,6 +20,7 @@ function App(): JSX.Element {
   const dispatch=useAppDispatch()
   useEffect(()=>{
     dispatch (initNoNameUsers())
+    dispatch (initDoctors())
     },[dispatch])
     
   return (
