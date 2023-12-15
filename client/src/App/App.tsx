@@ -47,8 +47,8 @@ function App(): JSX.Element {
           <Route path="profile/my/doctors" element={<MyDoctors />} />
           <Route path="profile/my/tests" element={<MyTest />} />
           <Route path="help" element={<Help />} />
-          <Route path="*" element={<ErrorPage />} />
         </Route>
+          <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

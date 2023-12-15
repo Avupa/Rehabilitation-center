@@ -38,7 +38,7 @@ video {
   animation: spin 4s linear infinite; /* Заставляем картинку крутиться по часовой стрелке */
 }
 
-.containe:hover .pill_spiner {
+.ErrorPage_container:hover .pill_spiner {
   animation: zoom-in 1s infinite; /* Устанавливаем бесконечное повторение анимации zoom-in при наведении контейнера */
   animation-fill-mode: forwards; /* Удерживаем последний кадр анимации после ее завершения */
 }
