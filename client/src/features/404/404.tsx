@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import video from '../../../public/videos/404-cat.mp4';
 import img from '../../../public/img/pill.png';
 import './404.css';
-import { Link } from 'react-router-dom';
 
 function ErrorPage(): JSX.Element {
   return (
-    <div>
+    <body id="ErrorPage">
       <video
         autoPlay
         loop
@@ -19,11 +19,11 @@ function ErrorPage(): JSX.Element {
         <track label="English" kind="subtitles" srcLang="en" src="subtitles_en.vtt" default />
         Ваш браузер не поддерживает тег video.
       </video>
-      <div className="full-container">
-        <div className="containe">
+      <div className="ErrorPage_full_container">
+        <div className="ErrorPage_container">
           <p>4</p>
           <Link to="/">
-            <img src={img} alt="pill" />
+            <img src={img} alt="pill" className="pill_spiner" />
           </Link>
           <p>4</p>
         </div>
@@ -32,7 +32,7 @@ function ErrorPage(): JSX.Element {
           главную страницу.
         </p>
       </div>
-    </div>
+    </body>
   );
 }
 
