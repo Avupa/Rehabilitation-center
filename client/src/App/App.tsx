@@ -17,6 +17,8 @@ import RegisterPage from '../features/auth/RegisterPage';
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
+
+import { check } from '../features/auth/authSlice';
 import Help from '../features/help/Help';
 import MyTest from '../features/profile/components/myTests/MyTest';
 import MyDoctors from '../features/profile/components/myDoctors/MyDoctors';
@@ -27,6 +29,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initNoNameUsers());
+    dispatch(check());
   }, [dispatch]);
 
   return (

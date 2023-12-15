@@ -12,8 +12,8 @@ function verifyRefreshToken(req, res, next) {
       user: {
         id: user.id,
         email: user.email,
-        name: user.name,
-        lastName: user.lastName,
+        firstName: user.firstName,
+        secondName: user.secondName,
         patronymic: user.patronymic,
         telephone: user.telephone,
       },
