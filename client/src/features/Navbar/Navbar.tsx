@@ -16,6 +16,7 @@ function Navbar(): JSX.Element {
           <Link to="/doctors">Врачи</Link>
           <Link to="/services">Услуги</Link>
           <Link to="/profile">Личный кабинет</Link>
+          <Link to="/admin">Кабинет администратора</Link>
         </div>
       </div>
     </nav>
