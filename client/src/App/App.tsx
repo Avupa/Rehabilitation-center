@@ -17,6 +17,7 @@ import RegisterPage from '../features/auth/RegisterPage';
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
+import { initDoctors } from '../features/doctors/doctorSlice';
 
 import { check } from '../features/auth/authSlice';
 import Help from '../features/help/Help';
@@ -26,12 +27,14 @@ import MyAppointment from '../features/profile/components/myAppointment/MyAppoin
 import ProfileNavbar from '../features/profile/profileNavbar/ProfileNavbar';
 
 function App(): JSX.Element {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(initNoNameUsers());
-    dispatch(check());
-  }, [dispatch]);
 
+  const dispatch=useAppDispatch()
+  useEffect(()=>{
+    dispatch (initNoNameUsers())
+    dispatch (initDoctors())
+    dispatch(check());
+    },[dispatch])
+    
   return (
     <div className="App">
       <Routes>
