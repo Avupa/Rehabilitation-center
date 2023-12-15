@@ -1,6 +1,7 @@
 import React from 'react';
+import "./Mytest.css"
 
-function Main(): JSX.Element {
+function MyTest(): JSX.Element {
   return (
     <div className="bg-grey w-full h-full">
       <p className="text-green-500">Главная страница</p>
@@ -8,4 +9,4 @@ function Main(): JSX.Element {
   );
 }
 
-export default Main;
+export default MyTest;
