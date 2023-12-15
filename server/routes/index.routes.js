@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-
 // API
 const noNameUsersApiRouter=require('./api/noNameUser.api.routes');
 

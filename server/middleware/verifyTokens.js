@@ -8,20 +8,33 @@ function verifyRefreshToken(req, res, next) {
   try {
     const { refresh } = req.cookies;
     const { user } = jwt.verify(refresh, process.env.REFRESH_TOKEN_SECRET);
-    const { accessToken, refreshToken } = generateTokens({ user: { id: user.id, email: user.email, name: user.name } });
+    const { accessToken, refreshToken } = generateTokens({
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        lastName: user.lastName,
+        patronymic: user.patronymic,
+        telephone: user.telephone,
+      },
+    });
 
     res.locals.user = user;
 
     // Возвращаем пару токенов в http-only cookie при ответе
     res
-      .cookie(cookiesConfig.refresh, refreshToken, { maxAge: cookiesConfig.maxAgeRefresh, httpOnly: true })
-      .cookie(cookiesConfig.access, accessToken, { maxAge: cookiesConfig.maxAgeAccess, httpOnly: true });
+      .cookie(cookiesConfig.refresh, refreshToken, {
+        maxAge: cookiesConfig.maxAgeRefresh,
+        httpOnly: true,
+      })
+      .cookie(cookiesConfig.access, accessToken, {
+        maxAge: cookiesConfig.maxAgeAccess,
+        httpOnly: true,
+      });
 
     next();
   } catch (error) {
-    res
-      .clearCookie(cookiesConfig.access)
-      .clearCookie(cookiesConfig.refresh);
+    res.clearCookie(cookiesConfig.access).clearCookie(cookiesConfig.refresh);
 
     next();
   }

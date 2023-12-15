@@ -10,6 +10,8 @@ import Doctors from '../features/doctors/Doctors';
 import Services from '../features/services/Services';
 import Admin from '../features/admin/AdminPage';
 import 'tailwindcss/tailwind.css';
+import LoginPage from '../features/auth/LoginPage';
+import RegisterPage from '../features/auth/RegisterPage';
 
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
@@ -25,7 +27,6 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <Routes>
-
         <Route path="/" element={<Navbar />}>
           <Route index element={<Main />} />
           <Route path="price" element={<Price />} />
@@ -34,9 +35,10 @@ function App(): JSX.Element {
           <Route path="doctors" element={<Doctors />} />
           <Route path="services" element={<Services />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/auth/registration" element={<RegisterPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
-
       </Routes>
     </div>
   );
