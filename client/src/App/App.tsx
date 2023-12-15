@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from '../features/Navbar/Navbar';
@@ -8,10 +8,22 @@ import Price from '../features/price/Price';
 import Appointment from '../features/appointment/Appointment';
 import Doctors from '../features/doctors/Doctors';
 import Services from '../features/services/Services';
+import Admin from '../features/admin/AdminPage';
 import 'tailwindcss/tailwind.css';
+import LoginPage from '../features/auth/LoginPage';
+import RegisterPage from '../features/auth/RegisterPage';
+
 import ErrorPage from '../features/404/404';
+import { useAppDispatch } from '../store/store';
+import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
+
 
 function App(): JSX.Element {
+  const dispatch=useAppDispatch()
+  useEffect(()=>{
+    dispatch (initNoNameUsers())
+    },[dispatch])
+    
   return (
     <div className="App">
       <Routes>
@@ -21,6 +33,9 @@ function App(): JSX.Element {
           <Route path="appointment" element={<Appointment />} />
           <Route path="doctors" element={<Doctors />} />
           <Route path="services" element={<Services />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/auth/registration" element={<RegisterPage />} />
         </Route>
         <Route path="profile" element={<Profile />} />
         <Route path="*" element={<ErrorPage />} />

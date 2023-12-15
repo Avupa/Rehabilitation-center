@@ -6,6 +6,7 @@ import './navbar.css';
 
 function Navbar(): JSX.Element {
   return (
+
     <nav>
       <div className="navbar_background_color">
         <div className="navbar">
@@ -28,8 +29,10 @@ function Navbar(): JSX.Element {
             {/* <Link to="/price">Контакты</Link> */}
             <Link to="/appointment">Запись</Link>
             <Link to="/profile">Личный кабинет</Link>
+            <Link to="/admin">Кабинет администратора</Link>
             {/* <NavbarAuth /> */}
           </div>
+
         </div>
       </div>
       <Outlet />
