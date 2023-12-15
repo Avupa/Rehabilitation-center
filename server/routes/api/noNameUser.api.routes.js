@@ -5,7 +5,7 @@ router.get("/", async (req, res) => {
   console.log('i am here');
   try {
     const data = await noNameUser.findAll();
-    console.log(data);
+    //console.log(data);
     return res.json(data);
   } catch (error) {
     res.status(500).json({ message: error });

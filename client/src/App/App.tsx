@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from '../features/Navbar/Navbar';
 import Main from '../features/main/Main';
+
 import Profile from '../features/profile/components/myProfile/Profile';
 import Price from '../features/price/Price';
 import Appointment from '../features/appointment/Appointment';
@@ -16,17 +17,23 @@ import RegisterPage from '../features/auth/RegisterPage';
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
+import { initDoctors } from '../features/doctors/doctorSlice';
+
+import { check } from '../features/auth/authSlice';
 import Help from '../features/help/Help';
 import MyDoctors from '../features/profile/components/myDoctors/MyDoctors';
 import MyAppointment from '../features/profile/components/myAppointment/MyAppointment';
 import ProfileNavbar from '../features/profile/profileNavbar/ProfileNavbar';
 
 function App(): JSX.Element {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(initNoNameUsers());
-  }, [dispatch]);
 
+  const dispatch=useAppDispatch()
+  useEffect(()=>{
+    dispatch (initNoNameUsers())
+    dispatch (initDoctors())
+    dispatch(check());
+    },[dispatch])
+    
   return (
     <div className="App">
       <Routes>

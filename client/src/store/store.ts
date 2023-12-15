@@ -1,13 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import noNameUsersSlice from '../features/noNameUser/noNameUserSlice'
+
+import doctorSlice from '../features/doctors/doctorSlice';
+import authSlice from '../features/auth/authSlice';
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 
 const store = configureStore({
 
  // теперь функция combineReducers не нужна
  reducer: {
-   NNU:noNameUsersSlice
+   NNU:noNameUsersSlice,
+   Doctor:doctorSlice
+   auth:authSlice
  },
 });
 

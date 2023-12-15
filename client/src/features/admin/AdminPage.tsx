@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FromSite from './FromSite';
+import DoctorAdd from '../doctors/DoctorAdd';
 
 
 function Admin(): JSX.Element {
@@ -15,7 +16,8 @@ function Admin(): JSX.Element {
           <Link to="/scheduledoctors">Внести расписание специалистов</Link>
           <Link to="/changeschedule">Внести корректировку в расписание</Link>
           <Link to="/changeservice">Изменить перечень услуг</Link>
-          <Link to="/changedoctor">Изменить информацию о специалистах</Link>
+          <Link to="/doctors">Изменить информацию о специалистах</Link>
+          <DoctorAdd/>
         </div>
         </>
   )
