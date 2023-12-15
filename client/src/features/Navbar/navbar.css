@@ -34,7 +34,8 @@
   height: 64px;
   object-fit: contain;
   flex-shrink: 0;
-  margin-right: 80px; /* Увеличим отступ справа до 20px для увеличения расстояния между логотипом и ссылками */
+  margin-right: 80px;
+  pointer-events: none; /* Запретить перетаскивание изображения */
 }
 
 @media screen and (max-width: 600px) {
