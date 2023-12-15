@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from '../features/Navbar/Navbar';
 import Main from '../features/main/Main';
+
 import Profile from '../features/profile/components/myProfile/Profile';
 import Price from '../features/price/Price';
 import Appointment from '../features/appointment/Appointment';
