@@ -1,5 +1,5 @@
-body {
-  overflow: hidden; /* Удаляет прокрутку страницы */
+#ErrorPage {
+  overflow: hidden; /* Применение стиля только к элементу с id="uniquePage" */
 }
 
 video {
@@ -12,12 +12,12 @@ video {
   z-index: -1; /* Установите значение z-index на -1, чтобы поместить видео на задний план */
 }
 
-.full-container {
+.ErrorPage_full_container {
   margin-left: 40px; /* Добавляем отступ слева */
   width: 100%;
 }
 
-.containe {
+.ErrorPage_container {
   width: 50%; /* Устанавливаем ширину */
   display: flex;
   align-items: center;
@@ -32,13 +32,13 @@ video {
   padding: 20px; /* Увеличиваем внутренние отступы до 20 пикселей */
 }
 
-img {
+.pill_spiner {
   width: 240px;
   margin: 0 10px;
   animation: spin 4s linear infinite; /* Заставляем картинку крутиться по часовой стрелке */
 }
 
-.containe:hover img {
+.containe:hover .pill_spiner {
   animation: zoom-in 1s infinite; /* Устанавливаем бесконечное повторение анимации zoom-in при наведении контейнера */
   animation-fill-mode: forwards; /* Удерживаем последний кадр анимации после ее завершения */
 }
