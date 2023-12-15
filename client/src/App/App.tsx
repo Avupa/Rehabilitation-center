@@ -16,12 +16,14 @@ import RegisterPage from '../features/auth/RegisterPage';
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
+import { check } from '../features/auth/authSlice';
 
 
 function App(): JSX.Element {
   const dispatch=useAppDispatch()
   useEffect(()=>{
-    dispatch (initNoNameUsers())
+    dispatch (initNoNameUsers());
+    dispatch(check());
     },[dispatch])
     
   return (

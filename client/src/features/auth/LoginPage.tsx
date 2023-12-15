@@ -1,23 +1,57 @@
-import React, { useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useEffect } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { RootState, useAppDispatch } from '../../store/store';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Login } from './authType';
+import { object, string } from 'yup';
+import { login } from './authSlice';
+
+const schema = object().shape({
+  email: string().required('Необходимо указать электронную почту'),
+  password: string()
+    .required('Необходимо указать пароль')
+    .min(3, 'Пароль должен быть более 8 символов')
+    .max(25, 'Пароль должен быть не более 25 символов'),
+});
 
 function LoginPage():JSX.Element {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Login>({ resolver: yupResolver(schema) });
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const {user,error} = useSelector((store: RootState) => store.auth);
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
+
+  const submit: SubmitHandler<Login> = (data) => {
+    dispatch(login(data));
+  };
+  
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="w-full max-w-xs mx-auto mt-5">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
+        <form onSubmit={handleSubmit(submit)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
+        <div>{error}</div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="login">
               Email
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
               type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register('email')}
             />
+            <span>{errors.email?.message}</span>
           </div>
 
           <div className="mb-6">
@@ -26,12 +60,10 @@ function LoginPage():JSX.Element {
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...register('password')}
             />
-            {/* <p className="text-red-500 text-xs italic">Введите пароль</p> */}
+            <span>{errors.password?.message}</span>
           </div>
           <div className="flex items-center justify-between">
             <button

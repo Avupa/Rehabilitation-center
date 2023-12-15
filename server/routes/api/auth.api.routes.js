@@ -7,8 +7,9 @@ const { Op } = require('sequelize');
 
 router.post('/registration', async (req, res) => {
   try {
-    const { name, lastName, patronymic, telephone, email, password } = req.body;
-    if (name && lastName && telephone && email && password) {
+    const { firstName, secondName, patronymic, telephone, email, password } =
+      req.body;
+    if (firstName && secondName && telephone && email && password) {
       let user = await User.findOne({
         where: {
           [Op.or]: [{ email }, { telephone }],
@@ -25,8 +26,8 @@ router.post('/registration', async (req, res) => {
       } else {
         const hash = await bcrypt.hash(password, 10);
         user = await User.create({
-          name,
-          lastName,
+          firstName,
+          secondName,
           patronymic,
           telephone,
           email,
@@ -37,8 +38,8 @@ router.post('/registration', async (req, res) => {
           user: {
             id: user.id,
             email: user.email,
-            name: user.name,
-            lastName: user.lastName,
+            firstName: user.firstName,
+            secondName: user.secondName,
             patronymic: user.patronymic,
             telephone: user.telephone,
           },
@@ -55,8 +56,8 @@ router.post('/registration', async (req, res) => {
           })
           .status(201)
           .json({
-            name,
-            lastName,
+            firstName,
+            secondName,
             patronymic,
             id: user.id,
             email,
@@ -81,8 +82,8 @@ router.post('/login', async (req, res) => {
           user: {
             id: user.id,
             email: user.email,
-            name: user.name,
-            lastName: user.lastName,
+            firstName: user.firstName,
+            secondName: user.secondName,
             patronymic: user.patronymic,
             telephone: user.telephone,
           },
@@ -98,7 +99,14 @@ router.post('/login', async (req, res) => {
             httpOnly: true,
           })
           .status(200)
-          .json({ message: 'ok' });
+          .json({
+            id: user.id,
+            email: user.email,
+            firstName: user.firstName,
+            secondName: user.secondName,
+            patronymic: user.patronymic,
+            telephone: user.telephone,
+          });
       } else {
         res.status(400).json({ message: 'Неверные данные!' });
       }
