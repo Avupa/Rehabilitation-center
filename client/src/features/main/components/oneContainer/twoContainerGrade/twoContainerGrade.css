@@ -1,8 +1,6 @@
-#main-container-grade {
+.main-full-container {
   margin-top: 80px;
   display: flex;
-  justify-content: center; /* Центрирование контейнеров по горизонтали */
-  gap: 10px; /* Расстояние между контейнерами */
 }
 
 .grade-description,

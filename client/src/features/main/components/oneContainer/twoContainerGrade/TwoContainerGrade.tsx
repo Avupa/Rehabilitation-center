@@ -12,16 +12,14 @@ function TwoContainerGrade(): JSX.Element {
   ];
 
   return (
-    <div id="main-container-grade">
+    <div className="main-full-container pt-8">
       {containers.map((container, index) => (
-        <div>
-          <div key={index} className="grade-description">
-            <div>
-              <p>{container[1]}</p>
-            </div>
-            <div className="grade-img">
-              <img src={container[0]} alt="#" />
-            </div>
+        <div key={index} className="grade-description">
+          <div>
+            <p>{container[1]}</p>
+          </div>
+          <div className="grade-img">
+            <img src={container[0]} alt="#" />
           </div>
         </div>
       ))}

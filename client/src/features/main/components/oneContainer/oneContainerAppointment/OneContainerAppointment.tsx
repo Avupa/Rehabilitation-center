@@ -5,25 +5,27 @@ import imgDoctor from '../../../../../../public/img/main/Rectangle.png';
 
 function OneContainerAppointment(): JSX.Element {
   return (
-    <div id="main-full-container-appointment">
+    <div className="main-full-container">
       <div className="main-container">
-        <div id="one-sub-container">
+        <div id="one-sub-container" className="main-container-appointment">
           <p>
             Квалифицированная помощь при головных болях, защемлении позвонков, проблемах с
             опорно-двигательным аппаратом
           </p>
         </div>
-        <div>
-          <div id="two-sub-container">
-            <p>Наша цель - лечение причины заболевания, а не симптомов</p>
-          </div>
-        </div>
-        <div>
-          <Link to="/appointment">
-            <div className="main-link-button">
-              <p>Онлайн запись</p>
+        <div className="main-container-appointment">
+          <div>
+            <div id="two-sub-container" className="main-container-appointment">
+              <p>Наша цель - лечение причины заболевания, а не симптомов</p>
             </div>
-          </Link>
+            <div>
+              <Link to="/appointment">
+                <div className="main-link-button">
+                  <p>Онлайн запись</p>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
       <div className="main-container">

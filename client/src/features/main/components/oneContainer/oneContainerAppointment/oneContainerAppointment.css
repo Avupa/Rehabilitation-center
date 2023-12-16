@@ -1,32 +1,21 @@
-#main-full-container-appointment {
-  display: flex;
-  justify-content: center;
+.main-full-container {
   margin-top: 40px;
-  align-items: center;
-}
-
-.main-container {
-  height: 100%;
-  margin: 0 10px;
-}
-
-.main-container div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
 }
 
 #one-sub-container {
   font-size: 30px;
   width: 670px;
-  flex: 1; /* Растягивает содержимое на всю высоту родительского контейнера */
 }
 
 #two-sub-container {
   font-size: 22px;
   width: 400px;
-  align-self: flex-start; /* Создание вертикального отступа между контейнерами */
 }
 
-
+.main-container-appointment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}

@@ -2,6 +2,13 @@
   display: block;
 }
 
+.main-full-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Расстояние между контейнерами */
+}
+
 .main-link-button {
   background-color: #55a394;
   color: white;
@@ -9,4 +16,22 @@
   width: 267px;
   height: 70px;
   border-radius: 35px; /* Увеличение радиуса скругления */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+}
+
+.white-container {
+  margin-top: 80px;
+  background-color: white;
+  padding: 80px 0; /* Отступы сверху и снизу размером 20px, без отступов слева и справа */
+}
+
+.main-container {
+  height: 100%;
+  margin: 0 10px;
 }

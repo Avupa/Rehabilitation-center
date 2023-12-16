@@ -3,7 +3,7 @@ import MainServises from './services/MainServises';
 
 function TwoContainer(): JSX.Element {
   return (
-    <div>
+    <div className='white-container'>
       <MainServises />
     </div>
   );
