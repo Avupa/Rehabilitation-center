@@ -1,0 +1,43 @@
+#main {
+  display: block;
+}
+
+#main-full-container-appointment {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  align-items: center;
+}
+
+.main-container {
+  height: 100%;
+  margin: 0 10px;
+}
+
+.main-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#one-sub-container {
+  font-size: 30px;
+  width: 670px;
+  flex: 1; /* Растягивает содержимое на всю высоту родительского контейнера */
+}
+
+#two-sub-container {
+  font-size: 22px;
+  width: 400px;
+  align-self: flex-start; /* Создание вертикального отступа между контейнерами */
+}
+
+#three-sub-container {
+  background-color: #55a394;
+  color: white;
+  font-size: 22px;
+  width: 267px;
+  height: 70px;
+  border-radius: 35px; /* Увеличение радиуса скругления */
+}

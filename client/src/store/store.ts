@@ -11,7 +11,7 @@ const store = configureStore({
  // теперь функция combineReducers не нужна
  reducer: {
    NNU:noNameUsersSlice,
-   Doctor:doctorSlice
+   Doctor:doctorSlice,
    auth:authSlice
  },
 });
