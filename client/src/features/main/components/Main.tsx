@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './main.css';
-import OneContainerAppointment from './oneContainerAppointment/OneContainerAppointment';
-import TwoContainerGrade from './twoContainerGrade/twoContainerGrade';
+import OneContainer from './oneContainer/OneContainer';
+import TwoContainer from './twoContainer/TwoContainer';
 
 function Main(): JSX.Element {
   useEffect(() => {
@@ -17,8 +17,8 @@ function Main(): JSX.Element {
 
   return (
     <div id="main">
-      <OneContainerAppointment />
-      <TwoContainerGrade />
+      <OneContainer />
+      <TwoContainer />
     </div>
   );
 }

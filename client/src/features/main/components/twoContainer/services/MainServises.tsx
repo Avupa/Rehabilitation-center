@@ -1,9 +1,10 @@
 import React from 'react';
-import './oneContainerAppointment.css';
-import { Link } from 'react-router-dom';
-import imgDoctor from '../../../../../public/img/Rectangle.png';
+import './mainServises.css';
+import img1 from '../../../../../../public/img/main/Rectangle1.png';
+import img2 from '../../../../../../public/img/main/Rectangle2.png';
+import img3 from '../../../../../../public/img/main/Rectangle3.png';
 
-function OneContainerAppointment(): JSX.Element {
+function MainServises(): JSX.Element {
   return (
     <div id="main-full-container-appointment">
       <div className="main-container">
@@ -18,18 +19,8 @@ function OneContainerAppointment(): JSX.Element {
             <p>Наша цель - лечение причины заболевания, а не симптомов</p>
           </div>
         </div>
-        <div>
-          <Link to="/appointment">
-            <div id="three-sub-container">
-              <p>Онлайн запись</p>
-            </div>
-          </Link>
-        </div>
-      </div>
-      <div className="main-container">
-        <img src={imgDoctor} alt="imgDoctor" className="w-96" />
       </div>
     </div>
   );
 }
-export default OneContainerAppointment;
+export default MainServises;

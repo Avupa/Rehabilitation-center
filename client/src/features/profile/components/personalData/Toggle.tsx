@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import penIcon from '../../../../../public/img/pen-icon.png';
-import arrow from '../../../../../public/img/Arrow.png';
+import penIcon from '../../../../../public/img/icon/pen-icon.png';
+import arrow from '../../../../../public/img/icon/Arrow.png';
 import './toggle.css';
 
 function TogglePersoneData(): JSX.Element {

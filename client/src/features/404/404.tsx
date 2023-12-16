@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import video from '../../../public/videos/404-cat.mp4';
-import img from '../../../public/img/pill.png';
+import img from '../../../public/img/404/pill.png';
 import './404.css';
 
 function ErrorPage(): JSX.Element {

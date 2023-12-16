@@ -29,11 +29,4 @@
   align-self: flex-start; /* Создание вертикального отступа между контейнерами */
 }
 
-#three-sub-container {
-  background-color: #55a394;
-  color: white;
-  font-size: 22px;
-  width: 267px;
-  height: 70px;
-  border-radius: 35px; /* Увеличение радиуса скругления */
-}
+

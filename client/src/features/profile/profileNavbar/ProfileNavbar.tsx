@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import logo from '../../../../public/img/logo-Rehabilitation-center.png';
-import iconProfile from '../../../../public/img/profile-icon.png';
+import logo from '../../../../public/img/icon/logo-Rehabilitation-center.png';
+import iconProfile from '../../../../public/img/icon/profile-icon.png';
 import './profileNavbar.css';
 
 function ProfileNavbar(): JSX.Element {

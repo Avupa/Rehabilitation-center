@@ -1,8 +1,8 @@
 import React from 'react';
 import './twoContainerGrade.css';
-import family from '../../../../../public/img/family.png';
-import like from '../../../../../public/img/like.png';
-import live from '../../../../../public/img/live.png';
+import family from '../../../../../../public/img/icon/family.png';
+import like from '../../../../../../public/img/icon/like.png';
+import live from '../../../../../../public/img/icon/live.png';
 
 function TwoContainerGrade(): JSX.Element {
   const containers = [

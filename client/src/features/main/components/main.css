@@ -1,3 +1,12 @@
 #main {
   display: block;
 }
+
+.main-link-button {
+  background-color: #55a394;
+  color: white;
+  font-size: 22px;
+  width: 267px;
+  height: 70px;
+  border-radius: 35px; /* Увеличение радиуса скругления */
+}

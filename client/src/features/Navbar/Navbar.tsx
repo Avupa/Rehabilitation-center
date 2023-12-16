@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import logo from '../../../public/img/logo-Rehabilitation-center.png';
+import logo from '../../../public/img/icon/logo-Rehabilitation-center.png';
 import './navbar.css';
 // import NavbarAuth from './NavbarAuth';
 
