@@ -6,20 +6,19 @@ import './navbar.css';
 
 function Navbar(): JSX.Element {
   return (
-
     <nav>
       <div className="navbar_background_color">
         <div className="navbar">
-            <Link to="/">
-          <div className="navbar_logo_and_description">
+          <Link to="/">
+            <div className="navbar_logo_and_description">
               <img src={logo} alt="logo" className="logo" />
-            <p className="w-45px">
-              Реабилитационный центр
-              <br />
-              доктора Ефимова В.А.
-            </p>
-          </div>
-            </Link>
+              <p className="w-45px">
+                Реабилитационный центр
+                <br />
+                доктора Ефимова В.А.
+              </p>
+            </div>
+          </Link>
           <div className="nav_links">
             <Link to="/services">Услуги</Link>
             <Link to="/doctors">Специалисты</Link>
@@ -32,7 +31,6 @@ function Navbar(): JSX.Element {
             <Link to="/admin">Кабинет администратора</Link>
             {/* <NavbarAuth /> */}
           </div>
-
         </div>
       </div>
       <Outlet />

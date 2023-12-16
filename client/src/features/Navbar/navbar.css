@@ -18,10 +18,8 @@
 }
 
 .nav_links a {
-  color: darkblue;
   text-decoration: none;
   font-size: 20px;
-  font-weight: bold;
   margin-right: 10px; /* добавим отступ справа для разделения ссылок */
   transition: color 0.3s; /* Добавляем плавный переход для изменения цвета текста */
 }

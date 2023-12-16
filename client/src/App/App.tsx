@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from '../features/Navbar/Navbar';
-import Main from '../features/main/Main';
+import Main from '../features/main/components/Main';
 
 import Profile from '../features/profile/components/myProfile/Profile';
 import Price from '../features/price/Price';
