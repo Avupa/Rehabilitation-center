@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './main.css';
 import OneContainer from './oneContainer/OneContainer';
 import TwoContainer from './twoContainer/TwoContainer';
+import ThreeContainer from './threeContainer/ThreeContainer';
 
 function Main(): JSX.Element {
   useEffect(() => {
@@ -19,6 +20,7 @@ function Main(): JSX.Element {
     <div id="main">
       <OneContainer />
       <TwoContainer />
+      <ThreeContainer />
     </div>
   );
 }

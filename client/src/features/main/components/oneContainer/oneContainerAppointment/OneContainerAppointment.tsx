@@ -1,7 +1,7 @@
 import React from 'react';
 import './oneContainerAppointment.css';
 import { Link } from 'react-router-dom';
-import imgDoctor from '../../../../../../public/img/main/Rectangle.png';
+import imgDoctor from '../../../../../../public/img/main/Rectangle-doctor-1.png';
 
 function OneContainerAppointment(): JSX.Element {
   return (
