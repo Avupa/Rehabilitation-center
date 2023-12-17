@@ -68,10 +68,13 @@
   height: 120px;
   padding: 20px; /* Внутренний отступ */
   margin: 0; /* Удаление внешнего отступа для перезаписи */
+  z-index: 1; /* Поместили container-description поверх container-img */
+}
+
+.container-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1; /* Поместили container-description поверх container-img */
 }
 
 .container-description p {

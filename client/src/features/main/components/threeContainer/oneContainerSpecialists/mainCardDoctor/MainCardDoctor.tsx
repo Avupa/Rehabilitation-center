@@ -11,15 +11,24 @@ function MainCardDoctor({ doctor }: TypeDoctor): JSX.Element {
 
   return (
     <div className="main-full-container">
-      <img src={doctor.img} alt="imgDoctor" className="w-96" />
+      <div>
+        <img src={doctor.img} alt={doctor.firstName} className="img-card-doctor" />
+      </div>
       <div className="container-main-card-doctor-description">
         <div className="flex">
           <p>Специалисты нашего центра</p>
         </div>
-        <div className="container-description border-3px-solid-orange">
-          <p>{doctor.firstName}</p>
-          <p>{doctor.secondName}</p>
-          <p>{doctor.patronymic}</p>
+        <div className="container-description border-3px-solid-orange w-full h-64">
+          <div>
+            <h1>
+              {doctor.firstName}&nbsp;{doctor.secondName}&nbsp;{doctor.patronymic}
+            </h1>
+          </div>
+          <div>
+            <h1>
+              {doctor.firstName}&nbsp;{doctor.secondName}&nbsp;{doctor.patronymic}
+            </h1>
+          </div>
         </div>
       </div>
     </div>
