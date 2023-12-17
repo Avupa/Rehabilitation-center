@@ -7,3 +7,10 @@
 .img-card-doctor {
   width: 460px;
 }
+
+.green-circle {
+  background-color: #55a394;
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+}

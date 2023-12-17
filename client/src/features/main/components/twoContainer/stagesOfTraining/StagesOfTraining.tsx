@@ -23,7 +23,7 @@ function StagesOfTraining(): JSX.Element {
             <div
               key={index + 1}
               className={`container-description container-flex ${
-                index + 1 > 4 ? 'border-3px-solid-dark-green' : 'border-3px-solid-orange'
+                index + 1 > 4 ? 'border-3px-solid-dark-green w-72 h-40' : 'border-3px-solid-orange'
               }`}
             >
               <div>
