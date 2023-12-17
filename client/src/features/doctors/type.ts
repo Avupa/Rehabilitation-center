@@ -9,6 +9,7 @@ export type Doctor = {
   secondName: string;
   patronymic: string;
   img: string;
+  shortDescription: string;
   description: string;
   slot: number;
   specialization?: string;

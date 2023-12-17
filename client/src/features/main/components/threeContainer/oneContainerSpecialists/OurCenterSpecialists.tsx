@@ -10,11 +10,9 @@ function OurCenterSpecialists(): JSX.Element {
   return (
     <div className="main-full-container">
       <div className="main-container">
-        <div className="main-container-appointment">
-          <div>
-            {doctors.length &&
-              doctors.map((doctor) => <MainCardDoctor key={doctor.id} doctor={doctor} />)}
-          </div>
+        <div>
+          {doctors.length &&
+            doctors.map((doctor) => <MainCardDoctor key={doctor.id} doctor={doctor} />)}
         </div>
       </div>
     </div>

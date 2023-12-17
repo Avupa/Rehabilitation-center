@@ -19,15 +19,15 @@ function MainCardDoctor({ doctor }: TypeDoctor): JSX.Element {
           <p>Специалисты нашего центра</p>
         </div>
         <div className="container-description border-3px-solid-orange w-full h-64">
-          <div>
-            <h1>
-              {doctor.firstName}&nbsp;{doctor.secondName}&nbsp;{doctor.patronymic}
-            </h1>
-          </div>
-          <div>
-            <h1>
-              {doctor.firstName}&nbsp;{doctor.secondName}&nbsp;{doctor.patronymic}
-            </h1>
+          <div className="w-10/12">
+            <div>
+              <h1 className="text-2xl">
+                {doctor.firstName}&nbsp;{doctor.secondName}&nbsp;{doctor.patronymic}
+              </h1>
+            </div>
+            <div>
+              <p className="text-lg">{doctor.shortDescription}</p>
+            </div>
           </div>
         </div>
       </div>

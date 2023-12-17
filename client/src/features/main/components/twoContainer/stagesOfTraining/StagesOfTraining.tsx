@@ -27,7 +27,7 @@ function StagesOfTraining(): JSX.Element {
               }`}
             >
               <div>
-                <p>{container}</p>
+                <p className="text-center">{container}</p>
               </div>
               <div
                 className={`container-img ${
