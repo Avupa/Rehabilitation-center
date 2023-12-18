@@ -35,17 +35,17 @@ function RegisterPage(): JSX.Element {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const {user,error} = useSelector((store: RootState) => store.auth);
+  const { user, error } = useSelector((store: RootState) => store.auth);
+
+  const submit: SubmitHandler<Rega> = (data) => {
+    void dispatch(registration(data));
+  };
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/profile');
     }
   }, [user]);
-
-  const submit: SubmitHandler<Rega> = (data) => {
-    dispatch(registration(data));
-  };
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">

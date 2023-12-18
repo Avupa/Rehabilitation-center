@@ -31,7 +31,7 @@ router.post('/registration', async (req, res) => {
           patronymic,
           telephone,
           email,
-          password,
+          password:hash,
         });
 
         const { accessToken, refreshToken } = generateTokens({
@@ -44,6 +44,7 @@ router.post('/registration', async (req, res) => {
             telephone: user.telephone,
           },
         });
+        console.log( accessToken, refreshToken);
 
         res
           .cookie(cookiesConfig.access, accessToken, {

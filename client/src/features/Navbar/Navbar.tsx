@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import logo from '../../../public/img/icon/logo-Rehabilitation-center.png';
 import './navbar.css';
+import type { RootState } from '../../store/store';
 // import NavbarAuth from './NavbarAuth';
 
 function Navbar(): JSX.Element {
+  const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
+
   return (
     <nav>
       <div className="navbar_background_color">
@@ -25,11 +29,13 @@ function Navbar(): JSX.Element {
             <Link to="/price">Отзывы</Link>
             <Link to="/price">О клинике</Link>
             <Link to="/price">Цены</Link>
-            {/* <Link to="/price">Контакты</Link> */}
             <Link to="/appointment">Запись</Link>
-            <Link to="/profile">Личный кабинет</Link>
-            <Link to="/admin">Кабинет администратора</Link>
-            {/* <NavbarAuth /> */}
+
+            {checkAdmin && !!checkAdmin ? (
+              <Link to="/admin">Кабинет администратора</Link>
+            ) : (
+              <Link to="/check">Личный кабинет</Link>
+            )}
           </div>
         </div>
       </div>
