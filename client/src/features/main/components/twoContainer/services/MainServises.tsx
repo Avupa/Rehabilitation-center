@@ -26,7 +26,7 @@ function MainServises(): JSX.Element {
             <div>
               <p>{container[1]}</p>
             </div>
-            <Link to="/">
+            <Link to="/services">
               <div className="main-link-button">
                 <p>{container[2]}</p>
               </div>

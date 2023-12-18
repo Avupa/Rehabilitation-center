@@ -1,13 +1,11 @@
 const router = require("express").Router();
-const { Doctor, SpecialOfDoctor, Specialization } = require("../../db/models");
+const { Procedure } = require("../../db/models");
 
 //INIT
 router.get("/", async (req, res) => {
-  // console.log('i am here, doctor');
+  // console.log('i am here, procedure');
   try {
-    const data = await Doctor.findAll({
-      include: { model: SpecialOfDoctor, include: { model: Specialization } },
-    });
+    const data = await Procedure.findAll({ raw: true });
     // console.log(data);
     // const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
     res.status(200).json(data);
@@ -19,21 +17,18 @@ router.get("/", async (req, res) => {
 //ADD
 
 router.post("/add", async (req, res) => {
-  const { description } = req.body;
-  // console.log(req.body, "req");
+  const { name, description, categoryId } = req.body;
+  //   console.log(req.body, "req");
   try {
-    const data = await Doctor.create({
-      firstName,
-      secondName,
-      patronymic,
+    const data = await Procedure.create({
+      name,
       description,
-      img,
-      slot: Number(slot),
+      categoryId: Number(categoryId),
     });
     if (data) {
-      res.send({ message: "Doctor was added", action: true, data });
+      res.send({ message: "Procedure was added", action: true, data });
     } else {
-      res.send({ message: "Doctor wasnot added", action: false });
+      res.send({ message: "Procedure wasnot added", action: false });
     }
   } catch (message) {
     res.send({ message, action: false, dop: "me" });
@@ -44,9 +39,11 @@ router.post("/add", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const doctor = await Doctor.findOne({ where: { id: req.params.id } });
+    const doctor = await Procedure.findOne({ where: { id: req.params.id } });
     if (doctor) {
-      const response = await Doctor.destroy({ where: { id: req.params.id } });
+      const response = await Procedure.destroy({
+        where: { id: req.params.id },
+      });
       if (response) {
         res.status(200).json({ id: doctor.id });
       } else {
@@ -62,19 +59,18 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/update/:id", async (req, res) => {
   const { id } = req.params;
-  const { firstName, secondName, patronymic, description, img, slot } =
-    req.body;
-  // console.log(firstName, secondName, patronymic, description, img, slot, id);
+  const { name, description, categoryId } = req.body;
+  //   console.log(id, name, description, categoryId);
   try {
-    const updateDoctor = await Doctor.update(
-      { firstName, secondName, patronymic, description, img, slot },
+    const updateDoctor = await Procedure.update(
+      { name, description, categoryId },
       { where: { id } }
     );
     if (updateDoctor > 0) {
-      const data = await Doctor.findOne({ where: { id } });
+      const data = await Procedure.findOne({ where: { id } });
       res.json(data);
     } else {
-      res.json({ message: "Doctor wasnot updated", action: false });
+      res.json({ message: "Procedure wasnot updated", action: false });
     }
   } catch (message) {
     res.json({ message, action: false });

@@ -6,6 +6,7 @@
 }
 
 .navbar {
+  font-size: 18px;
   display: flex;
   align-items: center;
   gap: 80px;
