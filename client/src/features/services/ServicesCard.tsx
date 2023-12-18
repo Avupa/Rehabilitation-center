@@ -18,7 +18,7 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
     if (isExpanded) {
       timer = setTimeout(() => {
         setShowDescription(true);
-      }, 800);
+      }, 600);
     } else {
       setShowDescription(false); // Скрыть описание при сокрытии элемента
     }
@@ -31,6 +31,8 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
     display: 'flex', // добавляем flex контейнер
     flexDirection: 'row', // изменяем направление flex контейнера
     justifyContent: 'flex-start',
+    padding: '20px',
+    marginTop: '20px',
   };
 
   const descriptionStyle: CSSProperties = {
@@ -45,21 +47,23 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
 
   return (
     <div
-      className="container_description border_3px_solid_dark_green h-44 gap-10 container_flex servicesCard_full_sub_container"
+      className="container_description border_3px_solid_dark_green h-48 gap-10 container_flex"
       style={divStyle}
     >
       <div className="servicesCard_sub_container">
         <div style={subContainerStyle}>
           <button className="container_flex" type="button" onClick={() => handleDivClick()}>
             <p>{procedure.name}</p>
-            <img src={arrow} alt="arrow" className={isExpanded ? 'arrow rotated' : 'arrow'} />
+            <img src={arrow} alt="arrow" className={isExpanded ? 'arrow left' : 'arrow right'} />
           </button>
         </div>
-        <Link to="/appointment">
-          <div className="main_link_button w-44 h-14">
-            <p>Записаться</p>
-          </div>
-        </Link>
+        <div>
+          <Link to="/appointment">
+            <div className="main_link_button w-44 h-14">
+              <p>Записаться</p>
+            </div>
+          </Link>
+        </div>
       </div>
       {showDescription && (
         <div className="main_full_container_wrap" style={descriptionStyle}>

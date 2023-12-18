@@ -105,3 +105,27 @@ img {
 .border_3px_solid_orange {
   border: 3px solid #f4b659;
 }
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease; /* Анимация при изменении состояния */
+  margin-left: 10px; /* Добавление расстояния справа от изображения */
+}
+
+.arrow.right {
+  display: inline-block;
+  transition: transform 0.3s ease; /* Анимация при изменении состояния */
+  margin-left: 10px; /* Добавление расстояния справа от изображения */
+  transform: rotate(-90deg); /* Поворот элемента на 90 градусов против часовой стрелки */
+}
+
+.arrow.left {
+  display: inline-block;
+  transition: transform 0.3s ease; /* Анимация при изменении состояния */
+  margin-left: 10px; /* Добавление расстояния справа от изображения */
+  transform: rotate(90deg); /* Поворот элемента на 90 градусов против часовой стрелки */
+}
+
+.arrow.rotated {
+  transform: rotate(180deg); /* Поворот изображения на 180 градусов */
+}

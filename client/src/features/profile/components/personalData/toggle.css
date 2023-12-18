@@ -30,16 +30,6 @@
   width: 50px; /* Устанавливаем ширину изображения */
 }
 
-.arrow {
-  display: inline-block;
-  transition: transform 0.3s ease; /* Анимация при изменении состояния */
-  margin-left: 10px; /* Добавление расстояния справа от изображения */
-}
-
-.arrow.rotated {
-  transform: rotate(180deg); /* Поворот изображения на 180 градусов */
-}
-
 .user_info {
   gap: 10px;
   display: flex;

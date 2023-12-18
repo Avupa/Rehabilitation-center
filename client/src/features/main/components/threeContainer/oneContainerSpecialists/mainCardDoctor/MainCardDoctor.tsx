@@ -30,7 +30,7 @@ function MainCardDoctor({
             <p className="text-3xl">Специалисты нашего центра</p>
             <button type="button" onClick={handleClickLeft}>
               <div className="green_circle container_flex">
-                <img src={arrow} alt="arrow" className="transform rotate_180" />
+                <img src={arrow} alt="arrow" className="rotated" />
               </div>
             </button>
             <button type="button" onClick={handleClickRight}>

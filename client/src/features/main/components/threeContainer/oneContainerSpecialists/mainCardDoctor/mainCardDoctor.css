@@ -5,7 +5,7 @@
 }
 
 .img_card_doctor {
-  width: 460px;
+  width: 360px;
 }
 
 .green_circle {
@@ -17,4 +17,8 @@
 
 .container_MainCardDoctor_height {
   height: 700px;
+}
+
+.rotated {
+  transform: rotate(180deg); /* Поворот картинки на 180 градусов */
 }
