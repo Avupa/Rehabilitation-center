@@ -11,7 +11,7 @@ function Services(): JSX.Element {
 
   return (
     <div>
-      <img src={personeTraining} alt="personeTraining" />
+      <img src={personeTraining} alt="personeTraining" className="w-full" />
       {procedures.length &&
         procedures.map((procedure) => <CardServices key={procedure.id} procedure={procedure} />)}
     </div>
