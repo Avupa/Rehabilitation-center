@@ -13,9 +13,13 @@ function Services(): JSX.Element {
   return (
     <div>
       <img src={personeTraining} alt="personeTraining" className="w-full" />
-      <div className="services_full_container">
-        {procedures.length &&
-          procedures.map((procedure) => <CardServices key={procedure.id} procedure={procedure} />)}
+      <div className="servicesCard_full_container">
+        <div className="servicesCard_sub_full_container">
+          {procedures.length &&
+            procedures.map((procedure) => (
+              <CardServices key={procedure.id} procedure={procedure} />
+            ))}
+        </div>
       </div>
     </div>
   );

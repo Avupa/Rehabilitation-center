@@ -1,3 +1,25 @@
+.servicesCard_full_container {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Если вам нужно разместить элементы вертикально */
+  /* Дополнительные стили по вашему усмотрению */
+}
+
 .servicesCard_sub_container {
-  width: 400px;
+  width: 450px;
+}
+
+.servicesCard_sub_full_container {
+  width: 1000px;
+}
+
+.servicesCard_full_sub_container {
+  margin-bottom: 20px;
+}
+
+.servicesCard_sub_container * {
+  gap: 20px;
+  margin-bottom: 5px;
 }
