@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Procedure } from './redux/types/type';
 
 function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
+  const [openDescription, setOpenDescription] = useState(false);
+
   return (
     <div className="card">
       <p>{procedure.name}</p>
-      <p>{procedure.description}</p>
+      <Link to="/appointment">
+        <div className="main-link-button">
+          <p>Записаться</p>
+        </div>
+      </Link>
+      {openDescription && <p>{procedure.description}</p>}
     </div>
   );
 }

@@ -8,8 +8,8 @@ function ProfileLeftContainer(): JSX.Element {
     <div className="profile_left_container">
       <img src={logo} alt="logo" className="logo" />
 
-      <Link to="/">
-        <div className="profile_left_container_appointment">
+      <Link to="/appointment">
+        <div className="main-link-button">
           <p>Записаться</p>
         </div>
       </Link>

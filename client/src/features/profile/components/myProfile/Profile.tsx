@@ -9,8 +9,8 @@ function Profile(): JSX.Element {
       <TogglePersoneData />
       <div>
         <p>ПРЕДСТОЯЩИЕ ПРИЕМЫ</p>
-        <Link to="/">
-          <div className="profile_left_container_appointment">
+        <Link to="/appointment">
+          <div className="main-link-button">
             <p>Записаться</p>
           </div>
         </Link>
