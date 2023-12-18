@@ -33,8 +33,7 @@ export const updateFetchDoctor = async ({id,firstName,secondName, patronymic,des
       method:'PUT',
       headers: { 'Content-Type': 'Application/json' },
       body:JSON.stringify({
-        firstName, secondName, patronymic, description, img, slot
-      })
+        firstName, secondName, patronymic, description, img, slot})
   })).json();
   return data
   };

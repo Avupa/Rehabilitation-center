@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     appointmentId: {
       type: DataTypes.INTEGER,
+    
       references: {
         model: 'Appointments',
         key: 'id',

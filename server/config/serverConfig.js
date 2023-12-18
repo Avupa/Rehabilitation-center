@@ -2,8 +2,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const { verifyAccessToken } = require('../middleware/verifyTokens');
 const { checkUser } = require('../middleware/auth');
+const fileUpload = require('express-fileupload');
 
 const config = (app) => {
+  app.use(fileUpload());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static('public'));

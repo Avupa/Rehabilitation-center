@@ -3,12 +3,12 @@ const { Doctor,SpecialOfDoctor, Specialization } = require("../../db/models");
 
 //INIT
 router.get("/", async (req, res) => {
- // console.log('i am here, doctor');
+ console.log('i am here, doctor');
   try {
-    const data = await Doctor.findAll({include: {model:SpecialOfDoctor, include:{ model: Specialization}}});
-    console.log(data)
-   // const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
-    res.status(200).json(data);
+    const dataFirst = await Doctor.findAll({include: {model:SpecialOfDoctor,  include:{ model: Specialization}}});
+    console.log(dataFirst)
+   //const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
+    res.status(200).json(dataFirst);
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -17,24 +17,24 @@ router.get("/", async (req, res) => {
 //ADD
 
 router.post("/add", async (req, res) => {
-  const { description } = req.body;
+  //const { description } = req.body;
   console.log(req.body, 'req');
   try {
-    const data = await Doctor.create({
-      firstName,
-      secondName,
-      patronymic,
-      description,
-      img,
-      slot: Number(slot)
-    });
-    if (data) {
-      res.send({ message: "Doctor was added", action: true, data });
-    } else {
-      res.send({ message: "Doctor wasnot added", action: false });
-    }
+    // const data = await Doctor.create({
+    //   firstName,
+    //   secondName,
+    //   patronymic,
+    //   description,
+    //   img,
+    //   slot: Number(slot)
+    // });
+    // if (data) {
+    //   res.status(200).json({ message: "Doctor was added", action: true, data });
+    // } else {
+    //   res.status(400).json({ message: "Doctor wasnot added", action: false });
+    // }
   } catch (message) {
-    res.send({ message, action: false, dop:'me'  });
+    res.status(500).json({ message, action: false, dop:'me'  });
   }
 });
 
