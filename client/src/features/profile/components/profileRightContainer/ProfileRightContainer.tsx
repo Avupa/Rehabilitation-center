@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './profileRightContainer.css';
 import iconProfile from '../../../../../public/img/profile-icon.png';
-import TogglePersoneData from '../../personalData/Toggle';
+import TogglePersoneData from '../personalData/Toggle';
 
 function ProfileRightContainer(): JSX.Element {
   return (
@@ -14,8 +14,8 @@ function ProfileRightContainer(): JSX.Element {
       <TogglePersoneData />
       <div>
         <p>ПРЕДСТОЯЩИЕ ПРИЕМЫ</p>
-        <Link to="/">
-          <div className="profile_left_container_appointment">
+        <Link to="/appointment">
+          <div className="main-link-button">
             <p>Записаться</p>
           </div>
         </Link>
@@ -23,7 +23,7 @@ function ProfileRightContainer(): JSX.Element {
       <div>
         <p>ПОСЛЕДНИЕ АНАЛИЗЫ</p>
         <Link to="/">
-          <div className="profile_left_container_appointment">
+          <div className="main-link-button">
             <p>Все анализы</p>
           </div>
         </Link>

@@ -4,6 +4,7 @@ const router = require('express').Router();
 const noNameUsersApiRouter=require('./api/noNameUser.api.routes');
 const doctorApiRouter=require('./api/doctor.api.routes');
 const authApiRouter = require('./api/auth.api.routes')
+const procedureApiRouter = require('./api/procedure.api.routes')
 
 
 // Endpoint Protection
@@ -13,5 +14,6 @@ const authApiRouter = require('./api/auth.api.routes')
 router.use('/api/auth', authApiRouter)
 router.use('/api/noNameUsers/', noNameUsersApiRouter)
 router.use('/api/doctors/', doctorApiRouter)
+router.use('/api/procedures/', procedureApiRouter)
 
 module.exports = router;

@@ -1,0 +1,21 @@
+.main-full-container {
+  margin-top: 40px;
+}
+
+#one-sub-container {
+  font-size: 30px;
+  width: 670px;
+}
+
+#two-sub-container {
+  font-size: 22px;
+  width: 400px;
+}
+
+.main-container-appointment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}

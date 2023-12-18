@@ -9,13 +9,13 @@ function MyAppointment(): JSX.Element {
     ['24.11.2014', 'Вита', 'Как все заебало', 'Массаж головы'],
   ];
 
-  const [table, setTable] = useState<string[][]>(initTable); // Уточнение типа для "table"
+  const table = useState<string[][]>(initTable); // Уточнение типа для "table"
 
   return (
     <div>
       <table className="myTable">
         <tbody>
-          {table.map((row, rowIndex) => (
+          {table[0].map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
                 <td key={cellIndex}>{cell}</td>
