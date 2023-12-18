@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfileLeftContainer from '../profileLeftContainer/ProfileLeftContainer';
-import ProfileRightContainer from '../profileRightContainer/ProfileRightContainer';
+import ProfileLeftContainer from '../components/profileLeftContainer/ProfileLeftContainer';
+import ProfileRightContainer from '../components/profileRightContainer/ProfileRightContainer';
 import './profile.css';
 
 function Profile(): JSX.Element {
