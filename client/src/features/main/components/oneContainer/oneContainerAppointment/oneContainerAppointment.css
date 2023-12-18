@@ -1,18 +1,18 @@
-.main-full-container {
+.main_full_container {
   margin-top: 40px;
 }
 
-#one-sub-container {
+#one_sub_container {
   font-size: 30px;
   width: 670px;
 }
 
-#two-sub-container {
+#two_sub_container {
   font-size: 22px;
   width: 400px;
 }
 
-.main-container-appointment {
+.main_container_appointment {
   display: flex;
   align-items: center;
   justify-content: center;

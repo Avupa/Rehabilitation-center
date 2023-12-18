@@ -21,25 +21,25 @@ function MainCardDoctor({
 
   if (windowCardDoctor === doctor.id) {
     return (
-      <div className="main-full-container container-MainCardDoctor-height">
+      <div className="main_full_container_wrap container_MainCardDoctor_height">
         <div>
-          <img src={doctor.img} alt={doctor.firstName} className="img-card-doctor" />
+          <img src={doctor.img} alt={doctor.firstName} className="img_card_doctor" />
         </div>
-        <div className="container-main-card-doctor-description">
-          <div className="container-flex gap-6">
+        <div className="container_main_card_doctor_description">
+          <div className="container_flex gap-6">
             <p className="text-3xl">Специалисты нашего центра</p>
             <button type="button" onClick={handleClickLeft}>
-              <div className="green-circle container-flex">
-                <img src={arrow} alt="arrow" className="transform rotate-180" />
+              <div className="green_circle container_flex">
+                <img src={arrow} alt="arrow" className="rotated" />
               </div>
             </button>
             <button type="button" onClick={handleClickRight}>
-              <div className="green-circle container-flex">
+              <div className="green_circle container_flex">
                 <img src={arrow} alt="arrow" />
               </div>
             </button>
           </div>
-          <div className="container-description border-3px-solid-orange w-full h-64 mt-8 py-10 px-10">
+          <div className="container_description border_3px_solid_orange w-full h-64 mt-8 py-10 px-10">
             <div className="w-10/12">
               <div>
                 <h1 className="text-2xl">
