@@ -8,6 +8,9 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
   return (
     <div className="card">
       <p>{procedure.name}</p>
+      <button type="button" onClick={() => setOpenDescription(true)}>
+        Подробнее
+      </button>
       <Link to="/appointment">
         <div className="main-link-button">
           <p>Записаться</p>

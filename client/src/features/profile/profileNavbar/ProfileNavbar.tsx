@@ -11,7 +11,7 @@ function ProfileNavbar(): JSX.Element {
         <img src={logo} alt="logo" className="logo" />
 
         <Link to="/appointment">
-          <div className="profile_left_container_appointment">
+          <div className="main-link-button w-44 h-16">
             <p>Записаться</p>
           </div>
         </Link>

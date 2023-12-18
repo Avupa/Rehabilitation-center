@@ -23,7 +23,7 @@ function ProfileRightContainer(): JSX.Element {
       <div>
         <p>ПОСЛЕДНИЕ АНАЛИЗЫ</p>
         <Link to="/">
-          <div className="profile_left_container_appointment">
+          <div className="main-link-button">
             <p>Все анализы</p>
           </div>
         </Link>
