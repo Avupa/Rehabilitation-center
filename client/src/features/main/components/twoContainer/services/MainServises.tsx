@@ -13,13 +13,13 @@ function MainServises(): JSX.Element {
   ];
 
   return (
-    <div className="main-container">
+    <div className="main_container">
       <div className="header">
         <p>Услуги реабилитационного центра</p>
       </div>
-      <div className="main-full-container">
+      <div className="main_full_container">
         {containers.map((container, index) => (
-          <div key={index} className="servises-container">
+          <div key={index} className="servises_container">
             <div>
               <img src={container[0]} alt="#" />
             </div>
@@ -27,7 +27,7 @@ function MainServises(): JSX.Element {
               <p>{container[1]}</p>
             </div>
             <Link to="/services">
-              <div className="main-link-button">
+              <div className="main_link-button w-44 h-14">
                 <p>{container[2]}</p>
               </div>
             </Link>

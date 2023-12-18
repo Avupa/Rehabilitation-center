@@ -13,25 +13,25 @@ function StagesOfTraining(): JSX.Element {
   ];
 
   return (
-    <div className="main-container">
+    <div className="main_container">
       <div className="header">
         <p>Основные этапы обучения Ефимова В.А.</p>
       </div>
-      <div className="main-full-container pt-8">
-        <div id="StagesOfTraining-full-container-wight" className="main-full-container">
+      <div className="main_full_container pt-8">
+        <div id="StagesOfTraining_full_container_wight" className="main_full_container">
           {containers.map((container, index) => (
             <div
               key={index + 1}
-              className={`container-description container-flex ${
-                index + 1 > 4 ? 'border-3px-solid-dark-green w-72 h-40' : 'border-3px-solid-orange'
+              className={`container_description container_flex ${
+                index + 1 > 4 ? 'border_3px_solid_dark_green w-72 h-40' : 'border_3px_solid_orange'
               }`}
             >
               <div>
                 <p className="text-center">{container}</p>
               </div>
               <div
-                className={`container-img ${
-                  index + 1 > 4 ? 'border-3px-solid-orange' : 'border-3px-solid-dark-green'
+                className={`container_img ${
+                  index + 1 > 4 ? 'border_3px_solid_orange' : 'border_3px_solid_dark_green'
                 }`}
               >
                 <p>{index + 1}.</p>

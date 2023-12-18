@@ -4,7 +4,7 @@
   padding-bottom: 80px;
 }
 
-.main-full-container {
+.main_full_container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,40 +13,16 @@
   row-gap: 80px; /* Расстояние между контейнерами по высоте */
 }
 
-.main-link-button {
-  background-color: #55a394;
-  color: white;
-  font-size: 22px;
-  width: 267px;
-  height: 70px;
-  border-radius: 35px; /* Увеличение радиуса скругления */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: inline-block;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-}
-
-.white-container {
+.white_container {
   margin-top: 80px;
   background-color: white;
   padding-top: 20px;
   padding-bottom: 80px;
 }
 
-.main-container {
+.main_container {
   height: 100%;
   margin: 0 10px;
-}
-
-.border-3px-solid-dark-green {
-  border: 3px solid #55a394;
-}
-
-.border-3px-solid-orange {
-  border: 3px solid #f4b659;
 }
 
 .header {
@@ -54,43 +30,4 @@
   text-align: center;
   font-size: 30px;
   font-weight: bold; /* Установка толщины шрифта как жирный */
-}
-
-.container-description,
-.container-img {
-  background-color: #ffffff;
-  border-radius: 50px; /* Скругленные углы */
-}
-
-.container-description {
-  position: relative;
-  width: 260px;
-  height: 120px;
-  padding: 20px; /* Внутренний отступ */
-  margin: 0; /* Удаление внешнего отступа для перезаписи */
-  z-index: 1; /* Поместили container-description поверх container-img */
-}
-
-.container-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container-description p {
-  font-size: 18px;
-}
-
-.container-img {
-  position: absolute;
-  top: -50px;
-  left: 0; /* Помещаем в левый верхний угол */
-  width: 75px;
-  height: 75px;
-  z-index: 2; /* container-img находится поверх container-description */
-  background-color: #ffffff;
-  border-radius: 50px; /* Скругленные углы */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

@@ -21,7 +21,7 @@ function OurCenterSpecialists(): JSX.Element {
   };
 
   return (
-    <div className="main-full-container">
+    <div className="main_full_container">
       <div>
         {doctors.length &&
           doctors.map((doctor) => (

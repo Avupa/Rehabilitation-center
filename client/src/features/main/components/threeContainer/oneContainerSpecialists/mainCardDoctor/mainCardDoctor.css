@@ -1,20 +1,20 @@
-.container-main-card-doctor-description {
+.container_main_card_doctor_description {
   width: 673px;
   height: 379px;
   gap: 20px;
 }
 
-.img-card-doctor {
+.img_card_doctor {
   width: 460px;
 }
 
-.green-circle {
+.green_circle {
   background-color: #55a394;
   width: 57px;
   height: 57px;
   border-radius: 50%;
 }
 
-.container-MainCardDoctor-height {
+.container_MainCardDoctor_height {
   height: 700px;
 }
