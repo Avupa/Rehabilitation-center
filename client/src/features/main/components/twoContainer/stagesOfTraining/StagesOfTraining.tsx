@@ -17,13 +17,13 @@ function StagesOfTraining(): JSX.Element {
       <div className="header">
         <p>Основные этапы обучения Ефимова В.А.</p>
       </div>
-      <div className="main_full_container pt-8">
+      <div className="main_full_container_wrap pt-8">
         <div id="StagesOfTraining_full_container_wight" className="main_full_container">
           {containers.map((container, index) => (
             <div
               key={index + 1}
               className={`container_description container_flex ${
-                index + 1 > 4 ? 'border_3px_solid_dark_green w-72 h-40' : 'border_3px_solid_orange'
+                index + 1 > 4 ? 'border_3px_solid_dark_green w-80 h-44' : 'border_3px_solid_orange h-36'
               }`}
             >
               <div>

@@ -5,7 +5,7 @@ import imgDoctor from '../../../../../../public/img/main/Rectangle-doctor-1.png'
 
 function OneContainerAppointment(): JSX.Element {
   return (
-    <div className="main_full_container">
+    <div className="main_full_container_wrap">
       <div className="main_container">
         <div id="one_sub_container" className="main_container_appointment">
           <p>

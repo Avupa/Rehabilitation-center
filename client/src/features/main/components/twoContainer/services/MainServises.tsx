@@ -17,7 +17,7 @@ function MainServises(): JSX.Element {
       <div className="header">
         <p>Услуги реабилитационного центра</p>
       </div>
-      <div className="main_full_container">
+      <div className="main_full_container_wrap">
         {containers.map((container, index) => (
           <div key={index} className="servises_container">
             <div>

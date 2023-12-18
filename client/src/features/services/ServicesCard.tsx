@@ -12,14 +12,17 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
   };
 
   const divStyle = {
-    width: isExpanded ? '800px' : '',
-    transition: 'width 0.5s', // Добавляем плавное изменение ширины
+    width: isExpanded ? '800px' : '500px',
+    transition: 'width 0.5s',
+    display: 'flex', // добавляем flex контейнер
+    flexDirection: 'row', // изменяем направление flex контейнера
+    justifyContent: 'flex-start',
   };
 
   return (
-    <div className="flex">
+    <div className="">
       <div
-        className="container_description border_3px_solid_dark_green servicesCard_container_size"
+        className="main_full_container container_description border_3px_solid_dark_green flex"
         style={divStyle}
       >
         <div className="servicesCard_sub_container">
@@ -31,18 +34,17 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
             <p>{procedure.name}</p>
             <img src={arrow} alt="arrow" className={isExpanded ? 'arrow rotated' : 'arrow'} />
           </button>
-
           <Link to="/appointment">
-            <div className="main-link-button">
+            <div className="main_link_button">
               <p>Записаться</p>
             </div>
           </Link>
-          {isExpanded && (
-            <div>
-              <p>{procedure.description}</p>
-            </div>
-          )}
         </div>
+        {isExpanded && (
+          <div className="description_container">
+            <p>{procedure.description}</p>
+          </div>
+        )}
       </div>
     </div>
   );

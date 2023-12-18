@@ -10,7 +10,7 @@ function Profile(): JSX.Element {
       <div>
         <p>ПРЕДСТОЯЩИЕ ПРИЕМЫ</p>
         <Link to="/appointment">
-          <div className="main-link-button">
+          <div className="main_link_button">
             <p>Записаться</p>
           </div>
         </Link>
@@ -18,7 +18,7 @@ function Profile(): JSX.Element {
       <div>
         <p>ПОСЛЕДНИЕ АНАЛИЗЫ</p>
         <Link to="/">
-          <div className="main-link-button">
+          <div className="main_link_button">
             <p>Все анализы</p>
           </div>
         </Link>

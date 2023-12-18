@@ -3,31 +3,3 @@
   padding-top: 20px;
   padding-bottom: 80px;
 }
-
-.main_full_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; /* Разрешение перехода на новую строку */
-  column-gap: 30px; /* Расстояние между контейнерами по ширине */
-  row-gap: 80px; /* Расстояние между контейнерами по высоте */
-}
-
-.white_container {
-  margin-top: 80px;
-  background-color: white;
-  padding-top: 20px;
-  padding-bottom: 80px;
-}
-
-.main_container {
-  height: 100%;
-  margin: 0 10px;
-}
-
-.header {
-  margin-top: 80px;
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold; /* Установка толщины шрифта как жирный */
-}

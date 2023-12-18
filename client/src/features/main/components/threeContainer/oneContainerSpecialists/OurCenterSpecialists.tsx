@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ourCenterSpecialists.css';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../../../store/store';
 import MainCardDoctor from './mainCardDoctor/MainCardDoctor';
@@ -21,7 +20,7 @@ function OurCenterSpecialists(): JSX.Element {
   };
 
   return (
-    <div className="main_full_container">
+    <div className="main_full_container_wrap">
       <div>
         {doctors.length &&
           doctors.map((doctor) => (

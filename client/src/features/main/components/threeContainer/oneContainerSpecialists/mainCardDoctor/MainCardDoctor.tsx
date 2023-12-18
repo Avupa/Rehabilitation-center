@@ -21,7 +21,7 @@ function MainCardDoctor({
 
   if (windowCardDoctor === doctor.id) {
     return (
-      <div className="main_full_container container_MainCardDoctor_height">
+      <div className="main_full_container_wrap container_MainCardDoctor_height">
         <div>
           <img src={doctor.img} alt={doctor.firstName} className="img_card_doctor" />
         </div>
