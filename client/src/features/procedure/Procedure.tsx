@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
-import CardServices from './ServicesCard';
+import ProcedureCard from './ProcedureCard';
 import personeTraining from '../../../public/img/services/personal-training.jpg';
 import './stile.css';
 
@@ -17,7 +17,7 @@ function Services(): JSX.Element {
         <div className="servicesCard_sub_full_container">
           {procedures.length &&
             procedures.map((procedure) => (
-              <CardServices key={procedure.id} procedure={procedure} />
+              <ProcedureCard key={procedure.id} procedure={procedure} />
             ))}
         </div>
       </div>
