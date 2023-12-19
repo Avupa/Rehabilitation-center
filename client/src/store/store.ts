@@ -4,7 +4,7 @@ import noNameUsersSlice from '../features/noNameUser/noNameUserSlice';
 
 import doctorSlice from '../features/doctors/doctorSlice';
 import authSlice from '../features/auth/authSlice';
-import procedureSlice from '../features/procedure/redux/procedureSlice';
+import proceduresSlice from '../features/procedure/redux/procedureSlice';
 import DateSlice from '../features/profile/components/myAppointment/DateSlice';
 
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
@@ -17,7 +17,7 @@ const store = configureStore({
    Doctor:doctorSlice,
    auth:authSlice,
    appoint:DateSlice,
-   Procedure: procedureSlice,
+   Procedure: proceduresSlice,
  },
 
 });
