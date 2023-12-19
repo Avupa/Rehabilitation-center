@@ -40,15 +40,10 @@ export const updateFetchDoctor = async ({
     await fetch(`/api/doctors/update/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'Application/json' },
-      body: JSON.stringify({
-        firstName,
-        secondName,
-        patronymic,
-        description,
-        img,
-        slot,
-      }),
-    })
-  ).json();
-  return data;
-};
+
+      body:JSON.stringify({
+        firstName, secondName, patronymic, description, img, slot})
+  })).json();
+  return data
+  };
+
