@@ -1,11 +1,12 @@
 .navbar_background_color {
-  background-color: rgb(0, 255, 251);
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   display: flex;
   justify-content: center;
 }
 
 .navbar {
+  font-size: 18px;
   display: flex;
   align-items: center;
   gap: 80px;
@@ -18,10 +19,8 @@
 }
 
 .nav_links a {
-  color: darkblue;
   text-decoration: none;
   font-size: 20px;
-  font-weight: bold;
   margin-right: 10px; /* добавим отступ справа для разделения ссылок */
   transition: color 0.3s; /* Добавляем плавный переход для изменения цвета текста */
 }

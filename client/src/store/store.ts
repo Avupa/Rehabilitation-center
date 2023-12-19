@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import noNameUsersSlice from '../features/noNameUser/noNameUserSlice'
+import noNameUsersSlice from '../features/noNameUser/noNameUserSlice';
 
 import doctorSlice from '../features/doctors/doctorSlice';
 import authSlice from '../features/auth/authSlice';
+
 import DateSlice from '../features/profile/components/myAppointment/DateSlice';
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 
@@ -14,8 +15,10 @@ const store = configureStore({
    NNU:noNameUsersSlice,
    Doctor:doctorSlice,
    auth:authSlice,
-   appoint:DateSlice
+   appoint:DateSlice,
+   Procedure: procedureSlice,
  },
+
 });
 
 export type AppDispatch = typeof store.dispatch;

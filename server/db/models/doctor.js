@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       patronymic: {
         type: DataTypes.STRING,
       },
+      shortDescription: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -33,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       img: {
         type: DataTypes.STRING,
       },
-      slot:{
+      slot: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

@@ -6,13 +6,24 @@ import './style.css';
 import Example from '../profile/components/myAppointment/DataCalendar';
 
 function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
+
   const [active,setActive]=useState(false)
   const [state, setState]=useState(false)
   const [all, setAll]=useState(false)
   const [appoint, setAppoint]=useState(false)
 
+
   return (
-    <>
+    <div className="card">
+      <img className="img" src={doctor.img} alt="img" />
+      <p>
+        {doctor.firstName} {doctor.secondName} {doctor.patronymic}
+      </p>
+      {all && (
+        <div className="card">
+          {active && <ModalWindow setActive={setActive} id={doctor.id} />}
+          <p>{doctor.description}</p>
+
 
           <div className ="card">
       <img className='img' src={doctor.img} alt='img'/>
@@ -35,6 +46,7 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
 
    </>
   )
+
 }
 
 export default CardDoctor;

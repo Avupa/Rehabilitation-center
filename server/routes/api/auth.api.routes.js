@@ -114,7 +114,7 @@ router.post('/login', async (req, res) => {
       res.status(400).send('Заполните все поля');
     }
   } catch (err) {
-    console.log(err.message);
+    // console.log(err.message);
     res.status(500).json(err.message);
   }
 });

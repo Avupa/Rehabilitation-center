@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import penIcon from '../../../../../public/img/pen-icon.png';
-import arrow from '../../../../../public/img/Arrow.png';
+import penIcon from '../../../../../public/img/icon/pen-icon.png';
+import arrow from '../../../../../public/img/icon/arrow/Arrow-green.png';
 import './toggle.css';
 
 function TogglePersoneData(): JSX.Element {
@@ -12,11 +12,13 @@ function TogglePersoneData(): JSX.Element {
 
   return (
     <div className="profile_right_container_toggle">
-      <button className="profile_right_container_toggle_button" type="button" onClick={() => handleAvatarClick()}>
-        <p>
-          Личные данные:
-        </p>
-        <img src={arrow} alt="arrow" className={toggle ? 'arrow rotated' : 'arrow'}/>
+      <button
+        className="profile_right_container_toggle_button"
+        type="button"
+        onClick={() => handleAvatarClick()}
+      >
+        <p>Личные данные:</p>
+        <img src={arrow} alt="arrow" className={toggle ? 'arrow rotated' : 'arrow'} />
       </button>
       {toggle && (
         <div className="profile_right_container_list">
