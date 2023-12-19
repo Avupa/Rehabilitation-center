@@ -130,3 +130,7 @@ img {
 .arrow.rotated {
   transform: rotate(180deg); /* Поворот изображения на 180 градусов */
 }
+
+.container-width-1170px {
+  width: 1170px;
+}

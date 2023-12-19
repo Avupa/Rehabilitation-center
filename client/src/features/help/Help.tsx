@@ -1,5 +1,5 @@
 import React from 'react';
-import "./help.css"
+import './help.css';
 
 function Help(): JSX.Element {
   return (

@@ -9,7 +9,7 @@ import Profile from '../features/profile/components/myProfile/Profile';
 import Price from '../features/price/Price';
 import Appointment from '../features/appointment/Appointment';
 import Doctors from '../features/doctors/Doctors';
-import Procedure from '../features/procedure/Procedure.tsx';
+import Procedure from '../features/procedure/Procedure';
 import Admin from '../features/admin/AdminPage';
 import LoginPage from '../features/auth/LoginPage';
 import RegisterPage from '../features/auth/RegisterPage';
@@ -17,13 +17,16 @@ import MyDoctors from '../features/profile/components/myDoctors/MyDoctors';
 import MyAppointment from '../features/profile/components/myAppointment/MyAppointment';
 import ProfileNavbar from '../features/profile/profileNavbar/ProfileNavbar';
 import Help from '../features/help/Help';
-import Check from '../features/profile/Check.tsx';
+import Check from '../features/profile/Check';
+import Reviews from '../features/reviews/Reviews';
 
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
-import { initProcedures } from '../features/procedure/redux/procedureSlice.ts';
+import { initProcedures } from '../features/procedure/redux/procedureSlice';
+import { initReviewForDoctors } from '../features/reviews/redux/reviewForDoctorsSlice';
+import { initReviewForСlinics } from '../features/reviews/redux/reviewForСlinicsSlice';
 
 import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
@@ -35,6 +38,8 @@ function App(): JSX.Element {
     void dispatch(initProcedures());
     void dispatch(initDoctors());
     void dispatch(check());
+    void dispatch(initReviewForDoctors());
+    void dispatch(initReviewForСlinics());
   }, [dispatch]);
 
   useEffect(() => {
@@ -58,6 +63,7 @@ function App(): JSX.Element {
           <Route path="price" element={<Price />} />
           <Route path="appointment" element={<Appointment />} />
           <Route path="doctors" element={<Doctors />} />
+          <Route path="reviews" element={<Reviews />} />
           <Route path="procedure" element={<Procedure />} />
           <Route path="admin" element={<Admin />} />
           <Route path="auth/sign-in" element={<LoginPage />} />
