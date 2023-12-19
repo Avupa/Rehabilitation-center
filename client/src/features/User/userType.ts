@@ -1,3 +1,4 @@
+
 import type { Doctor } from "../doctors/type";
 
 export type User={
@@ -7,14 +8,14 @@ export type User={
   patronymic?:string;
   telephone:string;
   email:string;
+  isAdmin: boolean;
   appointment?: Appointment[]
 }
  
 export type Appointment={
-  firstName:Doctor['firstName']
-  secondName:Doctor['secondName']
-  patronymic:Doctor['patronymic']
-  date:string,
+  firstName:Doctor['firstName'];
+  secondName:Doctor['secondName'];
+  patronymic:Doctor['patronymic'];
+  date:string;
   time:string
-  
 }

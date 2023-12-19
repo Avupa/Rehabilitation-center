@@ -11,13 +11,11 @@ export const registration = createAsyncThunk('auth/registration', (obj: Rega) =>
   api.registrationFetch(obj),
 );
 
-export const login = createAsyncThunk('auth/login', (obj: Login) =>
-  api.loginFetch(obj),
-);
+export const login = createAsyncThunk('auth/login', (obj: Login) => api.loginFetch(obj));
 
-export const check = createAsyncThunk('auth/check', () =>
-  api.checkFetch(),
-);
+export const logout = createAsyncThunk('auth/logout', () => api.logoutFetch());
+
+export const check = createAsyncThunk('auth/check', () => api.checkFetch());
 
 const authSlice = createSlice({
   name: 'auth',
@@ -28,6 +26,8 @@ const authSlice = createSlice({
 
       .addCase(registration.fulfilled, (state, action) => {
         state.user = action.payload;
+        // const navigate = useNavigate();
+        // navigate('/')
       })
       .addCase(registration.rejected, (state, action) => {
         state.error = action.error.message;
@@ -38,6 +38,13 @@ const authSlice = createSlice({
       })
       .addCase(login.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+
+      .addCase(logout.fulfilled, (state) => {
+        state.user = undefined;
+      })
+      .addCase(logout.rejected, (state) => {
+        state.error = undefined;
       })
 
       .addCase(check.fulfilled, (state, action) => {

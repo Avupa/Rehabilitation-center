@@ -1,10 +1,21 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../../../../public/img/icon/logo-Rehabilitation-center.png';
 import iconProfile from '../../../../public/img/icon/profile-icon.png';
 import './profileNavbar.css';
+import { useAppDispatch } from '../../../store/store';
+import { logout } from '../../auth/authSlice';
 
 function ProfileNavbar(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+    event.preventDefault();
+    void dispatch(logout());
+    navigate('/');
+  };
+
   return (
     <div className="profile_full_container">
       <div className="profile_left_container">
@@ -32,7 +43,7 @@ function ProfileNavbar(): JSX.Element {
             <img src="" alt="" />
             <p>Помощь</p>
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={handleLogout}>
             <img src="" alt="" />
             <p>Выйти</p>
           </Link>

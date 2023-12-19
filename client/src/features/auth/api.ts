@@ -31,6 +31,11 @@ export const loginFetch = async (obj: Login): Promise<User> => {
   return data;
 };
 
+export const logoutFetch = async (): Promise<undefined> => {
+  const data = await (await fetch('/api/auth/logout')).json();
+  return undefined;
+};
+
 export const checkFetch = async (): Promise<User | undefined> => {
   const data = await (await fetch('/api/auth/check')).json();
   if (data.message === 'success') return data.user;
