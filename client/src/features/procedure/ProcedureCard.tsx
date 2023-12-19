@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { Procedure } from './redux/types/type';
+import type { Procedure } from '../services/redux/types/type';
 import arrow from '../../../public/img/icon/arrow/Arrow-green.png';
 import './stile.css';
 
