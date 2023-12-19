@@ -1,59 +1,39 @@
 import React from 'react';
-import './mainCardDoctor.css';
-import arrow from '../../../../../../../public/img/icon/arrow/Arrow-white.png';
+import type { Review } from '../redux/types/type';
 
-type TypeMainCardDoctor = {
-  revier: Doctor;
-  PressRight: () => void;
-  PressLeft: () => void;
-  windowCardDoctor: number;
+type TypeReviewCard = {
+  review: Review;
 };
 
-function MainCardDoctor({
-  doctor,
-  PressRight,
-  PressLeft,
-  windowCardDoctor,
-}: TypeMainCardDoctor): JSX.Element | null {
-  const handleClickRight = (): void => PressRight();
-  const handleClickLeft = (): void => PressLeft();
+function ReviewCard({ review }: TypeReviewCard): JSX.Element {
+  function ShortenText(text: string, containerWidth: number, containerHeight: number): string {
+    const fontSize = 20; // Размер шрифта
+    const averageCharacterWidth = 0.6 * fontSize; // Средняя ширина символа в пикселях
+    const averageCharacterHeight = 1.2 * fontSize; // Средняя высота строки в пикселях
+    const maxCharactersPerLine = Math.floor(containerWidth / averageCharacterWidth); // Максимальное количество символов в строке
+    const maxLines = Math.floor(containerHeight / averageCharacterHeight); // Максимальное количество строк
 
-  if (windowCardDoctor === doctor.id) {
-    return (
-      <div className="main_full_container_wrap container_MainCardDoctor_height">
-        <div>
-          <img src={doctor.img} alt={doctor.firstName} className="img_card_doctor" />
-        </div>
-        <div className="container_main_card_doctor_description">
-          <div className="container_flex gap-6">
-            <p className="text-3xl">Специалисты нашего центра</p>
-            <button type="button" onClick={handleClickLeft}>
-              <div className="green_circle container_flex">
-                <img src={arrow} alt="arrow" className="rotated" />
-              </div>
-            </button>
-            <button type="button" onClick={handleClickRight}>
-              <div className="green_circle container_flex">
-                <img src={arrow} alt="arrow" />
-              </div>
-            </button>
-          </div>
-          <div className="container_description border_3px_solid_orange w-full h-64 mt-8 py-10 px-10">
-            <div className="w-10/12">
-              <div>
-                <h1 className="text-2xl">
-                  {doctor.firstName}&nbsp;{doctor.secondName}&nbsp;{doctor.patronymic}
-                </h1>
-              </div>
-              <div>
-                <p className="text-lg pt-2">{doctor.shortDescription}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    const maxCharacters = maxCharactersPerLine * maxLines; // Окончательное максимальное количество символов
+
+    if (text.length > maxCharacters) {
+      return `${text.substring(0, maxCharacters)}...`;
+    }
+    return text;
   }
-  return null; // Возвращаем null вместо <div />, чтобы скрыть карточку
+
+  return (
+    <div
+      key={review.id}
+      className="container_description border_3px_solid_dark_green width_360px h-96 p-6 mb-5"
+    >
+      <p className="text-2xl mb-2">
+        {review.User.firstName}&nbsp;{review.User.patronymic}
+      </p>
+      <div>
+        <p className="text-lg">{ShortenText(review.description, 360, 200)}</p>
+      </div>
+    </div>
+  );
 }
-export default MainCardDoctor;
+
+export default ReviewCard;

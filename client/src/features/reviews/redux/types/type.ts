@@ -1,19 +1,19 @@
+import type { User } from '../../../User/userType';
+import type { Doctor } from '../../../doctors/type';
+
 export type State = {
-  reviewForDoctors: ReviewForDoctor[];
-  reviewForСlinics: ReviewForСlinic[];
+  reviews: Review[];
   error: undefined | string;
 };
 
-export type ReviewForDoctor = {
+export type Review = {
   id: number;
   grade: number;
   description: string;
-  doctorId: number;
+  doctorId?: number;
   userId: number;
+  Doctor?: Doctor | undefined;
+  User: User;
 };
 
-export type IdReviewForDoctor = ReviewForDoctor['id'];
-
-export type ReviewForСlinic = Omit<ReviewForDoctor, 'doctorId'>;
-
-export type IdReviewForСlinic = ReviewForСlinic['id'];
+export type IdReview = Review['id'];

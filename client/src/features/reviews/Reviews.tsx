@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
+import ReviewCard from './reviewCard/ReviewCard';
+import type { Review } from './redux/types/type';
 
 function Reviews(): JSX.Element {
-  const reviewForDoctors = useSelector(
-    (store: RootState) => store.ReviewForDoctors.reviewForDoctors,
-  );
-  const reviewForСlinics = useSelector(
-    (store: RootState) => store.ReviewForСlinics.reviewForСlinics,
-  );
-  console.log(reviewForDoctors);
-  console.log(reviewForСlinics);
+  const reviews = useSelector((store: RootState) => store.Review.reviews);
+  // console.log(review);
 
   useEffect(() => {
     // Сохраняем ссылку на функцию очистки
@@ -23,33 +19,13 @@ function Reviews(): JSX.Element {
     };
   }, []);
 
-  function ShortenText(text: string, maxLength: number): string {
-    if (text.length > maxLength) {
-      return `${text.substring(0, maxLength)}...`;
-    }
-    return text;
-  }
-
   return (
     <div>
       <div className="header">
         <p>Услуги реабилитационного центра</p>
       </div>
       <div className="main_full_container_wrap">
-        {reviewForDoctors.length &&
-          reviewForDoctors.map((container) => (
-            <div
-              key={container.id}
-              className="container_description border_3px_solid_dark_green width_360px h-96 p-6"
-            >
-              <div className="flex">
-                <p className="">{ShortenText(container.description, 100)}</p>
-              </div>
-              <div className="">
-                <p className="">{ShortenText(container.description, 100)}</p>
-              </div>
-            </div>
-          ))}
+        {reviews.length && reviews.map((review: Review) => <ReviewCard review={review} />)}
       </div>
     </div>
   );

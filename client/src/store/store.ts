@@ -5,8 +5,7 @@ import noNameUsersSlice from '../features/noNameUser/noNameUserSlice';
 import doctorSlice from '../features/doctors/doctorSlice';
 import authSlice from '../features/auth/authSlice';
 import proceduresSlice from '../features/procedure/redux/procedureSlice';
-import reviewForDoctorsSlice from '../features/reviews/redux/reviewForDoctorsSlice';
-import reviewForСlinicsSlice from '../features/reviews/redux/reviewForСlinicsSlice';
+import reviewsSlice from '../features/reviews/redux/reviewsSlice';
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 
 const store = configureStore({
@@ -16,8 +15,7 @@ const store = configureStore({
     Doctor: doctorSlice,
     auth: authSlice,
     Procedure: proceduresSlice,
-    ReviewForDoctors: reviewForDoctorsSlice,
-    ReviewForСlinics: reviewForСlinicsSlice,
+    Review: reviewsSlice,
   },
 });
 

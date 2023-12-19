@@ -1,12 +1,14 @@
 const router = require("express").Router();
-const { Review } = require("../../db/models");
+const { Review, User, Doctor } = require("../../db/models");
 
 //INIT
 router.get("/", async (req, res) => {
   // console.log('i am here, Review');
   try {
-    const data = await Review.findAll({ raw: true });
-    // console.log(data);
+    const data = await Review.findAll({
+      include: [{ model: User }, { model: Doctor }],
+    });
+     console.log(data,'0000000000');
     // const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
     res.status(200).json(data);
   } catch (error) {

@@ -140,3 +140,11 @@ img {
 .container-width-1170px {
   width: 1170px;
 }
+
+.container_description {
+  transition: transform 0.3s; /* Добавляем плавный переход для сглаживания изменения размера */
+}
+
+.container_description:hover {
+  transform: scale(1.1); /* Увеличиваем размер всего содержимого при наведении на контейнер */
+}

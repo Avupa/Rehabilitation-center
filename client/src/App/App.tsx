@@ -25,8 +25,7 @@ import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
 import { initProcedures } from '../features/procedure/redux/procedureSlice';
-import { initReviewForDoctors } from '../features/reviews/redux/reviewForDoctorsSlice';
-import { initReviewForСlinics } from '../features/reviews/redux/reviewForСlinicsSlice';
+import { initReviews } from '../features/reviews/redux/reviewsSlice';
 
 import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
@@ -38,8 +37,7 @@ function App(): JSX.Element {
     void dispatch(initProcedures());
     void dispatch(initDoctors());
     void dispatch(check());
-    void dispatch(initReviewForDoctors());
-    void dispatch(initReviewForСlinics());
+    void dispatch(initReviews());
   }, [dispatch]);
 
   useEffect(() => {

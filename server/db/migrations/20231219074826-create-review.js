@@ -19,7 +19,6 @@ module.exports = {
       },
       doctorId: {
         type: Sequelize.INTEGER,
-        defaultValue: 0,
         references: {
           model: "Doctors",
           key: "id",
