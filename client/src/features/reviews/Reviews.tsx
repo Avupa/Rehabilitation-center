@@ -3,10 +3,14 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
 
 function Reviews(): JSX.Element {
-  const reviewForDoctors = useSelector((store: RootState) => store.ReviewForDoctors.reviewForDoctors);
-  const reviewForСlinics = useSelector((store: RootState) => store.ReviewForСlinics.reviewForСlinics);
-console.log(reviewForDoctors);
-console.log(reviewForСlinics);
+  const reviewForDoctors = useSelector(
+    (store: RootState) => store.ReviewForDoctors.reviewForDoctors,
+  );
+  const reviewForСlinics = useSelector(
+    (store: RootState) => store.ReviewForСlinics.reviewForСlinics,
+  );
+  console.log(reviewForDoctors);
+  console.log(reviewForСlinics);
 
   useEffect(() => {
     // Сохраняем ссылку на функцию очистки
@@ -19,10 +23,33 @@ console.log(reviewForСlinics);
     };
   }, []);
 
+  function ShortenText(text: string, maxLength: number): string {
+    if (text.length > maxLength) {
+      return `${text.substring(0, maxLength)}...`;
+    }
+    return text;
+  }
+
   return (
-    <div className="main_full_container">
-      <div className="main_full_container">
-        <p className="text-green-500">Отзывы</p>
+    <div>
+      <div className="header">
+        <p>Услуги реабилитационного центра</p>
+      </div>
+      <div className="main_full_container_wrap">
+        {reviewForDoctors.length &&
+          reviewForDoctors.map((container) => (
+            <div
+              key={container.id}
+              className="container_description border_3px_solid_dark_green width_360px h-96 p-6"
+            >
+              <div className="flex">
+                <p className="">{ShortenText(container.description, 100)}</p>
+              </div>
+              <div className="">
+                <p className="">{ShortenText(container.description, 100)}</p>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

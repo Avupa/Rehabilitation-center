@@ -68,11 +68,17 @@ img {
 
 .container_description {
   position: relative;
-  width: 260px;
-  height: 120px;
   padding: 20px; /* Внутренний отступ */
   margin: 0; /* Удаление внешнего отступа для перезаписи */
   z-index: 1; /* Поместили container-description поверх container-img */
+}
+
+.width_260px {
+  width: 260px;
+}
+
+.width_360px {
+  width: 360px;
 }
 
 .container_flex {
