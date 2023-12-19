@@ -5,16 +5,21 @@ import noNameUsersSlice from '../features/noNameUser/noNameUserSlice';
 import doctorSlice from '../features/doctors/doctorSlice';
 import authSlice from '../features/auth/authSlice';
 import procedureSlice from '../features/procedure/redux/procedureSlice';
+import DateSlice from '../features/profile/components/myAppointment/DateSlice';
+
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 
 const store = configureStore({
-  // теперь функция combineReducers не нужна
-  reducer: {
-    NNU: noNameUsersSlice,
-    Doctor: doctorSlice,
-    auth: authSlice,
-    Procedure: procedureSlice,
-  },
+
+ // теперь функция combineReducers не нужна
+ reducer: {
+   NNU:noNameUsersSlice,
+   Doctor:doctorSlice,
+   auth:authSlice,
+   appoint:DateSlice,
+   Procedure: procedureSlice,
+ },
+
 });
 
 export type AppDispatch = typeof store.dispatch;
