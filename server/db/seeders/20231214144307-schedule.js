@@ -10,7 +10,6 @@ module.exports = {
           doctorId: 1,
           data: "2023-12-16",
           timeSlot: "9:00",
-
           createdAt: new Date(),
           updatedAt: new Date(),
         },
