@@ -5,6 +5,7 @@ import DoctorAdd from '../doctors/DoctorAdd';
 import type { TTab } from './type';
 import Services from '../procedure/Procedure';
 import Doctors from '../doctors/Doctors';
+import Chat from '../adminChat/chat';
 
 
 function Admin(): JSX.Element {
@@ -13,6 +14,7 @@ function Admin(): JSX.Element {
     { id: 2, label: "Label №2" },
     { id: 3, label: "Label №2" },
     { id: 4, label: "Label №2" },
+    { id: 6, label: "Label №6" },
   ];
   const [selectedTabId, setSelectedTabId] = useState(tabs[0].id);
 
@@ -33,7 +35,7 @@ function Admin(): JSX.Element {
   <p>Изменить существующего специалиста<Doctors/></p></div>)}
   {selectedTabId === tabs[2].id && (<div><Services/></div>)}
   {selectedTabId === tabs[3].id && (<div><Services/></div>)}  
-  {selectedTabId === tabs[6].id && (<div><Services/></div>)}   
+  {selectedTabId === tabs[4].id && (<div><Chat/></div>)}   
         </div>
         </>
   )
