@@ -40,12 +40,11 @@ function ReviewsForDoctors({ reviews }: TypeReviewsForDoctors): JSX.Element {
           type="radio"
           id={`radio-${index}`}
           name="reviewSelectionDoctors"
-          className="hidden_radio"
           value={index}
           checked={selectedRadio === index}
           onChange={() => setSelectedRadio(index)}
         />
-        <label htmlFor={`radio-${index}`} className="custom_radio" />
+        <label htmlFor={`radio-${index}`} />
       </div>
     ),
   );
