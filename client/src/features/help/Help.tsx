@@ -1,10 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 import './help.css';
+import MessageRow from './MessageRow';
+import * as api from './api';
+import type { MessageWithSender } from './type';
 
 function Help(): JSX.Element {
+  const [messages, setMessages] = useState<MessageWithSender[]>([]);
+  const [newContent, setNewContent] = useState('');
+  const [err, setErr] = useState('');
+  const user = useSelector((store: RootState) => store.auth.user);
+
+  useEffect(() => {
+    let getMesseges;
+    if (user) {
+      // Сразу загружаем всю переписку
+      api
+        .initMessagesFetch(user.id)
+        .then((data) => setMessages(data))
+        .catch((error) => console.log(error));
+      // Тут обновляем данные каждые 5 секунд
+      getMesseges = setInterval(
+        () =>
+          api
+            .initMessagesFetch(user.id)
+            /* Если длина массива, который у нас в стейте не равна длине массива, который нам пришел из БД
+            Значит произошли изменения => меняем стейт для отрисовки */
+            .then((data) => data.length !== messages.length && setMessages(data))
+            .catch((error) => console.log(error)),
+        5000,
+      );
+    }
+    return () => clearInterval(getMesseges);
+  }, []);
+
+  const sendMessage = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    const newMessage = {
+      chatId: user.id,
+      senderId: user.id,
+      content: newContent,
+      recipientId: 1,
+    };
+    api
+      .sendMessageFetch(newMessage)
+      .then((data) =>
+        data === 'Заполните поле!' ? setErr(data) : setMessages((prev) => [...prev, data]),
+      )
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="bg-grey w-full h-full">
       <p className="text-green-500">Помощь</p>
+      <div>
+        {messages.map((message) => (
+          <MessageRow message={message} />
+        ))}
+      </div>
+      <div>
+        <form onSubmit={sendMessage}>
+          <textarea value={newContent} onChange={(e) => setNewContent(e.target.value)} />
+          <button type="submit">Send</button>
+          <div>{err}</div>
+        </form>
+      </div>
     </div>
   );
 }

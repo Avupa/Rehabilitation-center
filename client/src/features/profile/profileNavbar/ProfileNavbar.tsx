@@ -5,6 +5,7 @@ import iconProfile from '../../../../public/img/icon/profile-icon.png';
 import './profileNavbar.css';
 import { useAppDispatch } from '../../../store/store';
 import { logout } from '../../auth/authSlice';
+import * as api from '../../auth/api'
 
 function ProfileNavbar(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -12,6 +13,7 @@ function ProfileNavbar(): JSX.Element {
 
   const handleLogout: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
     event.preventDefault();
+    api.logoutFetch();
     void dispatch(logout());
     navigate('/');
   };

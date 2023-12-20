@@ -31,9 +31,8 @@ export const loginFetch = async (obj: Login): Promise<User> => {
   return data;
 };
 
-export const logoutFetch = async (): Promise<undefined> => {
-  await (await fetch('/api/auth/logout')).json();
-  return undefined;
+export const logoutFetch = ():void => {
+  fetch('/api/auth/logout')
 };
 
 export const checkFetch = async (): Promise<User | undefined> => {

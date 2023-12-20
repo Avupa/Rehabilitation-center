@@ -4,6 +4,7 @@ const { User } = require('../../db/models');
 const { generateTokens } = require('../../utils/authUtils');
 const cookiesConfig = require('../../config/cookiesConfig');
 const { Op } = require('sequelize');
+const jwtConfig = require('../../config/jwtConfig')
 
 router.post('/registration', async (req, res) => {
   try {
