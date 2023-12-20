@@ -26,7 +26,6 @@ router.get('/:senderId', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const newMessage = req.body;
-    console.log(newMessage);
     if (newMessage.content) {
       let message = await Chat.create(newMessage);
       message = await Chat.findOne({

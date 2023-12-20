@@ -24,6 +24,7 @@ function Admin(): JSX.Element {
   <button className='main_link_button' onClick={() => setSelectedTabId(3)}>Изменить перечень услуг  </button>
   <button className='main_link_button' onClick={() => setSelectedTabId(4)}>Внести корректировку в расписание  </button>
   <button className='main_link_button' onClick={() => setSelectedTabId(5)}>Запись</button>
+  <button className='main_link_button' onClick={() => setSelectedTabId(6)}>Чат</button>
   </div>
   <div className="  ">
   {selectedTabId === tabs[0].id && (<div><FromSite/></div>)}
@@ -31,7 +32,8 @@ function Admin(): JSX.Element {
   <p>Добавить нового специалиста<DoctorAdd/></p>
   <p>Изменить существующего специалиста<Doctors/></p></div>)}
   {selectedTabId === tabs[2].id && (<div><Services/></div>)}
-  {selectedTabId === tabs[3].id && (<div><Services/></div>)}     
+  {selectedTabId === tabs[3].id && (<div><Services/></div>)}  
+  {selectedTabId === tabs[6].id && (<div><Services/></div>)}   
         </div>
         </>
   )
