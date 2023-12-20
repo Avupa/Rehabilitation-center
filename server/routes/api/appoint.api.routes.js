@@ -1,20 +1,30 @@
 const router = require("express").Router();
-const { Schedule, Appointment } = require("../../db/models");
+const { Schedule, Appointment, Specialization } = require("../../db/models");
 
 
 //INIT
 router.post("/findDate", async (req, res) => {
    const {date}=req.body
-   console.log(date);
- 
      try {
-       const allSlots = await Schedule.findAll({where: {doctorId:req.body.doctorid, data:date}});
+       const allSlots = await Schedule.findAll({where: {doctorId:req.body.doctorid, data:date, appointmentId:null}});
       
        res.status(200).json(allSlots);
      } catch (error) {
        res.status(500).json({ message: error });
      }
    });
+
+//INIT SPEC
+router.get("/initSpec", async (req, res) => {
+    console.log('find spec>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+  try {
+      const allSpec = await Specialization.findAll();
+     
+      res.status(200).json(allSpec);
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  });
 
    //MAKE APPOINTMENT
 router.post("/makeAppoint", async (req, res) => {

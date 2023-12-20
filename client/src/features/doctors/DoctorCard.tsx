@@ -4,7 +4,7 @@ import type { Doctor } from './type';
 import ModalWindow from './ModalWindow';
 import DoctorUpdateForm from './DoctorUpdateForm';
 import './style.css';
-import Example from '../profile/components/myAppointment/DataCalendar';
+import Example  from '../appointment/DataCalendar';
 
 function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
   const [showDelete, setShowDelete] = useState(false);
@@ -15,12 +15,12 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
   const checkAdmin = true
 
   return (
-    <div className="card">
+    <div className="cardSmall">
       <img className="img" src={doctor.img} alt="img" />
-      <p>{doctor.firstName} {doctor.secondName} {doctor.patronymic}</p>
+      <div>{doctor.firstName} {doctor.secondName} {doctor.patronymic}</div>
       {!showAll && <button className="main_link_button h-10 w-40"  onClick={() => setShowAll(true)}>Подробнее</button>}
       {showAll && <button className="main_link_button h-10 w-10"  onClick={() => setShowAll(false)}>X</button>}
-      {showAll && <p>{doctor.description}</p> }
+      {showAll && <div>{doctor.description}</div> }
       {checkAdmin && <button className="main_link_button h-10 w-40"  onClick={() => setShowDelete(true)}>Удалить </button>}
       {showDelete && <ModalWindow setShowDelete={setShowDelete} id={doctor.id} />}
       {checkAdmin && <button className="main_link_button h-10 w-40" onClick={() => setShowUpdate(true)}>Изменить</button>}

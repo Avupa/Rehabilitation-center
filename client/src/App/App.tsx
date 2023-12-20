@@ -30,6 +30,7 @@ import { initReviews } from '../features/reviews/redux/reviewsSlice';
 
 import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
+import { initSpec } from '../features/appointment/DateSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,9 +38,11 @@ function App(): JSX.Element {
     void dispatch(initNoNameUsers());
     void dispatch(initProcedures());
     void dispatch(initDoctors());
+    void dispatch(initSpec());
     void dispatch(check());
     void dispatch(initReviews());
   }, [dispatch]);
+
 
   useEffect(() => {
     fetch('/api/auth/check')

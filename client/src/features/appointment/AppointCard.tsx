@@ -1,15 +1,15 @@
 import React from 'react';
 //import ModalWindow from './ModalWindow';
 import  type { TimeSlot } from './DateType';
-import { useAppDispatch } from '../../../../store/store';
+import { useAppDispatch } from '../../store/store';
 
-import type { IdDoctor } from '../../../doctors/type';
+import type { IdDoctor } from '../doctors/type';
 import { makeAppoint } from './DateSlice';
 
 
 function CardAppoint({id, date, slot }: {id:IdDoctor, date:string, slot: TimeSlot }): JSX.Element {
   const dispatch=useAppDispatch()
-  const makeIt=(slot, id, date):void=>{
+  const makeIt=({id, date, slot}:{id:IdDoctor, date:string, slot: TimeSlot}):void=>{
     dispatch(makeAppoint({id, date, slot}))
   }
 

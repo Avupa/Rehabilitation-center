@@ -1,6 +1,7 @@
 /* eslint-disable prefer-template */
 const multer = require("multer");
 //import  mime  from "mime";
+const mime = require('mime-types');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -14,8 +15,10 @@ const storage = multer.diskStorage({
       file.fieldname +
         "-" +
         uniqueSuffix +
-        "." +"jpg"
+        "." +
+        //"jpg"
         //mime.getExtension(file.mimetype)
+        mime.lookup(file)
     );
   },
 });
