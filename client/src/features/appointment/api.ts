@@ -1,6 +1,13 @@
-import  type { Appointment} from '../../../User/userType';
-import type { IdDoctor } from '../../../doctors/type';
-import { TimeSlot } from './DateType';
+import  type { Appointment} from '../User/userType';
+import type { IdDoctor } from '../doctors/type';
+import type { Specialization, TimeSlot } from './DateType';
+
+
+export const initSpecFetch= async (): Promise<Specialization[]> => {
+  const data: Specialization[] = await (await fetch('/api/appointment/initSpec')).json();
+  return data;
+};
+
 
 export const findDateFetch = async ({ id, date }: { id: IdDoctor; date: string }): Promise<TimeSlot[]> => {
   
@@ -20,7 +27,7 @@ export const findDateFetch = async ({ id, date }: { id: IdDoctor; date: string }
   return data;
 };
 
-export const makeAppointFetch = async ({ id, date, slot }: { id: number; date: string , slot:string}): Promise<Appointment> => {
+export const makeAppointFetch = async ({ id, date, slot }: { id: number; date: string , slot:TimeSlot}): Promise<Appointment> => {
   
   const res = await fetch('/api/appointment/makeAppoint', {
     method: 'POST',

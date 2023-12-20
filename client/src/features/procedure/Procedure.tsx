@@ -7,12 +7,14 @@ import './stile.css';
 
 function Services(): JSX.Element {
   const procedures = useSelector((store: RootState) => store.Procedure.procedures);
+      //const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
+      const checkAdmin = true
 
   //   console.log(procedures);
 
   return (
     <div>
-      <img src={personeTraining} alt="personeTraining" className="w-full" />
+     {!checkAdmin && <img src={personeTraining} alt="personeTraining" className="w-full" />}
       <div className="servicesCard_full_container">
         <div className="servicesCard_sub_full_container">
           {procedures.length &&

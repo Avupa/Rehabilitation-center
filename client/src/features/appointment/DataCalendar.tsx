@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import type { IdDoctor } from '../../../doctors/type';
+import type { IdDoctor } from '../doctors/type';
 import { findDate } from './DateSlice';
 import CardAppoint from './AppointCard';
-import { useAppDispatch } from '../../../../store/store';
+import { useAppDispatch } from '../../store/store';
 
 export default function Example({ id }: { id: IdDoctor }): JSX.Element {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);

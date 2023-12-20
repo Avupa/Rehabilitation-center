@@ -7,12 +7,11 @@ import './style.css';
 function Doctors(): JSX.Element {
   const doctors = useSelector((store: RootState) => store.Doctor.doctors);
   return (
-    <>
-      <p className="text-green-500">Наши доктора</p>
+    <div className="col s4">
       {doctors.map((doctor) => (
         <CardDoctor key={doctor.id} doctor={doctor} />
       ))}
-    </>
+    </div>
   );
 }
 

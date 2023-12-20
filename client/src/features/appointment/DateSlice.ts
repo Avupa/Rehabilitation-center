@@ -1,20 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type {  State, TimeSlot } from './DateType';
+import type {  State, TimeSlot} from './DateType';
 import * as api from './api';
-import { IdDoctor } from '../../../doctors/type';
-
+import type { IdDoctor } from '../doctors/type';
 
 const initialState: State = {
   timeSlot: undefined,
   error: undefined,
-  appointment:[]
+  appointment:[],
+  specialization:[]
 };
+
+export const initSpec = createAsyncThunk('appointment/initSpec', () =>
+  api.initSpecFetch(),
+);
 
 export const findDate = createAsyncThunk('appointment/findDate', ({id, date}: {id:IdDoctor, date:string}) =>
   api.findDateFetch({id, date}),
 );
 
-export const makeAppoint = createAsyncThunk('appointment/makeAppoint', ({ id, date, slot }: { id: number; date: string , slot:string}) =>
+export const makeAppoint = createAsyncThunk('appointment/makeAppoint', ({ id, date, slot }: { id: number; date: string , slot:TimeSlot}) =>
   api.makeAppointFetch({id, date, slot}),
 );
 
@@ -29,6 +33,13 @@ const DateSlice = createSlice({
         state.timeSlot = action.payload;
       })
       .addCase(findDate.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+
+      .addCase(initSpec.fulfilled, (state, action) => {
+        state.specialization = action.payload;
+      })
+      .addCase(initSpec.rejected, (state, action) => {
         state.error = action.error.message;
       })
 

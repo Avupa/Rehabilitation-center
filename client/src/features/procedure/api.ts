@@ -1,4 +1,4 @@
-import type { Procedure, IdProcedure } from '../services/redux/types/type';
+import type { Procedure, IdProcedure } from '../procedure/redux/types/type';
 
 export const initProceduresFetch = async (): Promise<Procedure[]> => {
   const data: Procedure[] = await (await fetch('/api/procedures/')).json();
@@ -33,7 +33,7 @@ export const updateFetchProcedures = async ({
   description,
   categoryId,
 }: Procedure): Promise<Procedure> => {
-  const data: { obj: Procedure } = await (
+  const data: Procedure  = await (
     await fetch(`/api/procedures/update/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'Application/json' },
