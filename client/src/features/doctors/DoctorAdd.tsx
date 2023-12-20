@@ -1,4 +1,4 @@
-import React, { memo, useRef} from 'react'
+import React, { memo, useRef, useState} from 'react'
 import { useAppDispatch } from '../../store/store'
 import { addDoctors } from './doctorSlice'
 import './style.css';
@@ -13,6 +13,8 @@ const descriptionInput = useRef<HTMLInputElement>(null)
 const shortDescriptionInput = useRef<HTMLInputElement>(null)
 const slotInput = useRef<HTMLInputElement>(null)
 const dispatch = useAppDispatch()
+
+const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
 const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.files && event.target.files.length > 0) {
