@@ -9,7 +9,7 @@ function Check(): JSX.Element {
 
   useEffect(() => {
     if (!user) {
-      navigate('/auth/sugn-up'); // перенаправление, если пользователь неопределен
+      navigate('/auth/sign-in'); // перенаправление, если пользователь неопределен
     } else {
       navigate('/profile'); // перенаправление, если пользователь определен
     }

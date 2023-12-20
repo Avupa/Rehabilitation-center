@@ -72,7 +72,7 @@ function LoginPage():JSX.Element {
             >
               Войти
             </button>
-            <a href='/auth/registration' className="text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Регистрация</a>
+            <a href='/auth/sugn-up' className="text-blue-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Регистрация</a>
           </div>
         </form>
       </div>

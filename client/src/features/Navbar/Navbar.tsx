@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import logo from '../../../public/img/icon/logo-Rehabilitation-center.png';
 import './navbar.css';
-//import type { RootState } from '../../store/store';
+import type { RootState } from '../../store/store';
 // import NavbarAuth from './NavbarAuth';
 
 function Navbar(): JSX.Element {
-  //const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
-  const checkAdmin = true
+  const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
 
   return (
     <nav>

@@ -8,7 +8,6 @@ router.get("/", async (req, res) => {
     const data = await Review.findAll({
       include: [{ model: User }, { model: Doctor }],
     });
-     console.log(data,'0000000000');
     // const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
     res.status(200).json(data);
   } catch (error) {
