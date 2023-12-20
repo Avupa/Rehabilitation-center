@@ -1,4 +1,3 @@
-const { where } = require('sequelize');
 const { Chat, User } = require('../../db/models');
 
 const router = require('express').Router();
