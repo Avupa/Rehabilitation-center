@@ -60,6 +60,38 @@ img {
   display: flex;
 }
 
+/* radio  */
+
+.hidden_radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom_radio {
+  position: relative;
+  display: inline-block;
+  width: 29px;
+  height: 29px;
+  cursor: pointer;
+}
+
+.custom_radio::after {
+  content: '';
+  position: absolute;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: 3px solid #55a394;
+}
+
+.hidden_radio:checked + .custom_radio::after {
+  background-color: #55a394;
+}
+
+/* container */
+
 .container_description,
 .container_img {
   background-color: #ffffff;

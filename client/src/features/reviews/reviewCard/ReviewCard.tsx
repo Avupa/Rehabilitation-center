@@ -33,12 +33,9 @@ function ReviewCard({ review }: TypeReviewCard): JSX.Element {
         {Array(5)
           .fill(null)
           .map((_, index) => (
-            <div
-              className={`star ${index < review.grade ? 'background_gold' : ''}`}
-            />
+            <div className={`star ${index < review.grade ? 'background_gold' : ''}`} />
           ))}
       </div>
-      <p>{review.grade}</p>
       <div>
         <p className="text-lg">{ShortenText(review.description, 360, 200)}</p>
       </div>
