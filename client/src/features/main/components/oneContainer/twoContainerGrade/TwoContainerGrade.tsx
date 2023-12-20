@@ -13,7 +13,10 @@ function TwoContainerGrade(): JSX.Element {
   return (
     <div className="main_full_container pt-8">
       {containers.map((container, index) => (
-        <div key={index} className="container_description border_3px_solid_orange container_flex w-80 h-32">
+        <div
+          key={index}
+          className="container_description border_3px_solid_orange container_flex w-80 h-32"
+        >
           <p className="text-center">{container[1]}</p>
           <div className="container_img border_3px_solid_orange">
             <img src={container[0]} alt="#" />
