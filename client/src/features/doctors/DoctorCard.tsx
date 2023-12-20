@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import type { Doctor } from './type';
 import ModalWindow from './ModalWindow';
@@ -6,56 +7,26 @@ import './style.css';
 import Example from '../profile/components/myAppointment/DataCalendar';
 
 function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
-  const [active, setActive] = useState(false);
-  const [state, setState] = useState(false);
-  const [all, setAll] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
   const [appoint, setAppoint] = useState(false);
+  //const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
+  const checkAdmin = true
 
   return (
     <div className="card">
       <img className="img" src={doctor.img} alt="img" />
-      <p>
-        {doctor.firstName} {doctor.secondName} {doctor.patronymic}
-      </p>
-      {all && (
-        <div className="card">
-          {active && <ModalWindow setActive={setActive} id={doctor.id} />}
-          <p>{doctor.description}</p>
-
-          <div className="card">
-            <img className="img" src={doctor.img} alt="img" />
-            <p>
-              {doctor.firstName} {doctor.secondName} {doctor.patronymic}
-            </p>
-            {all && (
-              <div className="card">
-                {active && <ModalWindow setActive={setActive} id={doctor.id} />}
-                <p>{doctor.description}</p>
-
-                <button className="delete" type="button" onClick={() => setActive(true)}>
-                  Удалить{' '}
-                </button>
-                <button className="update" type="button" onClick={() => setState(true)}>
-                  Изменить{' '}
-                </button>
-                <button className="close" type="button" onClick={() => setAll(false)}>
-                  Закрыть{' '}
-                </button>
-                {state && <DoctorUpdateForm doctor={doctor} setState={setState} />}
-              </div>
-            )}
-            <button className="" type="button" onClick={() => setAppoint(true)}>
-              Запись{' '}
-            </button>
-            {appoint && <Example id={doctor.id} />}
-            {!all && (
-              <button className="more" type="button" onClick={() => setAll(true)}>
-                Опыт работы{' '}
-              </button>
-            )}
-          </div>
-        </div>
-      )}
+      <p>{doctor.firstName} {doctor.secondName} {doctor.patronymic}</p>
+      {!showAll && <button className="main_link_button h-10 w-40"  onClick={() => setShowAll(true)}>Подробнее</button>}
+      {showAll && <button className="main_link_button h-10 w-10"  onClick={() => setShowAll(false)}>X</button>}
+      {showAll && <p>{doctor.description}</p> }
+      {checkAdmin && <button className="main_link_button h-10 w-40"  onClick={() => setShowDelete(true)}>Удалить </button>}
+      {showDelete && <ModalWindow setShowDelete={setShowDelete} id={doctor.id} />}
+      {checkAdmin && <button className="main_link_button h-10 w-40" onClick={() => setShowUpdate(true)}>Изменить</button>}
+      {showUpdate && <DoctorUpdateForm doctor={doctor} setShowUpdate={setShowUpdate} />} 
+      <button className="main_link_button h-10 w-40" onClick={() => setAppoint(true)}>Запись </button>
+       {appoint && <Example id={doctor.id} />}
     </div>
   );
 }

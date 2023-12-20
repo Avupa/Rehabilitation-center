@@ -6,16 +6,16 @@ import { deleteDoctors } from './doctorSlice';
 import './style.css';
 
 function ModalWindow({
-  setActive,
+  setShowDelete,
   id,
 }: {
-  setActive: (status: boolean) => void;
+  setShowDelete: (status: boolean) => void;
   id: IdDoctor;
 }): JSX.Element {
   const dispatch = useAppDispatch();
   const del = (): void => {
     dispatch(deleteDoctors(id));
-    setActive(false);
+    setShowDelete(false);
   };
 
   return (
@@ -24,7 +24,7 @@ function ModalWindow({
       <button type="button" onClick={del}>
         да
       </button>
-      <button type="button" onClick={() => setActive(false)}>
+      <button type="button" onClick={() => setShowDelete(false)}>
         нет
       </button>
     </div>

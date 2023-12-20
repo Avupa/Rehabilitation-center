@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import type { NoNameUser } from '../noNameUser/type';
 import ModalWindow from './ModalWindow';
@@ -13,7 +14,7 @@ function CardNoName({ noNameUser }: { noNameUser: NoNameUser }): JSX.Element {
         <p>{noNameUser.telephone}</p>
         <p>{noNameUser.description}</p>
 
-        <button>Запись </button>
+        <button className='main_link_button h-10 w-40'>Запись </button>
         <button className="delete" type="button" onClick={() => setActive(true)}>
           Удалить{' '}
         </button>

@@ -39,13 +39,13 @@ router.post("/add", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const doctor = await Procedure.findOne({ where: { id: req.params.id } });
-    if (doctor) {
+    const procedure = await Procedure.findOne({ where: { id: req.params.id } });
+    if (procedure) {
       const response = await Procedure.destroy({
         where: { id: req.params.id },
       });
       if (response) {
-        res.status(200).json({ id: doctor.id });
+        res.status(200).json({ id: procedure.id });
       } else {
         res.status(400).json({ message: "Произошла ошибка при удалении" });
       }

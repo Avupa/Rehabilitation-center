@@ -12,14 +12,17 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete("/:idNoNameUser/:idUser", async (req, res) => {
-    const {idNoNameUser, idUser}=req.params
+router.delete("/:idNoNameUser", async (req, res) => {
+    const {idNoNameUser}=req.params
+    //const idUser=res.locals.user.id
+   const idUser=1
     try {
         const userInDb = await User.findOne({ where: { id: Number(idUser)} });
         if (userInDb.isAdmin === true) {
+          const User= await noNameUser.findOne({ where: { id: Number(idNoNameUser)} });
           const delNoNameUser = await noNameUser.destroy({ where: { id: Number(idNoNameUser)} });
           if (delNoNameUser > 0) {
-            res.json({ message: "User was deleted", action: true });
+            res.json({id:User.id});
           } else {
             res.json({ message: "User wasnot deleted", action: false });
           }

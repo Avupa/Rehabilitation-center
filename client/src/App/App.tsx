@@ -4,12 +4,11 @@ import './App.css';
 import 'tailwindcss/tailwind.css';
 import Navbar from '../features/Navbar/Navbar';
 import Main from '../features/main/components/Main';
-
 import Profile from '../features/profile/components/myProfile/Profile';
 import Price from '../features/price/Price';
 import Appointment from '../features/appointment/Appointment';
 import Doctors from '../features/doctors/Doctors';
-import Procedure from '../features/procedure/Procedure.tsx';
+import Procedure from '../features/procedure/Procedure';
 import Admin from '../features/admin/AdminPage';
 import LoginPage from '../features/auth/LoginPage';
 import RegisterPage from '../features/auth/RegisterPage';
@@ -17,13 +16,13 @@ import MyDoctors from '../features/profile/components/myDoctors/MyDoctors';
 import MyAppointment from '../features/profile/components/myAppointment/MyAppointment';
 import ProfileNavbar from '../features/profile/profileNavbar/ProfileNavbar';
 import Help from '../features/help/Help';
-import Check from '../features/profile/Check.tsx';
+import Check from '../features/profile/Check';
 
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
-import { initProcedures } from '../features/procedure/redux/procedureSlice.ts';
+import { initProcedures } from '../features/procedure/redux/procedureSlice';
 
 import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
