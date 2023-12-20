@@ -12,7 +12,7 @@ export type Review = {
   description: string;
   doctorId?: number;
   userId: number;
-  Doctor?: Doctor | undefined;
+  Doctor?: Doctor;
   User: User;
 };
 

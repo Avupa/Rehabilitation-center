@@ -8,6 +8,7 @@ body {
 
 img {
   pointer-events: none;
+  border-radius: 10%;
 }
 
 .main_full_container_wrap,
@@ -60,6 +61,49 @@ img {
   display: flex;
 }
 
+/* radio  */
+
+/* Скрытие стандартной радиокнопки */
+input[type='radio'] {
+  display: none; /* Скрываем стандартные радиокнопки */
+}
+
+/* Кастомные стили для радиокнопок */
+input[type='radio'] + label {
+  position: relative;
+  padding-left: 30px; /* Пространство слева от метки */
+  cursor: pointer;
+  width: 29px;
+  height: 29px;
+}
+
+/* Стили для отображения "фейковой" радиокнопки */
+input[type='radio'] + label::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: 3px solid #55a394;
+}
+
+/* Стили для отображения "фейковой" радиокнопки, отмеченной пользователем */
+input[type='radio']:checked + label::before {
+  background-color: #55a394;
+}
+
+/* container */
+
+.width_260px {
+  width: 260px;
+}
+
+.width_365px {
+  width: 365px;
+}
+
 .container_description,
 .container_img {
   background-color: #ffffff;
@@ -73,21 +117,13 @@ img {
   z-index: 1; /* Поместили container-description поверх container-img */
 }
 
-.width_260px {
-  width: 260px;
-}
-
-.width_365px {
-  width: 365px;
-}
-
 .container_flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container-description p {
+.container_description p {
   font-size: 18px;
 }
 
@@ -99,7 +135,6 @@ img {
   height: 75px;
   z-index: 2; /* container-img находится поверх container-description */
   background-color: #ffffff;
-  border-radius: 50px; /* Скругленные углы */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,4 +247,42 @@ img {
 .background_gold:before {
   background: linear-gradient(to bottom, rgba(224, 194, 75, 1) 0%, rgba(207, 125, 0, 1) 100%);
   background: linear-gradient(to bottom, rgba(243, 212, 85, 1) 0%, rgba(238, 164, 0, 1) 100%);
+}
+
+.ellipse {
+  width: 800px; /* Задаем ширину эллипса */
+  height: 900px; /* Задаем высоту эллипса */
+  border-radius: 50%; /* Делаем эллипс */
+  filter: blur(35px); /* Применяем размытие */
+  position: absolute; /* Позиционируем элемент абсолютно */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Сдвигаем на 50% относительно собственных размеров, чтобы центрировать */
+  z-index: -1; /* Устанавливаем задний план */
+  animation: move 9s infinite; /* Добавляем анимацию движения*/
+}
+
+/* Создаем анимацию move */
+@keyframes move {
+  0% {
+    transform: translate(-50%, -50%);
+  } /* Начальная позиция - текущее положение */
+  25% {
+    transform: translate(-35%, -50%);
+  } /* Четверть анимации - смещение вправо */
+  75% {
+    transform: translate(-65%, -50%);
+  } /* Три четверти анимации - смещение влево */
+  100% {
+    transform: translate(-50%, -50%);
+  } /* Конечное положение - возвращаемся в текущее положение */
+}
+
+.background_blue {
+  background-color: #8fbbdb; /* Задаем цвет эллипса */
+}
+
+.background_green {
+  background-color: #91c9be; /* Задаем цвет эллипса */
 }

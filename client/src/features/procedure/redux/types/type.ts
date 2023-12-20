@@ -8,6 +8,7 @@ export type Procedure = {
   name: string;
   description: string;
   categoryId: number;
+  category:string;
 };
 
 export type IdProcedure = Procedure['id'];

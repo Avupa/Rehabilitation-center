@@ -6,7 +6,7 @@ export const initDoctorFetch = async (): Promise<Doctor[]> => {
 };
 
 export const addFetchDoctor = async (obj: FormData): Promise<Doctor> => {
-  console.log(obj)
+
   const res = await fetch('/api/doctors/add', {
     method: 'POST',
     body: obj,
@@ -28,22 +28,15 @@ export const delFetchDoctor = async (id: IdDoctor): Promise<IdDoctor> => {
   return data.id;
 };
 
-export const updateFetchDoctor = async ({
-  id,
-  firstName,
-  secondName,
-  patronymic,
-  description,
-  img,
-  slot,
-}: Doctor): Promise<Doctor> => {
-  const data: { obj: Doctor } = await (
+export const updateFetchDoctor = async (id:IdDoctor, obj: FormData): Promise<Doctor> => {
+  console.log(id, 'iiiiiiiii');
+  console.log(obj, 'gggggggg');
+
+  
+  const data:Doctor= await (
     await fetch(`/api/doctors/update/${id}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'Application/json' },
-
-      body:JSON.stringify({
-        firstName, secondName, patronymic, description, img, slot})
+  body: obj,
   })).json();
   return data
   };

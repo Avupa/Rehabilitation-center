@@ -9,10 +9,10 @@ function CardNoName({ noNameUser }: { noNameUser: NoNameUser }): JSX.Element {
   return (
     <>
   {active && <ModalWindow setActive={setActive} id={noNameUser.id} />}
-      <div className="card">
-        <p>{noNameUser.name}</p>
-        <p>{noNameUser.telephone}</p>
-        <p>{noNameUser.description}</p>
+      <div className="cardSmall">
+        <div>{noNameUser.name}</div>
+        <div>{noNameUser.telephone}</div>
+        <div>{noNameUser.description}</div>
 
         <button className='main_link_button h-10 w-40'>Запись </button>
         <button className="delete" type="button" onClick={() => setActive(true)}>

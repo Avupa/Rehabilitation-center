@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
-import ReviewCard from './reviewCard/ReviewCard';
-import type { Review } from './redux/types/type';
+import ReviewsForClinic from './components/reviewsForClinic/ReviewsForClinic';
+import ReviewsForDoctors from './components/reviewsForDoctors/ReviewsForDoctors';
+import InputReview from './components/inputReview/inputReview';
 
 function Reviews(): JSX.Element {
   const reviews = useSelector((store: RootState) => store.Review.reviews);
-  // console.log(review);
 
   useEffect(() => {
     // Сохраняем ссылку на функцию очистки
@@ -20,13 +20,12 @@ function Reviews(): JSX.Element {
   }, []);
 
   return (
-    <div>
-      <div className="header">
-        <p>Услуги реабилитационного центра</p>
-      </div>
-      <div className="main_full_container_wrap">
-        {reviews.length && reviews.map((review: Review) => <ReviewCard review={review} />)}
-      </div>
+    <div className="main">
+      <ReviewsForClinic reviews={reviews} />
+      <div className="ellipse background_green left-1/3" />
+      <div className="ellipse background_blue left-2/3" />
+      <ReviewsForDoctors reviews={reviews} />
+      <InputReview />
     </div>
   );
 }

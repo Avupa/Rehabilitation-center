@@ -4,11 +4,10 @@ const upload = require('../../utils/uploadMulter');
 
 //INIT
 router.get("/", async (req, res) => {
-
- console.log('i am here, doctor');
+//console.log('i am here, doctor');
   try {
     const dataFirst = await Doctor.findAll({include: {model:SpecialOfDoctor,  include:{ model: Specialization}}});
-    console.log(dataFirst)
+
    //const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
     res.status(200).json(dataFirst);
 
@@ -21,14 +20,9 @@ router.get("/", async (req, res) => {
 
 router.post("/add", upload.single('photo'), async (req, res) => {
   const uploadedFile = req.file;
-  console.log(uploadedFile);
+  //console.log(uploadedFile);
   const filePath = uploadedFile.path.replace('public', '');
-
-  //const {firstName,  secondName,patronymic, shortDescription, img, description,  slot} = req.body;
-  // const file = req.files?.img
-  // console.log(req.file, 'this!!!');
-  // const arrUrl = await fileUpload(img)
-  console.log(filePath, 'req');
+  const {firstName,  secondName,patronymic, shortDescription, description,  slot} = req.body;
   try {
     const data = await Doctor.create({
       firstName,
@@ -36,7 +30,7 @@ router.post("/add", upload.single('photo'), async (req, res) => {
       patronymic,
       shortDescription,
       description,   
-      img:arrUrl,
+      img:filePath,
       slot: Number(slot)
     });
     if (data) {
@@ -70,16 +64,18 @@ router.delete("/:id", async (req, res) => {
 
 //UPDATE
 
-router.put("/update/:id", async (req, res) => {
-  
+router.put("/update/:id", upload.single('photo'), async (req, res) => {
+  const uploadedFile = req.file;
+  console.log(uploadedFile);
+  const filePath = uploadedFile.path.replace('public', '');
 
   const { id } = req.params;
-  const { firstName, secondName, patronymic, description, img, slot } =
+  const { firstName, secondName, patronymic, description, shortDescription, slot } =
     req.body;
-  console.log(firstName, secondName, patronymic, description, img, slot, id);
+  //console.log(firstName, secondName, patronymic, description, img, slot, id);
   try {
     const updateDoctor = await Doctor.update(
-      { firstName, secondName, patronymic, description, img, slot },
+      { firstName, secondName, patronymic, description, shortDescription,  img:filePath, slot },
       { where: { id } }
     );
     if (updateDoctor > 0) {

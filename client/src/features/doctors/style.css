@@ -4,6 +4,7 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+
   margin: 20px;
   padding: 10px;
 }
@@ -21,4 +22,14 @@
 }
 .save {
   background-color: #66bb6a;
+}
+.cardSmall {
+  background-color: #e4e9ea;
+  width: 450px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 20px;
+  padding: 10px;
 }

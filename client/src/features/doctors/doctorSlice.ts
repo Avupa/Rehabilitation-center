@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { Doctor, IdDoctor, State } from './type';
+import type { IdDoctor, State } from './type';
 import * as api from './api';
 
 const initialState: State = {
@@ -8,16 +8,15 @@ const initialState: State = {
 };
 
 export const initDoctors = createAsyncThunk('doctors/init', () => api.initDoctorFetch());
+
 export const addDoctors = createAsyncThunk('doctors/add', (obj: FormData) =>
-
-
   api.addFetchDoctor(obj),
 );
 export const deleteDoctors = createAsyncThunk('doctors/delete', (id: IdDoctor) =>
   api.delFetchDoctor(id),
 );
-export const updateDoctors = createAsyncThunk('doctors/update', (obj: Doctor) =>
-  api.updateFetchDoctor(obj),
+export const updateDoctors = createAsyncThunk('doctors/update', (id: IdDoctor, obj:FormData) =>
+  api.updateFetchDoctor(id, obj),
 );
 
 const doctorsSlice = createSlice({

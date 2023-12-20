@@ -5,8 +5,8 @@ import noNameUsersSlice from '../features/noNameUser/noNameUserSlice';
 import doctorSlice from '../features/doctors/doctorSlice';
 import authSlice from '../features/auth/authSlice';
 import proceduresSlice from '../features/procedure/redux/procedureSlice';
+import DateSlice from '../features/appointment/DateSlice';
 import reviewsSlice from '../features/reviews/redux/reviewsSlice';
-import DateSlice from '../features/profile/components/myAppointment/DateSlice';
 
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 
