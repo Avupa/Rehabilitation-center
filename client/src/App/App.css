@@ -62,31 +62,35 @@ img {
 
 /* radio  */
 
-.hidden_radio {
+/* Скрытие стандартной радиокнопки */
+input[type='radio'] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.custom_radio {
+/* Кастомные стили для радиокнопок */
+input[type='radio'] + label {
   position: relative;
-  display: inline-block;
-  width: 29px;
-  height: 29px;
+  padding-left: 30px; /* Пространство слева от метки */
   cursor: pointer;
 }
 
-.custom_radio::after {
+/* Стили для отображения "фейковой" радиокнопки */
+input[type='radio'] + label::before {
   content: '';
   position: absolute;
+  left: 0;
+  top: 1px;
   width: 29px;
   height: 29px;
   border-radius: 50%;
   border: 3px solid #55a394;
 }
 
-.hidden_radio:checked + .custom_radio::after {
+/* Стили для отображения "фейковой" радиокнопки, отмеченной пользователем */
+input[type='radio']:checked + label::before {
   background-color: #55a394;
 }
 
