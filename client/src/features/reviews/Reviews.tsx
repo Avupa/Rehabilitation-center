@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
-import ReviewsForClinic from './reviewsForClinic/ReviewsForClinic';
-import ReviewsForDoctors from './reviewsForDoctors/ReviewsForDoctors';
+import ReviewsForClinic from './components/reviewsForClinic/ReviewsForClinic';
+import ReviewsForDoctors from './components/reviewsForDoctors/ReviewsForDoctors';
+import InputReview from './components/inputReview/inputReview';
 
 function Reviews(): JSX.Element {
   const reviews = useSelector((store: RootState) => store.Review.reviews);
@@ -19,9 +20,12 @@ function Reviews(): JSX.Element {
   }, []);
 
   return (
-    <div>
+    <div className="main">
       <ReviewsForClinic reviews={reviews} />
+      <div className="ellipse background_green left-1/3" />
+      <div className="ellipse background_blue left-2/3" />
       <ReviewsForDoctors reviews={reviews} />
+      <InputReview />
     </div>
   );
 }

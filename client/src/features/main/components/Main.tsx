@@ -17,7 +17,7 @@ function Main(): JSX.Element {
   }, []);
 
   return (
-    <div id="main">
+    <div className="main">
       <OneContainer />
       <TwoContainer />
       <ThreeContainer />
