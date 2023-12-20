@@ -5,10 +5,10 @@ import { updateDoctors } from './doctorSlice';
 import './style.css';
 
 function DoctorUpdateForm({
-  setState,
+  setShowUpdate,
   doctor,
 }: {
-  setState: (status: boolean) => void;
+  setShowUpdate: (status: boolean) => void;
   doctor: Doctor;
 }): JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ function DoctorUpdateForm({
     dispatch(
       updateDoctors({ id: doctor.id, firstName, secondName, patronymic, description, img, slot }),
     );
-    setState(false);
+    setShowUpdate(false);
   };
   return (
     <form onSubmit={update}>
@@ -53,7 +53,7 @@ function DoctorUpdateForm({
         onChange={(e) => setDescription(e.target.value)}
       />
       <input name="img" type="text" value={img} onChange={(e) => setImg(e.target.value)} />
-      <input name="slot" type="text" value={slot} onChange={(e) => setSlot(e.target.value)} />
+      <input name="slot" type="text" value={slot} onChange={(e) => setSlot(Number(e.target.value))} />
       <button className="save" type="submit">
         сохранить изменения
       </button>

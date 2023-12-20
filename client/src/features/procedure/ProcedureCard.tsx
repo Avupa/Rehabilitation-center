@@ -1,20 +1,26 @@
 import type { CSSProperties } from 'react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { Procedure } from '../services/redux/types/type';
+import type { Procedure } from './redux/types/type';
 import arrow from '../../../public/img/icon/arrow/Arrow-green.png';
 import './stile.css';
+import ProcedureUpdate from './ProcedureUpdate';
+import ModalWindow from './ModalWindow';
 
 function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
+    //const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
+  const checkAdmin = true
   const [isExpanded, setIsExpanded] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [showUpdate, setShowUpdate]= useState(false);
+  const [showDelete, setShowDelete]= useState(false);
 
   const handleDivClick = (): void => {
     setIsExpanded((prev) => !prev);
   };
 
   useEffect(() => {
-    let timer: number;
+    let timer: ReturnType<typeof setTimeout>;
     if (isExpanded) {
       timer = setTimeout(() => {
         setShowDescription(true);
@@ -48,8 +54,7 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
   return (
     <div
       className="container_description border_3px_solid_dark_green h-48 gap-10 container_flex"
-      style={divStyle}
-    >
+      style={divStyle} >
       <div className="servicesCard_sub_container">
         <div style={subContainerStyle}>
           <button className="container_flex" type="button" onClick={() => handleDivClick()}>
@@ -57,12 +62,23 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
             <img src={arrow} alt="arrow" className={isExpanded ? 'arrow left' : 'arrow right'} />
           </button>
         </div>
-        <div>
-          <Link to="/appointment">
-            <div className="main_link_button w-44 h-14">
-              <p>Записаться</p>
+      <div>
+      {!checkAdmin && <Link to="/appointment">
+          <div className="main_link_button w-44 h-14">
+            <p>Записаться</p>
+          </div>
+          </Link>}
+
+          <div>
+            {checkAdmin && 
+            <button className="main_link_button w-44 h-10"  onClick={() => setShowUpdate(true)}>Изменить</button>
+            }
+            {checkAdmin &&             
+            <button className="main_link_button w-44 h-10"  onClick={() => setShowDelete(true)}>Удалить</button>}
+            {showUpdate && <ProcedureUpdate procedure={procedure} setShowUpdate={setShowUpdate}/>}
+            {showDelete && <ModalWindow setShowDelete={setShowDelete} procedure={procedure}/>}
             </div>
-          </Link>
+          
         </div>
       </div>
       {showDescription && (

@@ -32,7 +32,7 @@ export const loginFetch = async (obj: Login): Promise<User> => {
 };
 
 export const logoutFetch = async (): Promise<undefined> => {
-  const data = await (await fetch('/api/auth/logout')).json();
+  await (await fetch('/api/auth/logout')).json();
   return undefined;
 };
 

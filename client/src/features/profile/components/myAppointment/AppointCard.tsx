@@ -15,7 +15,7 @@ function CardAppoint({id, date, slot }: {id:IdDoctor, date:string, slot: TimeSlo
 
   return (
     <>
-<button onClick={()=>makeIt({slot:slot.timeSlot, id, date})}>{slot.timeSlot}</button>
+<button className='main_link_button h-10 w-20'onClick={()=>makeIt({slot:slot.timeSlot, id, date})}>{slot.timeSlot}</button>
    </>
   )
 }

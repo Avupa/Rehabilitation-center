@@ -6,6 +6,7 @@ export const initDoctorFetch = async (): Promise<Doctor[]> => {
 };
 
 export const addFetchDoctor = async (obj: FormData): Promise<Doctor> => {
+  console.log(obj)
   const res = await fetch('/api/doctors/add', {
     method: 'POST',
     body: obj,

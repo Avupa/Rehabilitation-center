@@ -9,6 +9,8 @@ const initialState: State = {
 
 export const initDoctors = createAsyncThunk('doctors/init', () => api.initDoctorFetch());
 export const addDoctors = createAsyncThunk('doctors/add', (obj: FormData) =>
+
+
   api.addFetchDoctor(obj),
 );
 export const deleteDoctors = createAsyncThunk('doctors/delete', (id: IdDoctor) =>

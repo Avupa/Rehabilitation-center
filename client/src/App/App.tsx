@@ -4,7 +4,6 @@ import './App.css';
 import 'tailwindcss/tailwind.css';
 import Navbar from '../features/Navbar/Navbar';
 import Main from '../features/main/components/Main';
-
 import Profile from '../features/profile/components/myProfile/Profile';
 import Price from '../features/price/Price';
 import Appointment from '../features/appointment/Appointment';
@@ -20,12 +19,14 @@ import Help from '../features/help/Help';
 import Check from '../features/profile/Check';
 import Reviews from '../features/reviews/Reviews';
 
+
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
 import { initProcedures } from '../features/procedure/redux/procedureSlice';
 import { initReviews } from '../features/reviews/redux/reviewsSlice';
+
 
 import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';

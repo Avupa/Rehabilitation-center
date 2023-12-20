@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { RootState, useAppDispatch } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Login } from './authType';
+import type { Login } from './authType';
 import { object, string } from 'yup';
 import { login } from './authSlice';
 

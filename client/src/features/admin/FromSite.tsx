@@ -8,7 +8,6 @@ function FromSite(): JSX.Element {
   
   return (
   <>
-  <p className="text-green-500">Перечень заявок с сайта</p>;
     {noNameUsers.map(noNameUser=><CardNoName noNameUser={noNameUser} key={noNameUser.id} />)}
   </>
   )
