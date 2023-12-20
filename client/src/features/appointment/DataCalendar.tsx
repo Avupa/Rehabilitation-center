@@ -9,16 +9,19 @@ import { useAppDispatch } from '../../store/store';
 
 export default function Example({ id }: { id: IdDoctor }): JSX.Element {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [slots,setSlots]=useState()
+  const [slots, setSlots] = useState();
   const dispatch = useAppDispatch();
 
-  useEffect(()=>{
-    if(startDate){
-    const stringDate=[startDate?.getFullYear(), startDate?.getMonth()+1,startDate?.getDate()].join('-')
-    dispatch(findDate({ id, date:stringDate})).then
-    (data =>setSlots(data.payload))
-  }
-    }, [dispatch, id, startDate])
+  useEffect(() => {
+    if (startDate) {
+      const stringDate = [
+        startDate?.getFullYear(),
+        startDate?.getMonth() + 1,
+        startDate?.getDate(),
+      ].join('-');
+      dispatch(findDate({ id, date: stringDate })).then((data) => setSlots(data.payload));
+    }
+  }, [dispatch, id, startDate]);
 
   return (
     <>
@@ -27,7 +30,17 @@ export default function Example({ id }: { id: IdDoctor }): JSX.Element {
         excludeDates={[new Date()]}
         onChange={(date: Date) => setStartDate(date)}
       />
-      {slots && slots.map(slot=><CardAppoint key={slot.id} slot={slot} id={id} date={[startDate?.getFullYear(), startDate?.getMonth()+1,startDate?.getDate()].join('-')}/>)}
+      {slots &&
+        slots.map((slot) => (
+          <CardAppoint
+            key={slot.id}
+            slot={slot}
+            id={id}
+            date={[startDate?.getFullYear(), startDate?.getMonth() + 1, startDate?.getDate()].join(
+              '-',
+            )}
+          />
+        ))}
     </>
   );
 }
