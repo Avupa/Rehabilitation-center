@@ -26,8 +26,8 @@ function Navbar(): JSX.Element {
           <div className="nav_links">
             <Link to="/procedure">Услуги</Link>
             <Link to="/doctors">Специалисты</Link>
-            <Link to="/price">Отзывы</Link>
-            <Link to="/price">О клинике</Link>
+            <Link to="/reviews">Отзывы</Link>
+            <Link to="/info">О клинике</Link>
             <Link to="/price">Цены</Link>
             <Link to="/appointment">Запись</Link>
 
