@@ -1,30 +1,52 @@
-'use strict';
-const bcrypt = require('bcrypt');
+"use strict";
+const bcrypt = require("bcrypt");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      'Users',
+      "Users",
       [
         {
-          firstName: 'Владислав',
-          secondName: 'Ефимов',
-          patronymic: 'Александрович',
-          telephone: '666',
-          email: '1a@1',
+          firstName: "Иван",
+          secondName: "Иванович",
+          patronymic: "Иванов",
+          telephone: "88005553535",
+          email: "1@1",
           isAdmin: true,
-          password: await bcrypt.hash('123', 10),
+          password: await bcrypt.hash("123", 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          firstName: 'СерГей',
-          secondName: 'Оганов',
-          patronymic: 'Суренович',
-          telephone: '89999999999',
-          email: '1@1',
+          firstName: "Бульба",
+          secondName: "Бульбанов",
+          patronymic: "Бульбович",
+          telephone: "88005553536",
+          email: "2@2",
           isAdmin: false,
-          password: await bcrypt.hash('123', 10),
+          password: await bcrypt.hash("123", 10),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          firstName: "Гульнара",
+          secondName: "Витаминка",
+          patronymic: "Гусьяновна",
+          telephone: "88005553537",
+          email: "3@3",
+          isAdmin: false,
+          password: await bcrypt.hash("123", 10),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          firstName: "Ашот",
+          secondName: "Рустаслав",
+          patronymic: "Айсолович",
+          telephone: "88005553538",
+          email: "4@4",
+          isAdmin: false,
+          password: await bcrypt.hash("123", 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

@@ -17,12 +17,16 @@ import MyAppointment from '../features/profile/components/myAppointment/MyAppoin
 import ProfileNavbar from '../features/profile/profileNavbar/ProfileNavbar';
 import Help from '../features/help/Help';
 import Check from '../features/profile/Check';
+import Reviews from '../features/reviews/Reviews';
+
 
 import ErrorPage from '../features/404/404';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
 import { initProcedures } from '../features/procedure/redux/procedureSlice';
+import { initReviews } from '../features/reviews/redux/reviewsSlice';
+
 
 import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
@@ -34,6 +38,7 @@ function App(): JSX.Element {
     void dispatch(initProcedures());
     void dispatch(initDoctors());
     void dispatch(check());
+    void dispatch(initReviews());
   }, [dispatch]);
 
   useEffect(() => {
@@ -57,6 +62,7 @@ function App(): JSX.Element {
           <Route path="price" element={<Price />} />
           <Route path="appointment" element={<Appointment />} />
           <Route path="doctors" element={<Doctors />} />
+          <Route path="reviews" element={<Reviews />} />
           <Route path="procedure" element={<Procedure />} />
           <Route path="admin" element={<Admin />} />
           <Route path="auth/sign-in" element={<LoginPage />} />
