@@ -13,13 +13,20 @@ export default defineConfig({
   ],
   server: {
     proxy: {
+      '/ws': {
+        target: 'ws://127.0.0.1:3000',
+        changeOrigin: true,
+        ws:true
+      },
       '/api': {
         target: 'http://localhost:4000/',
         changeOrigin: true,
+        ws:true
       },
       '/img': {
         target: 'http://localhost:4000/',
         changeOrigin: true,
+        ws:true
       },
     },
   },

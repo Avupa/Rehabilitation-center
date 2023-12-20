@@ -6,12 +6,14 @@ module.exports = function createWs() {
   const serverWs = new ws.Server({ port: 3000 });
 
   serverWs.on('connection', (wsClient) => {
-    console.log('Привет в чате');
+    console.log('Всем ку');
     wsClient.on('message', async (message) => {
       const data = JSON.parse(message);
       const newMessage = await Chat.create({
-        content: data.message,
-        userId: data.id,
+        content: data.content,
+        senderId: data.senderId,
+        recipientId: data.recipientId,
+        chatId: data.chatId
       });
       const messageChat = await Chat.findOne({
         where: { id: newMessage.id },
@@ -23,7 +25,7 @@ module.exports = function createWs() {
     });
 
     wsClient.on('close', () => {
-      console.log('кто то ушел');
+      console.log('Я ушел');
     });
   });
 };
