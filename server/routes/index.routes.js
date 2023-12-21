@@ -9,10 +9,8 @@ const appointApiRouter = require('./api/appoint.api.routes');
 const procedureApiRouter = require('./api/procedure.api.routes');
 const messagesApiRouter = require('./api/messages.api.routes');
 const chatApiRouter = require('./api/chat.api.routes');
+const priceApiRouter = require('./api/price.api.routes')
 
-// Endpoint Protection
-
-// router.use('/api/users', rejectIfNotAuthorized, usersApiRouter);
 
 router.use('/api/auth', authApiRouter);
 router.use('/api/noNameUsers/', noNameUsersApiRouter);
@@ -22,5 +20,6 @@ router.use('/api/procedures/', procedureApiRouter);
 router.use('/api/reviews/', reviewApiRouter);
 router.use('/api/messages', messagesApiRouter);
 router.use('/api/chat', chatApiRouter);
+router.use('/api/price', priceApiRouter);
 
 module.exports = router;

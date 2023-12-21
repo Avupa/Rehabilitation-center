@@ -10,7 +10,6 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       grade: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       description: {

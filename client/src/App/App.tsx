@@ -21,21 +21,21 @@ import Reviews from '../features/reviews/Reviews';
 
 
 import ErrorPage from '../features/404/404';
-import { RootState, useAppDispatch } from '../store/store';
+import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
 import { initProcedures } from '../features/procedure/redux/procedureSlice';
 import { initReviews } from '../features/reviews/redux/reviewsSlice';
 
 
-import { check, initUserApps } from '../features/auth/authSlice';
+import { check} from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
 import { initSpec } from '../features/appointment/DateSlice';
-import { useSelector } from 'react-redux';
+import { initPrices } from '../features/price/priceSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user=useSelector((store:RootState)=>store.auth.user)
+
 
   useEffect(() => {
     void dispatch(initNoNameUsers());
@@ -43,8 +43,9 @@ function App(): JSX.Element {
     void dispatch(initDoctors());
     void dispatch(initSpec());
     void dispatch(check());
+    void dispatch(initPrices())
     void dispatch(initReviews());
-    if(user){void dispatch(initUserApps(user.id))};
+
   }, [dispatch]);
 
 

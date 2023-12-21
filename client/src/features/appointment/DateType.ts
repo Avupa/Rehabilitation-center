@@ -1,5 +1,4 @@
 
-import type { Appointment} from '../../features/User/userType';
 
 export type TimeSlot={
   id:number,
