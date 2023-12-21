@@ -16,7 +16,7 @@ export type Specialization={
 export type State={
   timeSlot:undefined | TimeSlot[];
   error:string | undefined
-  appointment: Appointment[]| []
+  appointment: TimeSlot[]| []
   specialization:Specialization[]
 }
 

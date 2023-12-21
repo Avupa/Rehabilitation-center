@@ -4,7 +4,6 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-
   margin: 20px;
   padding: 10px;
 }
@@ -23,7 +22,7 @@
 .save {
   background-color: #66bb6a;
 }
-.cardSmall {
+.cardSmall1 {
   background-color: #e4e9ea;
   width: 450px;
   border-radius: 20px;
@@ -32,4 +31,14 @@
   flex-direction: column;
   margin: 20px;
   padding: 10px;
+}
+.cardSmall {
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Выравнивание содержимого по горизонтали */
+  background-color: #d9d9d9;
+  border-radius: 50px;
+  gap: 20px;
+  padding-bottom: 20px;
 }

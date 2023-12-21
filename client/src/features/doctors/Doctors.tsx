@@ -7,7 +7,7 @@ import './style.css';
 function Doctors(): JSX.Element {
   const doctors = useSelector((store: RootState) => store.Doctor.doctors);
   return (
-    <div className="col s4">
+    <div className="main_full_container_wrap">
       {doctors.map((doctor) => (
         <CardDoctor key={doctor.id} doctor={doctor} />
       ))}

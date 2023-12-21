@@ -4,7 +4,6 @@ import * as api from './api';
 import type { IdDoctor } from '../doctors/type';
 
 const initialState: State = {
-  timeSlot: undefined,
   error: undefined,
   appointment:[],
   specialization:[]
@@ -18,7 +17,7 @@ export const findDate = createAsyncThunk('appointment/findDate', ({id, date}: {i
   api.findDateFetch({id, date}),
 );
 
-export const makeAppoint = createAsyncThunk('appointment/makeAppoint', ({ id, date, slot }: { id: number; date: string , slot:TimeSlot}) =>
+export const makeAppoint = createAsyncThunk('appointment/makeAppoint', ({ id, date, slot }: { id: IdDoctor; date: string , slot:TimeSlot}) =>
   api.makeAppointFetch({id, date, slot}),
 );
 
@@ -30,7 +29,7 @@ const DateSlice = createSlice({
     builder
 
       .addCase(findDate.fulfilled, (state, action) => {
-        state.timeSlot = action.payload;
+        state.appointment = action.payload;
       })
       .addCase(findDate.rejected, (state, action) => {
         state.error = action.error.message;
@@ -44,8 +43,8 @@ const DateSlice = createSlice({
       })
 
       .addCase(makeAppoint.fulfilled, (state, action) => {
-        state.appointment.push(action.payload);
-        state.timeSlot =state.timeSlot?.filter(slot=>slot.date!=action.payload.date && slot.time!=action.payload.time )
+        //state.appointment.push(action.payload);
+        state.appointment =state.appointment.filter(slot=>slot.timeSlot!=action.payload.time )
       })
       .addCase(makeAppoint.rejected, (state, action) => {
         state.error = action.error.message;

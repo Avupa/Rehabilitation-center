@@ -2,7 +2,7 @@ import {
     createAsyncThunk,
     createSlice,
    } from '@reduxjs/toolkit';
-   import type { IdNoNameUser, State} from './type';
+   import type { IdNoNameUser, NoNameUserWithoutID, State} from './type';
    import * as api from './api';
 
    const initialState:State = {
@@ -14,6 +14,10 @@ import {
     'noNameUsers/init',
     () =>  api.initNoNameUserFetch()
    );
+
+   export const addNoNameUsers=createAsyncThunk('noNameUsers/add',
+   (obj:NoNameUserWithoutID)=>api.addNoNameUserFetch(obj));
+
    export const deleteNoNameUsers = createAsyncThunk(
     'noNameUsers/delete',
     (id:IdNoNameUser) =>  api.delFetchNoNameUser(id)
@@ -34,12 +38,19 @@ import {
           state.error = action.error.message;
         })
 
-          .addCase(deleteNoNameUsers.fulfilled, (state, action) => {
-            state.noNameUsers = state.noNameUsers.filter(noNameUser=>noNameUser.id !== action.payload);
+        .addCase(addNoNameUsers.fulfilled, (state, action) => {
+          state.noNameUsers = state.noNameUsers.push(action.payload);
           })
-          .addCase(deleteNoNameUsers.rejected, (state, action) => {
-            state.error = action.error.message;
+        .addCase(addNoNameUsers.rejected, (state, action) => {
+          state.error = action.error.message;
+        })
+
+        .addCase(deleteNoNameUsers.fulfilled, (state, action) => {
+          state.noNameUsers = state.noNameUsers.filter(noNameUser=>noNameUser.id !== action.payload);
           })
+        .addCase(deleteNoNameUsers.rejected, (state, action) => {
+          state.error = action.error.message;
+        })
     },
    });
    

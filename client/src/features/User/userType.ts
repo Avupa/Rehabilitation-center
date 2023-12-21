@@ -15,9 +15,7 @@ export type User={
 export type UserWithoutRoleApp = Omit<User, 'isAdmin' | 'appointment'>;
  
 export type Appointment={
-  firstName:Doctor['firstName'];
-  secondName:Doctor['secondName'];
-  patronymic:Doctor['patronymic'];
-  date:string;
-  time:string
+  Doctor:string;
+  data:string;
+  timeSlot:string
 }

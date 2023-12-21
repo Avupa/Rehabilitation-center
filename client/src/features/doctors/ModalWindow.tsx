@@ -19,6 +19,8 @@ function ModalWindow({
   };
 
   return (
+   
+    <div className='modal active'>
     <div className="modal_content">
       вы точно хотите удалить этого специалиста?
       <button type="button" onClick={del}>
@@ -27,6 +29,7 @@ function ModalWindow({
       <button type="button" onClick={() => setShowDelete(false)}>
         нет
       </button>
+    </div>
     </div>
   );
 }

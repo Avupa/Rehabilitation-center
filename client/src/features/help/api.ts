@@ -1,11 +1,11 @@
-import type { Message, MessageWithSender } from './type';
+import type { Message, MessageWithSender, MessageWithoutId } from './type';
 
 export const initMessagesFetch = async (id: Message['senderId']): Promise<MessageWithSender[]> => {
   const data = await (await fetch(`/api/messages/${id}`)).json();
   return data.messages;
 };
 
-export const sendMessageFetch = async (obj: Message): Promise<MessageWithSender | string> => {
+export const sendMessageFetch = async (obj: MessageWithoutId): Promise<MessageWithSender | string> => {
   console.log(obj);
 
   const data = await (
