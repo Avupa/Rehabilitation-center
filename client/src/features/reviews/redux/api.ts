@@ -10,6 +10,8 @@ export const addFetchReviews = async (obj: FormData): Promise<Review> => {
     method: 'POST',
     body: obj,
   });
+  console.log(body);
+  
   if (!res.ok) {
     const { message } = await res.json();
     throw message;
