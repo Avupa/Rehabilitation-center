@@ -21,9 +21,15 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
   return (
     <div className="cardSmall">
       <img className="img" src={doctor.img} alt="img" />
-      <div>
-        {doctor.firstName} {doctor.secondName} {doctor.patronymic}
-      </div>
+      <p className='docName'>
+        {doctor.firstName}
+      </p>
+      <p className='docName'>
+       {doctor.secondName}
+      </p>
+      <p className='docName'>
+        {doctor.patronymic}
+      </p>
       {!showAll && (
         <button className="main_link_button h-10 w-40" onClick={() => setShowAll(true)}>
           Подробнее
