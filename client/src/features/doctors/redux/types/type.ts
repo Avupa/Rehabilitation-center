@@ -1,4 +1,4 @@
-import type { Specialization } from "../appointment/DateType";
+import type { Specialization } from '../../../appointment/DateType';
 
 export type State = {
   doctors: Doctor[];
@@ -19,4 +19,4 @@ export type Doctor = {
 
 export type IdDoctor = Doctor['id'];
 
-export type DoctorWithOutPhoto=Omit <Doctor , ('img') >
+export type DoctorWithOutPhoto = Omit<Doctor, 'img'>;

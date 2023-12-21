@@ -1,4 +1,4 @@
-import type { Doctor, IdDoctor } from './type';
+import type { Doctor, IdDoctor } from './types/type';
 
 export const initDoctorFetch = async (): Promise<Doctor[]> => {
   const data: Doctor[] = await (await fetch('/api/doctors/')).json();
@@ -6,7 +6,6 @@ export const initDoctorFetch = async (): Promise<Doctor[]> => {
 };
 
 export const addFetchDoctor = async (obj: FormData): Promise<Doctor> => {
-
   const res = await fetch('/api/doctors/add', {
     method: 'POST',
     body: obj,
@@ -28,16 +27,15 @@ export const delFetchDoctor = async (id: IdDoctor): Promise<IdDoctor> => {
   return data.id;
 };
 
-export const updateFetchDoctor = async (id:IdDoctor, obj: FormData): Promise<Doctor> => {
+export const updateFetchDoctor = async (id: IdDoctor, obj: FormData): Promise<Doctor> => {
   console.log(id, 'iiiiiiiii');
   console.log(obj, 'gggggggg');
 
-  
-  const data:Doctor= await (
+  const data: Doctor = await (
     await fetch(`/api/doctors/update/${id}`, {
       method: 'PUT',
-  body: obj,
-  })).json();
-  return data
-  };
-
+      body: obj,
+    })
+  ).json();
+  return data;
+};
