@@ -8,6 +8,7 @@ const reviewApiRouter = require('./api/review.api.routes');
 const appointApiRouter = require('./api/appoint.api.routes');
 const procedureApiRouter = require('./api/procedure.api.routes');
 const messagesApiRouter = require('./api/messages.api.routes');
+const chatApiRouter = require('./api/chat.api.routes');
 
 // Endpoint Protection
 
@@ -20,5 +21,6 @@ router.use('/api/appointment/', appointApiRouter);
 router.use('/api/procedures/', procedureApiRouter);
 router.use('/api/reviews/', reviewApiRouter);
 router.use('/api/messages', messagesApiRouter);
+router.use('/api/chat', chatApiRouter);
 
 module.exports = router;

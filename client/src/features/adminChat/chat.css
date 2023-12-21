@@ -1,8 +1,28 @@
 .chatContainer {
   display: flex;
+  margin: 20px;
 }
 .chats {
-  display: flex;
   width: 300px;
-  flex-wrap: wrap;
+}
+
+.btnChats {
+  border: 1px solid #f4b659;
+  border-radius: 15px;
+  width: 200px;
+  height: 75px;
+  margin: 5px;
+}
+
+textarea {
+  border: 1px solid black;
+  display: block;
+  border-radius: 10px;
+  width: 1000px;
+  height: 100px;
+}
+
+.nameMessage {
+  color: gray;
+  font-size: 16px;
 }

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import MessageRow from '../help/MessageRow';
+import * as api from '../help/api';
 import type { RootState } from '../../store/store';
-import './help.css';
-import MessageRow from './MessageRow';
-import * as api from './api';
-import type { MessageWithSender, MessageWithoutId } from './type';
+import type { MessageWithSender, MessageWithoutId } from '../help/type';
 
-function Help(): JSX.Element {
+function PersonalChat({ chatId }: { chatId: number }): JSX.Element {
   const [messages, setMessages] = useState<MessageWithSender[]>([]);
   const [newContent, setNewContent] = useState('');
   const [err, setErr] = useState('');
@@ -17,14 +16,14 @@ function Help(): JSX.Element {
     if (user) {
       // Сразу загружаем всю переписку
       api
-        .initMessagesFetch(user.id)
+        .initMessagesFetch(chatId)
         .then((data) => setMessages(data))
         .catch((error) => console.log(error));
       // Тут обновляем данные каждые 5 секунд
       updateMessages = setInterval(
         () =>
           api
-            .initMessagesFetch(user.id)
+            .initMessagesFetch(chatId)
             /* Если длина массива, который у нас в стейте не равна длине массива, который нам пришел из БД
             Значит произошли изменения => меняем стейт для отрисовки */
             .then((data) => data.length !== messages.length && setMessages(data))
@@ -33,15 +32,15 @@ function Help(): JSX.Element {
       );
     }
     return () => clearInterval(updateMessages);
-  }, []);
+  }, [chatId]);
 
   const sendMessage = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const newMessage: MessageWithoutId = {
-      chatId: user.id,
-      senderId: user.id,
+      chatId,
+      senderId: user?.id,
       content: newContent,
-      recipientId: 1,
+      recipientId: chatId,
     };
     api
       .sendMessageFetch(newMessage)
@@ -52,10 +51,17 @@ function Help(): JSX.Element {
     setNewContent('');
   };
 
+  const checkButton = (e: React.KeyboardEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    if (e.key === 'Enter') {
+      sendMessage(e);
+    }
+  };
+
   return (
     <div className="bg-grey w-full h-full">
-      <p className="text-green-500">Помощь</p>
-      <div className="messagesContainer">
+      <p className="text-green-500">{chatId}</p>
+      <div>
         {messages.map((message) => (
           <MessageRow message={message} key={message.id} />
         ))}
@@ -70,7 +76,7 @@ function Help(): JSX.Element {
           }}
         >
           <textarea value={newContent} onChange={(e) => setNewContent(e.target.value)} />
-          <button type="submit">Send</button>
+          <button type="submit">Отправить</button>
           <div>{err}</div>
         </form>
       </div>
@@ -78,4 +84,4 @@ function Help(): JSX.Element {
   );
 }
 
-export default Help;
+export default PersonalChat;

@@ -5,7 +5,7 @@ import DoctorAdd from '../doctors/DoctorAdd';
 import type { TTab } from './type';
 import Services from '../procedure/Procedure';
 import Doctors from '../doctors/Doctors';
-import Chat from '../adminChat/chat';
+import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
 
 
@@ -38,7 +38,7 @@ function Admin(): JSX.Element {
   <div>Изменить информацию о существующем специалисте<Doctors/></div></div>)}
   {selectedTabId === tabs[2].id && (<div><Services/></div>)}
   {selectedTabId === tabs[3].id && (<div><Services/></div>)}  
-  {selectedTabId === tabs[5].id && (<div><Chat/></div>)}   
+  {selectedTabId === tabs[5].id && (<div><Chats /></div>)}   
   {selectedTabId === tabs[4].id && (<div><Appointment/></div>)}     
         </div>
         </>
