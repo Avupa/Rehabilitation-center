@@ -15,6 +15,10 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
   const [appoint, setAppoint] = useState(false);
   const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
 
+  const handleModalClick = (): void => {
+    setShowAll(false); // Устанавливаем значение showAll в false, чтобы скрыть модальное окно
+  };
+
   return (
     <div className="cardSmall">
       <img className="img" src={doctor.img} alt="img" />
@@ -33,7 +37,12 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
               X
             </button>
           )}
-          {showAll && <div>{doctor.description}</div>}
+          {showAll && (
+            <div className="modal_background" onClick={handleModalClick}>
+              <div className="modal_absolut">{doctor.description}</div>
+            </div>
+          )}
+
           {checkAdmin && (
             <button className="main_link_button h-10 w-40" onClick={() => setShowDelete(true)}>
               Удалить{' '}

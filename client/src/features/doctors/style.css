@@ -50,3 +50,25 @@
   margin: 0;
   padding: 0;
 }
+
+.modal_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный задний фон */
+  display: flex;
+  justify-content: center; /* Выравнивание по горизонтали */
+  align-items: center; /* Выравнивание по вертикали */
+  z-index: 1000; /* Убедитесь, что это значение z-index выше, чем у модального окна */
+}
+
+.modal_absolut {
+  width: 800px;
+  border-radius: 30px;
+  position: absolute; /* Позиционирование модального окна */
+  background-color: white; /* Цвет фона модального окна */
+  padding: 20px; /* Произвольные отступы */
+  z-index: 1001; /* Убедитесь, что это значение z-index выше, чем у заднего фона */
+}
