@@ -3,16 +3,25 @@ const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   try {
-    const uniqueChats = await Chat.findAll({
-      attributes: [
-        'chatId',
-        [sequelize.fn('MAX', sequelize.col('createdAt')), 'last_message_date']
-      ],
-      group: ['chatId'],
-      order: [['chatId'], [sequelize.literal('last_message_date'), 'DESC']],
-    });
+    // const uniqueChats = await Chat.findAll({
+    //   attributes: [
+    //     'chatId',
+    //     [sequelize.fn('MAX', sequelize.col('createdAt')), 'last_message_date']
+    //   ],
+    //   group: ['chatId'],
+    //   order: [['chatId'], [sequelize.literal('last_message_date'), 'DESC']],
+    // });
 
-    const usersId = uniqueChats.map(el => el.chatId)
+    const uniqueChats = await Chat.findAll({
+      attributes: ['chatId', sequelize.fn('max', sequelize.col('createdAt'))],
+      group: ['chatId'],
+      raw: true
+    });
+    
+    uniqueChats.sort((a, b) => b.max - a.max)
+
+    const usersId = uniqueChats.map((el) => el.chatId);
+
     const users = await User.findAll({
       where: {
         id: usersId,
@@ -20,12 +29,21 @@ router.get('/', async (req, res) => {
       attributes: {
         exclude: ['password', 'updatedAt', 'isAdmin', 'createdAt'],
       },
-      raw: true
+      raw: true,
     });
 
-    const chats = uniqueChats.map((chat,index) => ({chatId:chat.chatId, recipient:users[index]}))
+    // const chats = uniqueChats.map((chat, index) => ({
+    //   chatId: chat.chatId,
+    //   recipient: users[index],
+    // }));
 
-    console.log(chats);
+    const chats = uniqueChats.map((chat, index) => {
+      const chatId = chat.chatId;
+      const user = users.find(el => el.id === chatId);
+      return ({chatId, recipient: user})
+    }
+    );
+
     res.json({ chats });
   } catch (error) {
     console.error(error);

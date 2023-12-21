@@ -1,0 +1,15 @@
+.messageRow {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  
+}
+
+.sender {
+  text-align: right;
+}
+
+.messagesContainer {
+  max-width: 1000px;
+}
