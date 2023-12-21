@@ -44,7 +44,6 @@ function App(): JSX.Element {
     void dispatch(initSpec());
     void dispatch(check());
     void dispatch(initReviews());
-    if(user){void dispatch(initUserApps(user.id))};
   }, [dispatch]);
 
 
@@ -58,7 +57,7 @@ function App(): JSX.Element {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [user]);
 
   return (
     <div className="App">

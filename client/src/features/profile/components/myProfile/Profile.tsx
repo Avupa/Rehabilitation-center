@@ -1,19 +1,25 @@
 import React, { useEffect } from 'react';
-import { RootState, useAppDispatch } from '../../../../store/store';
 import { useSelector } from 'react-redux';
+import type { RootState } from '../../../../store/store';
+import { useAppDispatch } from '../../../../store/store';
 import './profile.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TogglePersoneData from '../personalData/Toggle';
 
 import { initUserApps } from '../../../auth/authSlice';
 
 function Profile(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user=useSelector((store:RootState)=>store.auth.user)
+  const user = useSelector((store: RootState) => store.auth.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if(user){void dispatch(initUserApps(user.id))}
-  }, [dispatch, user]);
+    if (user) {
+      void dispatch(initUserApps(user.id));
+    } else {
+      navigate('/auth/sign-in')
+    }
+  }, [dispatch]);
 
   return (
     <div>

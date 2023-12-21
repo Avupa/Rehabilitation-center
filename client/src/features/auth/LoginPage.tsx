@@ -28,8 +28,12 @@ function LoginPage():JSX.Element {
   const {user,error} = useSelector((store: RootState) => store.auth);
 
   useEffect(() => {
-    if (user) {
-      navigate('/');
+    console.log(user);
+  
+    if (user && user.isAdmin) {
+      navigate('/admin');
+    } else if (user) {
+      navigate('/profile')
     }
   }, [user]);
 

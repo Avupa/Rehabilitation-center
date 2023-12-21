@@ -43,6 +43,7 @@ router.post("/registration", async (req, res) => {
             secondName: user.secondName,
             patronymic: user.patronymic,
             telephone: user.telephone,
+            isAdmin: user.isAdmin,
           },
         });
         console.log(accessToken, refreshToken);
@@ -61,6 +62,7 @@ router.post("/registration", async (req, res) => {
             firstName,
             secondName,
             patronymic,
+            isAdmin: user.isAdmin,
             id: user.id,
             email,
             telephone,
@@ -88,6 +90,7 @@ router.post("/login", async (req, res) => {
           user: {
             id: user.id,
             email: user.email,
+            isAdmin: user.isAdmin,
             firstName: user.firstName,
             secondName: user.secondName,
             patronymic: user.patronymic,
@@ -108,6 +111,7 @@ router.post("/login", async (req, res) => {
           .json({
             id: user.id,
             email: user.email,
+            isAdmin: user.isAdmin,
             firstName: user.firstName,
             secondName: user.secondName,
             patronymic: user.patronymic,
@@ -144,8 +148,6 @@ router.get("/check", (req, res) => {
 
 router.post("/initUserApps", async (req, res) => {
   const { id } = req.body;
-  console.log(id, 'OOOOOOOOOOO');
-  console.log(res.locals.user.id, 'OOOOOOOOOOO');
   if(id===res.locals.user.id){
   try {
       const user = await User.findOne({
