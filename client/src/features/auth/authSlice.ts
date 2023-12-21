@@ -59,6 +59,8 @@ const authSlice = createSlice({
 
       .addCase(initUserApps.fulfilled, (state, action) => {
         state.user.appointment = action.payload;
+        console.log(state.user.appointment);
+        
         // const navigate = useNavigate();
         // navigate('/')
       })

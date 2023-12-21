@@ -45,7 +45,7 @@ function App(): JSX.Element {
     void dispatch(check());
     void dispatch(initReviews());
     if(user){void dispatch(initUserApps(user.id))};
-  }, [dispatch, user]);
+  }, [dispatch]);
 
 
   useEffect(() => {
