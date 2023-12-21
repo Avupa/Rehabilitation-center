@@ -17,7 +17,7 @@ function InputReview(): JSX.Element {
   const [reviewsSections, setReviewsSections] = useState<JSX.Element[]>([]);
   const [selectedRadio, setSelectedRadio] = useState<number>(0);
   const [descriptionInput, setDescriptionInput] = useState<string>();
-  const [star, setStar] = useState<number>(0);
+  const [star, setStar] = useState<number>(1);
 
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -34,7 +34,7 @@ function InputReview(): JSX.Element {
     setContainerHeight('500px');
     setTimeout(() => {
       setDoctorsList(true);
-    }, 1000);
+    }, 800);
   };
 
   const handleCardClick = (doctor: Doctor): void => {

@@ -14,12 +14,16 @@ function ReviewCard({ review }: TypeReviewCard): JSX.Element {
     const maxLines = Math.floor(containerHeight / averageCharacterHeight); // Максимальное количество строк
 
     const maxCharacters = maxCharactersPerLine * maxLines; // Окончательное максимальное количество символов
-
-    if (text.length > maxCharacters) {
-      return `${text.substring(0, maxCharacters)}...`;
+    if (typeof text === 'string') {
+      if (text.length > maxCharacters) {
+        return `${text.substring(0, maxCharacters)}...`;
+      }
+      return text;
     }
-    return text;
   }
+
+  // Обработка текста
+  const shortenedDescription = ShortenText(review.description, 360, 200);
 
   return (
     <div
@@ -33,11 +37,11 @@ function ReviewCard({ review }: TypeReviewCard): JSX.Element {
         {Array(5)
           .fill(null)
           .map((_, index) => (
-            <div className={`star ${index < review.grade ? 'background_gold' : ''}`} />
+            <div key={index} className={`star ${index < review.grade ? 'background_gold' : ''}`} />
           ))}
       </div>
       <div>
-        <p className="text-lg">{ShortenText(review.description, 360, 200)}</p>
+        <p className="text-lg">{shortenedDescription}</p>
       </div>
     </div>
   );
