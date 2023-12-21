@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { RootState, useAppDispatch } from '../../../../store/store';
+import { useSelector } from 'react-redux';
 import './profile.css';
 import { Link } from 'react-router-dom';
 import TogglePersoneData from '../personalData/Toggle';
 
+import { initUserApps } from '../../../auth/authSlice';
+
 function Profile(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const user=useSelector((store:RootState)=>store.auth.user)
+
+  useEffect(() => {
+    if(user){void dispatch(initUserApps(user.id))}
+  }, [dispatch, user]);
+
   return (
     <div>
       <TogglePersoneData />

@@ -12,10 +12,13 @@ setActive(false)
 }
   
   return (
+    <div className='modal active'>
     <div className="modal_content">
    вы точно хотите удалить этот запрос?
+   
    <button type='button'onClick={del} >да</button>
    <button type='button' onClick={()=>setActive(false)}>нет</button>
+      </div>
       </div>
   )
 }

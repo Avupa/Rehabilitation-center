@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Procedure, Category} = require("../../db/models");
+const { rejectIfNotAdmin } = require("../../middleware/auth");
 
 //INIT
 router.get("/", async (req, res) => {
@@ -16,7 +17,7 @@ router.get("/", async (req, res) => {
 
 //ADD
 
-router.post("/add", async (req, res) => {
+router.post("/add",  async (req, res) => {
   const { name, description, categoryId } = req.body;
   //   console.log(req.body, "req");
   try {
@@ -37,7 +38,7 @@ router.post("/add", async (req, res) => {
 
 //DELETE
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",  async (req, res) => {
   try {
     const procedure = await Procedure.findOne({ where: { id: req.params.id } });
     if (procedure) {
@@ -57,7 +58,7 @@ router.delete("/:id", async (req, res) => {
 
 //UPDATE
 
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id",  async (req, res) => {
   const { id } = req.params;
   const { name, description, categoryId } = req.body;
   //   console.log(id, name, description, categoryId);

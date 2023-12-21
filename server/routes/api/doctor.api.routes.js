@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Doctor, SpecialOfDoctor, Specialization } = require("../../db/models");
+const { Doctor, SpecialOfDoctor, Specialization, User } = require("../../db/models");
+const { rejectIfNotAdmin } = require("../../middleware/auth");
 const upload = require('../../utils/uploadMulter');
 
 //INIT
@@ -19,6 +20,10 @@ router.get("/", async (req, res) => {
 //ADD
 
 router.post("/add", upload.single('photo'), async (req, res) => {
+  const initiator=res.locals.user.id
+  const isHeAdmin=await User.findOne({where:{id:initiator, isAdmin:true}})
+  console.log(isHeAdmin);
+  if(isHeAdmin.isAdmin){
   const uploadedFile = req.file;
   //console.log(uploadedFile);
   const filePath = uploadedFile.path.replace('public', '');
@@ -40,9 +45,12 @@ router.post("/add", upload.single('photo'), async (req, res) => {
     }
   } catch (message) {
     res.status(500).json({ message, action: false, dop:'me'  });
-
   }
-});
+}else{
+  res.status(403).json({ message:"you are not admin", action: false });
+}
+}
+);
 
 //DELETE
 
@@ -79,7 +87,9 @@ router.put("/update/:id", upload.single('photo'), async (req, res) => {
       { where: { id } }
     );
     if (updateDoctor > 0) {
-      const data = await Doctor.findOne({ where: { id } });
+      const data = await Doctor.findOne({ where: { id } , attributes: {
+        exclude: ['updatedAt',  'createdAt'],
+      } });
       res.json(data);
     } else {
       res.json({ message: "Doctor wasnot updated", action: false });

@@ -10,3 +10,4 @@ export type NoNameUser={
     description:string;}
 
 export type IdNoNameUser=NoNameUser['id']
+export type NoNameUserWithoutID=Omit<NoNameUser, 'id'>
