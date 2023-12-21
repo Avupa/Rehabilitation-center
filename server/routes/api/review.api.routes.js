@@ -18,15 +18,20 @@ router.get("/", async (req, res) => {
 //ADD
 
 router.post("/add", async (req, res) => {
-  const { grade, description, doctorId, userId } = req.body;
-  console.log(req.body, "////////////////////////////////////");
+  const { description, doctorId, userId } = req.body;
+
   try {
-    const data = await Review.create({
-      grade,
+    const data1 = await Review.create({
+      grade: 0,
       description,
-      doctorId,
-      userId,
+      doctorId: +doctorId,
+      userId: +userId,
     });
+    const data = await Review.findOne({
+      where: { id: data1.id },
+      include: [{ model: User }, { model: Doctor }],
+    });
+
     if (data) {
       res.send({ message: "Review was added", action: true, data });
     } else {
