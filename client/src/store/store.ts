@@ -7,6 +7,7 @@ import authSlice from '../features/auth/authSlice';
 import proceduresSlice from '../features/procedure/redux/procedureSlice';
 import DateSlice from '../features/appointment/DateSlice';
 import reviewsSlice from '../features/reviews/redux/reviewsSlice';
+import priceSlice from '../features/price/priceSlice';
 
 // Слайсы - это отдельные модули нашего приложения. У каждого слайса - свой редьюсер.
 
@@ -20,6 +21,7 @@ const store = configureStore({
    appoint:DateSlice,
    Procedure: proceduresSlice,
    Review: reviewsSlice,
+   prices:priceSlice
  },
 
 });

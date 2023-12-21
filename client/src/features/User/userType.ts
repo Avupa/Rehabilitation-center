@@ -1,5 +1,4 @@
 
-import type { Doctor } from "../doctors/type";
 
 export type User={
   id:number;

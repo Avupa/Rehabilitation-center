@@ -17,7 +17,8 @@ function InputReview(): JSX.Element {
   const [reviewsSections, setReviewsSections] = useState<JSX.Element[]>([]);
   const [selectedRadio, setSelectedRadio] = useState<number>(0);
   const [descriptionInput, setDescriptionInput] = useState<string>();
-  const [star, setStar] = useState<number>(1);
+  //const [star, setStar] = useState<number>(1);
+  const [thank, setThank]=useState<boolean>(true)
 
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
@@ -113,18 +114,19 @@ function InputReview(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const reviewAdd = (): void => {
-    const grad = star;
+    //const grad = star;
     const description = descriptionInput;
     const userId = user?.id;
     const doctorId = сhoice?.id;
     const body = {
-      grad,
+      //grad,
       description,
       doctorId,
       userId,
     };
     try {
       dispatch(addReviews(body));
+      setThank(false)
     } catch (error) {
       console.error(error);
     }
@@ -133,10 +135,14 @@ function InputReview(): JSX.Element {
   return (
     <div>
       <div className="header">
-        <p>Здесь вы можете поделиться своим комментарием</p>
-      </div>
+       {thank ? <p>Здесь вы можете поделиться своим комментарием</p>:
+       <p>Спасибо за ваш отзыв</p>}
+     </div>
       {user ? (
         <>
+        {thank && 
+          (
+            <>
           <div className="main_full_container_wrap" style={{ padding: '10', margin: '10' }}>
             <div
               id="container_list_doctors"
@@ -255,7 +261,8 @@ function InputReview(): JSX.Element {
               </button>
             </div>
           </div>
-          s
+          </>)
+}
         </>
       ) : (
         <div>
@@ -267,7 +274,7 @@ function InputReview(): JSX.Element {
             </p>
           </div>
           <div className="main_full_container_wrap">
-            <Link to="auth/sign-in">
+            <Link to="/auth/sign-in">
               <div
                 className="main_link_button"
                 style={{ width: '500px', height: '120px', fontSize: '38px' }}

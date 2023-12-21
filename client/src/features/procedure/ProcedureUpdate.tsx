@@ -1,16 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import type { RootState } from '@reduxjs/toolkit/query';
 
 import { updateProcedures } from './redux/procedureSlice';
-import { useAppDispatch } from '../../store/store';
+import {  useAppDispatch } from '../../store/store';
 import type { Procedure } from './redux/types/type';
 
 
 
 function ProcedureUpdate({ procedure, setShowUpdate }: { procedure: Procedure , setShowUpdate: (status: boolean) => void;}): JSX.Element {
-  const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
 
  const dispatch = useAppDispatch();
   const [name, setName] = useState(procedure.name);

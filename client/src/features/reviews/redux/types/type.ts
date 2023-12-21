@@ -8,7 +8,7 @@ export type State = {
 
 export type Review = {
   id: number;
-  grade: number;
+  grade?: number;
   description: string;
   doctorId?: number;
   userId: number;

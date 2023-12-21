@@ -19,7 +19,7 @@ export const addFetchReviews = async (obj: ReviewWithoutId): Promise<Review> => 
     throw message;
   }
   const data: Review = await res.json();
-  return data;
+  return data.data;
 };
 
 export const delFetchReviews = async (id: IdReview): Promise<IdReview> => {

@@ -1,4 +1,4 @@
-import  type { Appointment} from '../User/userType';
+
 import type { IdDoctor } from '../doctors/type';
 import type { Specialization, TimeSlot } from './DateType';
 
