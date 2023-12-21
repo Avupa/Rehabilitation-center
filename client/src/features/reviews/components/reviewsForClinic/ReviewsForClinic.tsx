@@ -9,10 +9,11 @@ type TypeReviewsForDoctors = {
 function ReviewsForDoctors({ reviews }: TypeReviewsForDoctors): JSX.Element {
   const [selectedRadio, setSelectedRadio] = useState<number>(0);
   const [reviewsSections, setReviewsSections] = useState<JSX.Element[]>([]);
+  const [filtered, setFiltered] = useState<Review[]>([]);
 
   useEffect(() => {
     const filteredReviews = reviews.filter((review) => review.Doctor === null);
-
+    setFiltered(filteredReviews);
     const newSections = Array.from(
       { length: Math.ceil(filteredReviews.length / 3) },
       (_, index) => {
@@ -36,19 +37,22 @@ function ReviewsForDoctors({ reviews }: TypeReviewsForDoctors): JSX.Element {
   }, [reviews, selectedRadio]);
 
   // Генерируем радиокнопки
-  const radioElements = Array.from({ length: Math.ceil(reviews.length / 3) }, (_, index) => (
-    <div key={index} className="main_full_container_wrap gap-5">
-      <input
-        type="radio"
-        id={`radioClinic-${index}`}
-        name="reviewSelectionClinic"
-        value={index}
-        checked={selectedRadio === index}
-        onChange={() => setSelectedRadio(index)}
-      />
-      <label htmlFor={`radioClinic-${index}`} />
-    </div>
-  ));
+  const radioElements = Array.from(
+    { length: Math.ceil(filtered.length / 3) },
+    (_, index) => (
+      <div key={index} className="main_full_container_wrap gap-5">
+        <input
+          type="radio"
+          id={`radioClinic-${index}`}
+          name="reviewSelectionClinic"
+          value={index}
+          checked={selectedRadio === index}
+          onChange={() => setSelectedRadio(index)}
+        />
+        <label htmlFor={`radioClinic-${index}`} />
+      </div>
+    ),
+  );
 
   return (
     <div>
