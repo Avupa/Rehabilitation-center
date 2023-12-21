@@ -7,10 +7,7 @@ import './stile.css';
 
 function Services(): JSX.Element {
   const procedures = useSelector((store: RootState) => store.Procedure.procedures);
-      //const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
-      const checkAdmin = true
-
-  //   console.log(procedures);
+  const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
 
   return (
     <div>

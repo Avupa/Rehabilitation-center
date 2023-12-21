@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
 import ReviewsForClinic from './components/reviewsForClinic/ReviewsForClinic';
 import ReviewsForDoctors from './components/reviewsForDoctors/ReviewsForDoctors';
-import InputReview from './components/inputReview/inputReview';
+import InputReview from './components/inputReview/InputReview';
 
 function Reviews(): JSX.Element {
   const reviews = useSelector((store: RootState) => store.Review.reviews);

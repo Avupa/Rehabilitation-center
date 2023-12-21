@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './myAppointment.css';
+import { useSelector} from 'react-redux';
+import type { RootState } from '../../../../store/store';
 
 function MyAppointment(): JSX.Element {
-  const initTable = (): string[][] => [
-    ['ДАТА', 'ВРАЧ', 'ПРИЕМ', 'ДЕЙСТВИЯ'],
-    ['24.11.2000', 'Руся', 'АЛЁ', 'Массаж простаты'],
-    ['24.11.2012', 'Даниил', 'МАЛЁ', 'Массаж для похудения(жри и худей)'],
-    ['24.11.2014', 'Вита', 'Как все заебало', 'Массаж головы'],
-  ];
-
-  const table = useState<string[][]>(initTable); // Уточнение типа для "table"
+  const myAppointment=useSelector((store:RootState)=>store.auth.user?.appointment)
+  console.log(myAppointment);
 
   return (
     <div>
       <table className="myTable">
         <tbody>
-          {table[0].map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => (
-                <td key={cellIndex}>{cell}</td>
-              ))}
+          {myAppointment.map((appoint) => (
+            <tr>
+                <td>{appoint.data}</td>
+                <td>{appoint.timeSlot}</td>
+                <td>{appoint.Doctor}</td>
             </tr>
           ))}
         </tbody>

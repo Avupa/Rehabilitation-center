@@ -1,15 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../../../../public/img/icon/logo-Rehabilitation-center.png';
 import iconProfile from '../../../../public/img/icon/profile-icon.png';
 import './profileNavbar.css';
-import { useAppDispatch } from '../../../store/store';
+import { RootState, useAppDispatch } from '../../../store/store';
 import { logout } from '../../auth/authSlice';
 import * as api from '../../auth/api'
+
 
 function ProfileNavbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const user=useSelector((store:RootState)=>store.auth.user)
 
   const handleLogout: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
     event.preventDefault();
@@ -53,7 +56,7 @@ function ProfileNavbar(): JSX.Element {
       </div>
       <div className="profile_right_container">
         <div className="user_info">
-          <p>Имя фамилия</p>
+          <p>{`${user?.firstName} ${user?.patronymic} ${user?.secondName}`}</p>
           <img src={iconProfile} alt="User Avatar" className="logo" />
         </div>
         <Outlet />

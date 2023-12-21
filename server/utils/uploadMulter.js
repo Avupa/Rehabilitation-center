@@ -16,9 +16,9 @@ const storage = multer.diskStorage({
         "-" +
         uniqueSuffix +
         "." +
-        //"jpg"
+        "jpg"
         //mime.getExtension(file.mimetype)
-        mime.lookup(file)
+        //mime.lookup(file)
     );
   },
 });

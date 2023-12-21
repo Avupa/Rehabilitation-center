@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { Login, Rega, State } from './authType';
 import * as api from './api';
+import { User } from '../User/userType';
 
 const initialState: State = {
   user: undefined,
@@ -16,6 +17,8 @@ export const login = createAsyncThunk('auth/login', (obj: Login) => api.loginFet
 export const logout = createAsyncThunk('auth/logout', () => api.logoutFetch());
 
 export const check = createAsyncThunk('auth/check', () => api.checkFetch());
+
+export const initUserApps=createAsyncThunk('auth/apps', (id:User['id']) => api.initUserAppsFetch(id));
 
 const authSlice = createSlice({
   name: 'auth',
@@ -52,7 +55,16 @@ const authSlice = createSlice({
       })
       .addCase(check.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
+
+      .addCase(initUserApps.fulfilled, (state, action) => {
+        state.user.appointment = action.payload;
+        // const navigate = useNavigate();
+        // navigate('/')
+      })
+      .addCase(initUserApps.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
   },
 });
 

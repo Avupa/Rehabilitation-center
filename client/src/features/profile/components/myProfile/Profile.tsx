@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import TogglePersoneData from '../personalData/Toggle';
 
 function Profile(): JSX.Element {
+
   return (
     <div>
       <TogglePersoneData />

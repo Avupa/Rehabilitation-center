@@ -13,10 +13,12 @@ setShowDelete(false)
 }
   
   return (
+    <div className='modal active'>
     <div className="modal_content">
    вы точно хотите удалить этот запрос?
    <button className=""  onClick={del} >да</button>
    <button className="" onClick={()=>setShowDelete(false)}>нет</button>
+      </div>
       </div>
   )
 }

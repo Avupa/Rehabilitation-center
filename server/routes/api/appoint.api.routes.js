@@ -28,19 +28,24 @@ router.get("/initSpec", async (req, res) => {
 
    //MAKE APPOINTMENT
 router.post("/makeAppoint", async (req, res) => {
-  const userID='1' //change then you have registration
-  const {slot}=req.body
+ //change then you have registration  const userID='1' 
+ if(res.locals.user.id){
+ const userID=res.locals.user.id
+  const {id, date, slot}=req.body
   console.log(slot);
     try {
       const newApp=await Appointment.create({userId:userID})
       console.log(newApp);
-      const oneSlots = await Schedule.findOne({where: {doctorId:slot.id, data:slot.date, timeSlot:slot.slot}});
+      const oneSlots = await Schedule.findOne({where: {doctorId:id, data:date, timeSlot:slot}});
       const updateSlot=await Schedule.update({appointmentId:newApp.id},{ where: { id:oneSlots.id } })
       console.log('first', updateSlot);
-      res.status(200).json({updateSlot});
+      res.status(200).json({id:oneSlots.id, date:oneSlots.data, time:oneSlots.timeSlot});
     } catch (error) {
       res.status(500).json({ message: error });
     }
+  }else{
+    
+  }
   });
 
    module.exports = router;

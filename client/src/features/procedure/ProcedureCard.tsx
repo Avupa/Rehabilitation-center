@@ -1,15 +1,18 @@
 import type { CSSProperties } from 'react';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import type { Procedure } from './redux/types/type';
 import arrow from '../../../public/img/icon/arrow/Arrow-green.png';
 import './stile.css';
 import ProcedureUpdate from './ProcedureUpdate';
 import ModalWindow from './ModalWindow';
+import type { RootState } from '../../store/store';
+
+
 
 function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
-    //const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
-  const checkAdmin = true
+  const checkAdmin = useSelector((store: RootState) => store.auth.user?.isAdmin);
   const [isExpanded, setIsExpanded] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [showUpdate, setShowUpdate]= useState(false);

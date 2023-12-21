@@ -6,10 +6,11 @@ import type { IdDoctor } from '../doctors/type';
 import { findDate } from './DateSlice';
 import CardAppoint from './AppointCard';
 import { useAppDispatch } from '../../store/store';
+import { TimeSlot } from './DateType';
 
 export default function Example({ id }: { id: IdDoctor }): JSX.Element {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [slots,setSlots]=useState()
+  const [slots,setSlots]=useState<TimeSlot|undefined>(undefined)
   const dispatch = useAppDispatch();
 
   useEffect(()=>{
