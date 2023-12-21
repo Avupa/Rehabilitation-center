@@ -5,12 +5,14 @@ import './help.css';
 import MessageRow from './MessageRow';
 import * as api from './api';
 import type { MessageWithSender, MessageWithoutId } from './type';
+import { useNavigate } from 'react-router-dom';
 
 function Help(): JSX.Element {
   const [messages, setMessages] = useState<MessageWithSender[]>([]);
   const [newContent, setNewContent] = useState('');
   const [err, setErr] = useState('');
   const user = useSelector((store: RootState) => store.auth.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let updateMessages: number;
@@ -31,25 +33,32 @@ function Help(): JSX.Element {
             .catch((error) => console.log(error)),
         5000,
       );
+    } else {
+      navigate('/')
     }
     return () => clearInterval(updateMessages);
   }, []);
 
   const sendMessage = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const newMessage: MessageWithoutId = {
-      chatId: user.id,
-      senderId: user.id,
-      content: newContent,
-      recipientId: 1,
-    };
-    api
-      .sendMessageFetch(newMessage)
-      .then((data) =>
-        data === 'Заполните поле!' ? setErr(data) : setMessages((prev) => [...prev, data]),
-      )
-      .catch((error) => console.log(error));
-    setNewContent('');
+    if (user) {
+      const newMessage: MessageWithoutId = {
+        chatId: user.id,
+        senderId: user.id,
+        content: newContent,
+        recipientId: 1,
+      };
+      api
+        .sendMessageFetch(newMessage)
+        .then((data) =>
+          typeof data === 'string' ? setErr(data) : setMessages((prev) => [...prev, data]),
+        )
+        .catch((error) => console.log(error));
+      setNewContent('');
+      setErr('');
+    } else {
+      setErr('Вы не авторизованы!');
+    }
   };
 
   return (

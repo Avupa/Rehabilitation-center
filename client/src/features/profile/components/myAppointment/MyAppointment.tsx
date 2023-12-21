@@ -12,13 +12,13 @@ function MyAppointment(): JSX.Element {
     <div>
       <table className="myTable">
         <tbody>
-          {myAppointment && myAppointment.map((appoint) => (
+          {myAppointment && (myAppointment.length === 0 ? 'Список приемов пуст' : myAppointment.map((appoint) => (
             <tr key={appoint.data&appoint.timeSlot}>
                 <td>{appoint.data}</td>
                 <td>{appoint.timeSlot}</td>
                 <td>{appoint.Doctor}</td>
             </tr>
-          ))}
+          )))}
         </tbody>
       </table>
     </div>

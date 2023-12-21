@@ -45,7 +45,6 @@ function App(): JSX.Element {
     void dispatch(check());
     void dispatch(initPrices())
     void dispatch(initReviews());
-
   }, [dispatch]);
 
 
@@ -59,7 +58,7 @@ function App(): JSX.Element {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [user]);
 
   return (
     <div className="App">

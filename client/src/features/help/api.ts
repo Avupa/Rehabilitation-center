@@ -5,7 +5,7 @@ export const initMessagesFetch = async (id: Message['senderId']): Promise<Messag
   return data.messages;
 };
 
-export const sendMessageFetch = async (obj: MessageWithoutId): Promise<MessageWithSender | string> => {
+export const sendMessageFetch = async (obj: MessageWithoutId): Promise<MessageWithSender> => {
   console.log(obj);
 
   const data = await (

@@ -10,8 +10,9 @@
 .img {
   width: 50%;
   height: 50%;
+  object-fit: cover;
   display: flex;
-  border-radius: 50%;
+  border-radius: 20px;
 }
 .update {
   background-color: rgb(79, 87, 210);
@@ -33,12 +34,19 @@
   padding: 10px;
 }
 .cardSmall {
-  font-size: 22px;
+  font-size: 20px;
+  width: 300px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center; /* Выравнивание содержимого по горизонтали */
   background-color: #d9d9d9;
   border-radius: 50px;
-  gap: 20px;
-  padding-bottom: 20px;
+  gap: 5px;
+  padding: 10px;
+}
+
+.docName {
+  margin: 0;
+  padding: 0;
 }

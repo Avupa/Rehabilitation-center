@@ -24,7 +24,7 @@ function ProfileNavbar(): JSX.Element {
   return (
     <div className="profile_full_container">
       <div className="profile_left_container">
-        <img src={logo} alt="logo" className="logo" />
+        <Link to = '/'><img src={logo} alt="logo" className="logo" /></Link>
 
         <Link to="/appointment">
           <div className="main_link_button w-44 h-16">
