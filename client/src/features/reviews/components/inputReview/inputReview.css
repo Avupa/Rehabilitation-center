@@ -1,16 +1,11 @@
-#container_input_reviews {
+#container_textarea_reviews {
   width: 600px;
   height: 300px;
+  padding: 25px; /* Устанавливаем отступ внутри контейнера по краям */
 }
 
-#button_input_reviews,
-#input_reviews {
+#button_input_reviews {
   border-radius: 50px; /* Скругленные углы */
-}
-
-#input_reviews {
-  width: 400px;
-  height: 200px;
 }
 
 #button_input_reviews {
@@ -51,10 +46,14 @@
 #container_list_doctors,
 #btn_6 {
   background: rgb(247, 150, 192);
-  background: radial-gradient(circle, rgba(247, 150, 192, 1) 0%, rgba(118, 174, 241, 1) 100%);
+  background: radial-gradient(circle, #55a394 0%, #8fbbdb 100%);
   line-height: 42px;
   padding: 0;
   border: none;
+}
+
+#btn_6 p {
+  transform: translate(0%, 0%);
 }
 
 #btn_6 span {
@@ -101,6 +100,9 @@
   transition: all 500ms ease;
   height: 100%;
 }
+
+#btn_6 p:before,
+#btn_6 p:after,
 #btn_6 span:before,
 #btn_6 span:after {
   position: absolute;
@@ -111,6 +113,8 @@
     7px 7px 20px 0px rgba(0, 0, 0, 0.4),
     4px 4px 5px 0px rgba(0, 0, 0, 0.3);
 }
+
+#btn_6 p:before,
 #btn_6 span:before {
   left: 0;
   top: 0;
@@ -118,6 +122,8 @@
   height: 0.5px;
   transition: all 500ms ease;
 }
+
+#btn_6 p:after,
 #btn_6 span:after {
   right: 0;
   bottom: 0;
@@ -125,11 +131,47 @@
   height: 0.5px;
   transition: all 500ms ease;
 }
+#btn_6 p:hover:before,
 #btn_6 span:hover:before {
   width: 100%;
 }
+#btn_6 p:hover:after,
 #btn_6 span:hover:after {
   width: 100%;
 }
 
-/* стиль карточек докторов */
+/* textarea */
+
+#textarea_reviews {
+  resize: none; /* Запрещаем изменение размера вручную */
+  width: 400px; /* Укажите ширину textarea по вашему усмотрению */
+  height: 100%; /* Укажите высоту textarea по вашему усмотрению */
+  font-size: 16px; /* Размер шрифта по вашему усмотрению */
+  padding: 10px; /* Внутренний отступ по вашему усмотрению */
+  border: 2px solid #ccc; /* Укажите стиль границы по вашему усмотрению */
+  border-radius: 5px; /* Укажите радиус скругления углов по вашему усмотрению */
+  /* Дополнительные стили */
+}
+
+/* Кнопка: О клинике */
+
+#button7 {
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  display: flex; /* Добавляем display: flex для выравнивания по центру */
+  justify-content: center; /* Выравниваем текст по центру */
+  align-items: center;
+  padding: 0.8em 1em calc(0.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64, 199, 129);
+  box-shadow: 0 -3px rgb(53, 167, 110) inset;
+  transition: 0.2s;
+}
+#button7:hover {
+  background: rgb(53, 167, 110);
+}
+#button7:active {
+  background: rgb(33, 147, 90);
+  box-shadow: 0 3px rgb(33, 147, 90) inset;
+}

@@ -1,15 +1,19 @@
-import type { Review, IdReview } from './types/type';
+import type { Review, IdReview, ReviewWithoutId } from './types/type';
 
 export const initReviewsFetch = async (): Promise<Review[]> => {
   const data: Review[] = await (await fetch('/api/reviews/')).json();
   return data;
 };
 
-export const addFetchReviews = async (obj: FormData): Promise<Review> => {
+export const addFetchReviews = async (obj: ReviewWithoutId): Promise<Review> => {
   const res = await fetch('/api/reviews/add', {
     method: 'POST',
-    body: obj,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
   });
+
   if (!res.ok) {
     const { message } = await res.json();
     throw message;

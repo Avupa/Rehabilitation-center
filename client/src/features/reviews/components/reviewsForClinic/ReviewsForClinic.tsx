@@ -9,31 +9,36 @@ type TypeReviewsForDoctors = {
 function ReviewsForDoctors({ reviews }: TypeReviewsForDoctors): JSX.Element {
   const [selectedRadio, setSelectedRadio] = useState<number>(0);
   const [reviewsSections, setReviewsSections] = useState<JSX.Element[]>([]);
-  const filteredReviews = reviews.filter((review: Review) => review.Doctor === null);
+  const [filtered, setFiltered] = useState<Review[]>([]);
 
-  // Группируем отзывы по три в каждую секцию
   useEffect(() => {
-    const sections = Array.from({ length: Math.ceil(filteredReviews.length / 3) }, (_, index) => {
-      const start = index * 3;
-      const end = start + 3;
-      return (
-        <div
-          className="main_full_container_wrap"
-          key={index}
-          style={{ display: selectedRadio === index ? 'flex' : 'none' }}
-        >
-          {filteredReviews.slice(start, end).map((review) => (
-            <ReviewCard key={review.id} review={review} />
-          ))}
-        </div>
-      );
-    });
-    setReviewsSections(sections);
-  }, [filteredReviews, selectedRadio]);
+    const filteredReviews = reviews.filter((review) => review.Doctor === null);
+    setFiltered(filteredReviews);
+    const newSections = Array.from(
+      { length: Math.ceil(filteredReviews.length / 3) },
+      (_, index) => {
+        const start = index * 3;
+        const end = start + 3;
+        return (
+          <div
+            className="main_full_container_wrap"
+            key={index}
+            style={{ display: selectedRadio === index ? 'flex' : 'none' }}
+          >
+            {filteredReviews.slice(start, end).map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+          </div>
+        );
+      },
+    );
+
+    setReviewsSections(newSections);
+  }, [reviews, selectedRadio]);
 
   // Генерируем радиокнопки
   const radioElements = Array.from(
-    { length: Math.ceil(filteredReviews.length / 3) },
+    { length: Math.ceil(filtered.length / 3) },
     (_, index) => (
       <div key={index} className="main_full_container_wrap gap-5">
         <input
@@ -54,7 +59,7 @@ function ReviewsForDoctors({ reviews }: TypeReviewsForDoctors): JSX.Element {
       <div className="header">
         <p>Отзывы о клинике</p>
       </div>
-      <div>{reviewsSections}</div>
+      <div>{reviewsSections.length && reviewsSections}</div>
       <div className="main_full_container_wrap pt-4">{radioElements}</div>
     </div>
   );
