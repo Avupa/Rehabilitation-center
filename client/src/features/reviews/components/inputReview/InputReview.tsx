@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './inputReview.css';
 import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, type RootState } from '../../../../store/store';
 import type { Doctor } from '../../../doctors/type';
 import { addReviews } from '../../redux/reviewsSlice';
@@ -110,21 +111,20 @@ function InputReview(): JSX.Element {
     </div>
   ));
   const dispatch = useAppDispatch();
-  const formData = new FormData();
 
   const reviewAdd = (): void => {
     const grad = star;
     const description = descriptionInput;
     const userId = user?.id;
-    const doctorId = сhoice;
-
-    formData.append('grad', grad);
-    formData.append('description', description);
-    formData.append('userId', userId);
-    formData.append('doctorId', doctorId);
-
+    const doctorId = сhoice?.id;
+    const body = {
+      grad,
+      description,
+      doctorId,
+      userId,
+    };
     try {
-      dispatch(addReviews(formData));
+      dispatch(addReviews(body));
     } catch (error) {
       console.error(error);
     }
@@ -135,124 +135,149 @@ function InputReview(): JSX.Element {
       <div className="header">
         <p>Здесь вы можете поделиться своим комментарием</p>
       </div>
-      <div className="main_full_container_wrap" style={{ padding: '10', margin: '10' }}>
-        <div
-          id="container_list_doctors"
-          className="main_full_container_wrap"
-          style={{ height: containerHeight }}
-        >
-          {!buttonVisible ? ( // Проверка видимости кнопки перед рендерингом
-            <AnimatePresence>
-              {doctorsList && doctors.length && (
-                <div>
-                  <motion.button
-                    type="button"
-                    id="button7"
-                    style={{
-                      position: 'absolute',
-                      left: '30%',
-                      top: '-6%',
-                      width: 400,
-                      height: 60,
-                    }}
-                    whileHover={{ scale: 1.1 }} // Добавить анимацию при наведении
-                    variants={cardVariants}
-                    initial="hidden"
-                    animate="visible"
-                    onClick={handleButtonClinicClick}
-                  >
-                    <p>Выбрать: О клинике</p>
-                  </motion.button>
-                  <motion.div
-                    className="main_full_container_wrap"
-                    style={{ maxHeight: '400', padding: '20px' }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <div>{reviewsSections}</div>
-                  </motion.div>
-                </div>
-              )}
-            </AnimatePresence>
-          ) : (
-            <motion.button
-              id="btn_6"
-              type="button"
-              className="custom_btn"
-              onClick={handleButtonClick}
-              variants={buttonVariants}
-              initial="hidden"
-              animate="visible"
+      {user ? (
+        <>
+          <div className="main_full_container_wrap" style={{ padding: '10', margin: '10' }}>
+            <div
+              id="container_list_doctors"
+              className="main_full_container_wrap"
+              style={{ height: containerHeight }}
             >
-              {сhoice === undefined ? (
-                <div>
-                  <div className="mb-9">
-                    <h1 className="text-4xl">Выбрано: О клинике</h1>
-                  </div>
-
-                  <p className="text-6xl">Выбрать специалиста</p>
-                </div>
+              {!buttonVisible ? ( // Проверка видимости кнопки перед рендерингом
+                <AnimatePresence>
+                  {doctorsList && doctors.length && (
+                    <div>
+                      <motion.button
+                        type="button"
+                        id="button7"
+                        style={{
+                          position: 'absolute',
+                          left: '30%',
+                          top: '-6%',
+                          width: 400,
+                          height: 60,
+                        }}
+                        whileHover={{ scale: 1.1 }} // Добавить анимацию при наведении
+                        variants={cardVariants}
+                        initial="hidden"
+                        animate="visible"
+                        onClick={handleButtonClinicClick}
+                      >
+                        <p>Выбрать: О клинике</p>
+                      </motion.button>
+                      <motion.div
+                        className="main_full_container_wrap"
+                        style={{ maxHeight: '400', padding: '20px' }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <div>{reviewsSections}</div>
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
               ) : (
-                <div className="main_full_container_wrap">
-                  <div>
-                    <img
-                      src={сhoice.img}
-                      alt={сhoice.firstName}
-                      style={{ width: 180, height: 220 }}
-                    />
-                  </div>
-                  <div>
-                    <div className="mb-9">
-                      <h1 className="text-4xl">
-                        {сhoice.firstName} {сhoice.secondName}
-                      </h1>
+                <motion.button
+                  id="btn_6"
+                  type="button"
+                  className="custom_btn"
+                  onClick={handleButtonClick}
+                  variants={buttonVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {сhoice === undefined ? (
+                    <div>
+                      <div className="mb-9">
+                        <h1 className="text-4xl">Выбрано: О клинике</h1>
+                      </div>
+
+                      <p className="text-6xl">Выбрать специалиста</p>
                     </div>
-                    <div className="w-96">
-                      <p className="text-5xl">Выбрать другого специалиста</p>
+                  ) : (
+                    <div className="main_full_container_wrap">
+                      <div>
+                        <img
+                          src={сhoice.img}
+                          alt={сhoice.firstName}
+                          style={{ width: 180, height: 220 }}
+                        />
+                      </div>
+                      <div>
+                        <div className="mb-9">
+                          <h1 className="text-4xl">
+                            {сhoice.firstName} {сhoice.secondName}
+                          </h1>
+                        </div>
+                        <div className="w-96">
+                          <p className="text-5xl">Выбрать другого специалиста</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  )}
+                </motion.button>
               )}
-            </motion.button>
-          )}
+            </div>
+          </div>
+          <AnimatePresence>
+            {!buttonVisible && (
+              <motion.div
+                className="main_full_container_wrap pt-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                {radioElements}
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="main_full_container_wrap pt-12">
+            <div
+              id="container_textarea_reviews"
+              className="container_description border_3px_solid_orange container_flex gap-5"
+            >
+              <textarea
+                id="textarea_reviews"
+                value={descriptionInput}
+                onChange={(e) => setDescriptionInput(e.target.value)}
+              />
+              <button
+                type="button"
+                id="button7"
+                style={{
+                  width: 150,
+                  height: 60,
+                }}
+                onClick={reviewAdd}
+              >
+                Добавить
+              </button>
+            </div>
+          </div>
+          s
+        </>
+      ) : (
+        <div>
+          <div className="header" style={{ fontSize: '38px' }}>
+            <p>
+              Чтобы оставить свой комментарий.
+              <br />
+              Вас следует авторизоваться
+            </p>
+          </div>
+          <div className="main_full_container_wrap">
+            <Link to="auth/sign-in">
+              <div
+                className="main_link_button"
+                style={{ width: '500px', height: '120px', fontSize: '38px' }}
+              >
+                <p>Авторизоваться</p>
+              </div>
+            </Link>
+          </div>
         </div>
-      </div>
-      <AnimatePresence>
-        {!buttonVisible && (
-          <motion.div
-            className="main_full_container_wrap pt-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {radioElements}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <div className="main_full_container_wrap pt-12">
-        <div
-          id="container_textarea_reviews"
-          className="container_description border_3px_solid_orange container_flex gap-5"
-        >
-          <textarea
-            id="textarea_reviews"
-            value={descriptionInput}
-            onChange={(e) => setDescriptionInput(e.target.value)}
-          />
-          <button
-            type="submit"
-            id="button7"
-            style={{
-              width: 150,
-              height: 60,
-            }}
-            onClick={() => reviewAdd}
-          >
-            Добавить
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

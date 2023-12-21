@@ -18,13 +18,14 @@ router.get("/", async (req, res) => {
 //ADD
 
 router.post("/add", async (req, res) => {
-  const { name, description, categoryId } = req.body;
-  //   console.log(req.body, "req");
+  const { grade, description, doctorId, userId } = req.body;
+  console.log(req.body, "////////////////////////////////////");
   try {
     const data = await Review.create({
-      name,
+      grade,
       description,
-      categoryId: Number(categoryId),
+      doctorId,
+      userId,
     });
     if (data) {
       res.send({ message: "Review was added", action: true, data });

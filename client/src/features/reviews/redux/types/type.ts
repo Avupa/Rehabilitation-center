@@ -17,3 +17,5 @@ export type Review = {
 };
 
 export type IdReview = Review['id'];
+
+export type ReviewWithoutId = Omit<Review, 'id'>

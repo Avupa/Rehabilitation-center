@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { Review, IdReview, State } from './types/type';
+import type { Review, IdReview, State, ReviewWithoutId } from './types/type';
 import * as api from './api';
 
 const initialState: State = {
@@ -11,7 +11,7 @@ export const initReviews = createAsyncThunk(
   'review/init',
   (): Promise<Review[]> => api.initReviewsFetch(),
 );
-export const addReviews = createAsyncThunk('reviews/add', (obj: FormData) =>
+export const addReviews = createAsyncThunk('reviews/add', (obj: ReviewWithoutId) =>
   api.addFetchReviews(obj),
 );
 export const deleteReviews = createAsyncThunk('reviews/delete', (id: IdReview) =>
