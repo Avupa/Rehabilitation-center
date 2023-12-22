@@ -54,6 +54,11 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
     alignItems: 'center', // центрируем содержимое по вертикали
   };
 
+
+  const handleContentClick = (e: React.MouseEvent): void => {
+    e.stopPropagation(); // Предотвращаем всплытие события клика
+  };
+
   return (
     <div
       className="container_description border_3px_solid_dark_green h-48 gap-10 container_flex"
@@ -79,7 +84,7 @@ function ServicesCard({ procedure }: { procedure: Procedure }): JSX.Element {
             {checkAdmin &&             
             <button className="main_link_button w-44 h-10"  onClick={() => setShowDelete(true)}>Удалить</button>}
             {showUpdate && <ProcedureUpdate procedure={procedure} setShowUpdate={setShowUpdate}/>}
-            {showDelete && <ModalWindow setShowDelete={setShowDelete} procedure={procedure}/>}
+            {showDelete && <ModalWindow setShowDelete={setShowDelete} procedure={procedure} handleContentClick={handleContentClick}/>}
             </div>
           
         </div>

@@ -11,11 +11,10 @@ import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
 
 import ScheduleFull from './ScheduleFull';
-import './style.css'
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-
+import './style.css';
+import { useAppDispatch, type RootState } from '../../store/store';
+import * as api from '../auth/api';
+import { logout } from '../auth/authSlice';
 
 function Admin(): JSX.Element {
   const tabs: TTab[] = [
@@ -29,12 +28,20 @@ function Admin(): JSX.Element {
   const [selectedTabId, setSelectedTabId] = useState(tabs[0].id);
   const user = useSelector((store: RootState) => store.auth.user);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!user) {
       navigate('/auth/sign-in');
     }
   }, []);
+
+  const handleLogout: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+    event.preventDefault();
+    api.logoutFetch();
+    void dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <>
@@ -57,6 +64,7 @@ function Admin(): JSX.Element {
         <button className="btnNav" onClick={() => setSelectedTabId(6)}>
           Чат
         </button>
+        <button onClick={handleLogout}> Выйти</button>
       </div>
       <div className="  ">
         {selectedTabId === tabs[0].id && (
@@ -100,6 +108,5 @@ function Admin(): JSX.Element {
     </>
   );
 }
-
 
 export default Admin;

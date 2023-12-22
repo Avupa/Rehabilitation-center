@@ -25,7 +25,7 @@ function DoctorUpdateForm({
   const slotInput = useRef<HTMLInputElement>(null);
 
   // const [firstName, setFirstName] = useState(doctor.firstName);
-  // const [secondName, setSecondName] = useState(doctor.secondName);
+  // onst [secondName, setSecondName] = useState(doctor.secondName);
   // const [patronymic, setPatronymic] = useState(doctor.patronymic);
   // const [description, setDescription] = useState(doctor.description);
   // const [shortDescription, setShortDescription] = useState(doctor.shortDescription);
@@ -64,7 +64,7 @@ function DoctorUpdateForm({
         formData.append('photo', selectedFile);
 
         console.log(formData);
-        void dispatch(updateDoctors({id:doctor.id, obj:formData}));
+        void dispatch(updateDoctors({ id: doctor.id, obj: formData }));
         setShowUpdate(false);
       } catch (error) {
         console.error(error);
@@ -81,9 +81,8 @@ function DoctorUpdateForm({
             <input
               name="firstName"
               type="text"
-              value={doctor.firstName}
+              defaultValue={doctor.firstName}
               ref={firstNameInput}
-              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
           <div className="mb-6">
@@ -91,35 +90,31 @@ function DoctorUpdateForm({
               name="secondName"
               type="text"
               ref={secondNameInput}
-              value={doctor.secondName}
-              onChange={(e) => setSecondName(e.target.value)}
+              defaultValue={doctor.secondName}
             />
           </div>
           <div className="mb-6">
             <input
               name="patronymic"
               type="text"
-              value={doctor.patronymic}
+              defaultValue={doctor.patronymic}
               ref={patronymicInput}
-              onChange={(e) => setPatronymic(e.target.value)}
             />
           </div>
           <div className="mb-6">
             <input
               name="description"
               type="text"
-              value={doctor.description}
+              defaultValue={doctor.description}
               ref={descriptionInput}
-              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <div className="mb-6">
             <input
               name="shortDescription"
               type="text"
-              value={doctor.shortDescription}
+              defaultValue={doctor.shortDescription}
               ref={shortDescriptionInput}
-              onChange={(e) => setShortDescription(e.target.value)}
             />
           </div>
 
@@ -127,13 +122,7 @@ function DoctorUpdateForm({
             <input name="photo" type="file" accept="image/*" onChange={handleFileChange} />
           </div>
           <div className="mb-6">
-            <input
-              name="slot"
-              type="text"
-              value={doctor.slot}
-              ref={slotInput}
-              onChange={(e) => setSlot(Number(e.target.value))}
-            />
+            <input name="slot" type="text" defaultValue={doctor.slot} ref={slotInput} />
           </div>
           <div className="main_link_button w-80 h-14">
             <button className="save" type="submit">

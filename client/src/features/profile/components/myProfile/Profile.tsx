@@ -17,7 +17,7 @@ function Profile(): JSX.Element {
     if (user) {
       void dispatch(initUserApps(user.id));
     } else {
-      navigate('/auth/sign-in')
+      navigate('/auth/sign-in');
     }
   }, [dispatch]);
 
@@ -31,17 +31,6 @@ function Profile(): JSX.Element {
             <p>Записаться</p>
           </div>
         </Link>
-      </div>
-      <div>
-        <p>ПОСЛЕДНИЕ АНАЛИЗЫ</p>
-        <Link to="/">
-          <div className="main_link_button">
-            <p>Все анализы</p>
-          </div>
-        </Link>
-      </div>
-      <div>
-        <p>МОИ ВРАЧИ</p>
       </div>
     </div>
   );
