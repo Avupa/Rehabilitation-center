@@ -27,14 +27,14 @@ export const delFetchDoctor = async (id: IdDoctor): Promise<IdDoctor> => {
   return data.id;
 };
 
-export const updateFetchDoctor = async (id: IdDoctor, obj: FormData): Promise<Doctor> => {
-  console.log(id, 'iiiiiiiii');
-  console.log(obj, 'gggggggg');
+export const updateFetchDoctor = async (wer:{id: IdDoctor, obj: FormData}): Promise<Doctor> => {
+  console.log(wer.id, 'iiiiiiiii');
+  console.log(wer.obj, 'gggggggg');
 
   const data: Doctor = await (
-    await fetch(`/api/doctors/update/${id}`, {
+    await fetch(`/api/doctors/update/${wer.id}`, {
       method: 'PUT',
-      body: obj,
+      body: wer.obj,
     })
   ).json();
   return data;

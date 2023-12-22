@@ -15,8 +15,8 @@ export const addDoctors = createAsyncThunk('doctors/add', (obj: FormData) =>
 export const deleteDoctors = createAsyncThunk('doctors/delete', (id: IdDoctor) =>
   api.delFetchDoctor(id),
 );
-export const updateDoctors = createAsyncThunk('doctors/update', (id: IdDoctor, obj: FormData) =>
-  api.updateFetchDoctor(id, obj),
+export const updateDoctors = createAsyncThunk('doctors/update', (wer:{id: IdDoctor, obj: FormData}) =>
+  api.updateFetchDoctor(wer),
 );
 
 const doctorsSlice = createSlice({

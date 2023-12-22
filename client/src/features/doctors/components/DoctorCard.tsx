@@ -19,6 +19,10 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
     setShowAll(false); // Устанавливаем значение showAll в false, чтобы скрыть модальное окно
   };
 
+  const handleContentClick = (e: React.MouseEvent): void => {
+    e.stopPropagation(); // Предотвращаем всплытие события клика
+  };
+
   return (
     <div className="cardSmall">
       <img className="img" src={doctor.img} alt="img" />
@@ -39,7 +43,9 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
           )}
           {showAll && (
             <div className="modal_background" onClick={handleModalClick}>
-              <div className="modal_absolut">{doctor.description}</div>
+              <div className="modal_absolut" onClick={handleContentClick}>
+                {doctor.description}
+              </div>
             </div>
           )}
 
@@ -53,11 +59,24 @@ function CardDoctor({ doctor }: { doctor: Doctor }): JSX.Element {
               Изменить
             </button>
           )}
-          {showUpdate && <DoctorUpdateForm doctor={doctor} setShowUpdate={setShowUpdate} />}
+          {showUpdate && (
+            <DoctorUpdateForm
+              doctor={doctor}
+              setShowUpdate={setShowUpdate}
+              handleContentClick={handleContentClick}
+            />
+          )}
           <button className="main_link_button h-10 w-40" onClick={() => setAppoint(true)}>
             Запись{' '}
           </button>
-          {appoint && <Example id={doctor.id} />}
+          {appoint && (
+            <Example
+              key="doctor.id"
+              id={doctor.id}
+              setAppoint={setAppoint}
+              handleContentClick={handleContentClick}
+            />
+          )}
         </>
       ) : (
         <div>
