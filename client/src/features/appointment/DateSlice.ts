@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type {  State, TimeSlot} from './DateType';
+import type { State, TimeSlot } from './DateType';
 import * as api from './api';
-import type { IdDoctor } from '../doctors/type';
+
+import type { IdDoctor } from '../doctors/redux/types/type';
 import { NoNameUser } from '../noNameUser/type';
 
 const initialState: State = {
@@ -12,9 +13,8 @@ const initialState: State = {
   scheduleFull:[],
 };
 
-export const initSpec = createAsyncThunk('appointment/initSpec', () =>
-  api.initSpecFetch(),
-);
+export const initSpec = createAsyncThunk('appointment/initSpec', () => api.initSpecFetch());
+
 
 export const Strange=createAsyncThunk('appointment/strange', (nnu: NoNameUser) =>
 api.strangeFetch(nnu),
@@ -69,14 +69,14 @@ const DateSlice = createSlice({
       })
 
       .addCase(makeAppoint.fulfilled, (state, action) => {
-        //state.appointment.push(action.payload);
-        state.appointment =state.appointment.filter(slot=>slot.timeSlot!=action.payload.time )
+        // state.appointment.push(action.payload);
+        state.appointment = state.appointment.filter(
+          (slot) => slot.timeSlot != action.payload.time,
+        );
       })
       .addCase(makeAppoint.rejected, (state, action) => {
         state.error = action.error.message;
-      })
-
-
+      });
   },
 });
 

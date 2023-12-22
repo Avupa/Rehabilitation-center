@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import FromSite from './FromSite';
-import DoctorAdd from '../doctors/DoctorAdd';
+import DoctorAdd from '../doctors/components/DoctorAdd';
 import type { TTab } from './type';
 import Services from '../procedure/Procedure';
 import Doctors from '../doctors/Doctors';
@@ -11,8 +11,11 @@ import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
 
 import ScheduleFull from './ScheduleFull';
-import type { RootState } from '../../store/store';
 import './style.css'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+
 
 function Admin(): JSX.Element {
   const tabs: TTab[] = [
@@ -97,5 +100,6 @@ function Admin(): JSX.Element {
     </>
   );
 }
+
 
 export default Admin;

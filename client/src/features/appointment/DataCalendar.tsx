@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import type { IdDoctor } from '../doctors/type';
+import type { IdDoctor } from '../doctors/redux/types/type';
 import { findDate } from './DateSlice';
 import CardAppoint from './AppointCard';
 import { useAppDispatch } from '../../store/store';
-import { TimeSlot } from './DateType';
+import type { TimeSlot } from './DateType';
 
-export default function Example({ id }: { id: IdDoctor }): JSX.Element {
+type TypeExample = {
+  id: IdDoctor;
+  setAppoint: (status: boolean) => void;
+  handleContentClick: (e: React.MouseEvent) => void;
+};
+
+export default function Example({ id, setAppoint, handleContentClick }: TypeExample): JSX.Element {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [slots,setSlots]=useState<TimeSlot|undefined>(undefined)
+  const [slots, setSlots] = useState<TimeSlot | undefined>(undefined);
 
   const dispatch = useAppDispatch();
 
@@ -32,17 +38,24 @@ export default function Example({ id }: { id: IdDoctor }): JSX.Element {
         excludeDates={[new Date()]}
         onChange={(date: Date) => setStartDate(date)}
       />
-      {slots &&
-        slots.map((slot) => (
-          <CardAppoint
-            key={slot.id}
-            slot={slot}
-            id={id}
-            date={[startDate?.getFullYear(), startDate?.getMonth() + 1, startDate?.getDate()].join(
-              '-',
-            )}
-          />
-        ))}
+      {slots && (
+        <div className="modal_background" onClick={() => setAppoint(false)}>
+          <div className="modal_absolut main_full_container_wrap" onClick={handleContentClick}>
+            {slots.map((slot) => (
+              <CardAppoint
+                key={slot.id}
+                slot={slot}
+                id={id}
+                date={[
+                  startDate?.getFullYear(),
+                  startDate?.getMonth() + 1,
+                  startDate?.getDate(),
+                ].join('-')}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 }

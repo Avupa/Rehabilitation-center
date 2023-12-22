@@ -24,7 +24,7 @@ import ErrorPage from '../features/404/404';
 import type { RootState } from '../store/store';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
-import { initDoctors } from '../features/doctors/doctorSlice';
+import { initDoctors } from '../features/doctors/redux/doctorSlice';
 import { initProcedures } from '../features/procedure/redux/procedureSlice';
 import { initReviews } from '../features/reviews/redux/reviewsSlice';
 
