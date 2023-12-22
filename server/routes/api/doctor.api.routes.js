@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Doctor, SpecialOfDoctor, Specialization, User } = require("../../db/models");
-const { rejectIfNotAdmin } = require("../../middleware/auth");
 const upload = require('../../utils/uploadMulter');
 
 //INIT
@@ -8,8 +7,6 @@ router.get("/", async (req, res) => {
 //console.log('i am here, doctor');
   try {
     const dataFirst = await Doctor.findAll({include: {model:SpecialOfDoctor,  include:{ model: Specialization}}});
-
-   //const data=dataFirst.map(dataf=>[...dataf, dataf.SpecialOfDoctor.reduce((accumulator, Specialization.name) => accumulator + Specialization.name,'',)])
     res.status(200).json(dataFirst);
 
   } catch (error) {

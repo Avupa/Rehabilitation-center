@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import img1 from '../../../../../../public/img/main/Rectangle1.png';
 import img2 from '../../../../../../public/img/main/Rectangle2.png';
 import img3 from '../../../../../../public/img/main/Rectangle3.png';
+import Services from '../../../../procedure/Procedure';
 
 function MainServises(): JSX.Element {
   const containers = [
@@ -26,7 +27,8 @@ function MainServises(): JSX.Element {
             <div>
               <p>{container[1]}</p>
             </div>
-            <Link to="/services">
+             <Link to="/Procedure" state={{ whatCategory: 1 }}> 
+            
               <div className="main_link_button w-44 h-14">
                 <p>{container[2]}</p>
               </div>

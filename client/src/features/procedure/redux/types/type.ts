@@ -12,3 +12,4 @@ export type Procedure = {
 };
 
 export type IdProcedure = Procedure['id'];
+export type CategoryFirstPage = Procedure['categoryId'];
