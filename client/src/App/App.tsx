@@ -30,8 +30,9 @@ import { initReviews } from '../features/reviews/redux/reviewsSlice';
 
 import { check} from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
-import { initSpec } from '../features/appointment/DateSlice';
+import { initSchaduleFull, initSpec } from '../features/appointment/DateSlice';
 import { initPrices } from '../features/price/priceSlice';
+import ScheduleFull from '../features/admin/ScheduleFull';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ function App(): JSX.Element {
     void dispatch(initProcedures());
     void dispatch(initDoctors());
     void dispatch(initSpec());
+    void dispatch(initSchaduleFull());
     void dispatch(check());
     void dispatch(initPrices())
     void dispatch(initReviews());
@@ -69,6 +71,7 @@ function App(): JSX.Element {
           <Route index element={<Main />} />
           <Route path="price" element={<Price />} />
           <Route path="appointment" element={<Appointment />} />
+          <Route path="Schedule" element={<ScheduleFull />} />
           <Route path="doctors" element={<Doctors />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="procedure" element={<Procedure />} />

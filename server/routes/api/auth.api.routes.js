@@ -144,8 +144,6 @@ router.get("/check", (req, res) => {
 
 router.post("/initUserApps", async (req, res) => {
   const { id } = req.body;
-  console.log(id, 'OOOOOOOOOOO');
-  console.log(res.locals.user.id, 'OOOOOOOOOOO');
   if(id===res.locals.user.id){
   try {
       const user = await User.findOne({
