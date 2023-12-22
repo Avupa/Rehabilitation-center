@@ -27,7 +27,7 @@ function CardNoName({ noNameUser }: { noNameUser: NoNameUser }): JSX.Element {
         <div>Имя: {noNameUser.name}</div>
         <div>{noNameUser.telephone}</div>
         <div className='descNN'>Описание: {noNameUser.description}</div>
-        <button className='main_link_button h-10 w-40' onClick={() => setActive(true)}>Запись </button>
+        <button className='main_link_button h-10 w-40' onClick={() => StrangeFunction()}>Запись </button>
         <button className='main_link_button h-10 w-40' onClick={() => setActive(true)}>
           Удалить{' '}
         </button>

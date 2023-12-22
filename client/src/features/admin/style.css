@@ -43,3 +43,13 @@
   align-items: center;
   height: 150px;
 }
+
+.btnNav {
+
+}
+
+.navbarAdmin {
+  border: 1px solid #55a394;
+  display: flex;
+  justify-content: space-around;
+}
