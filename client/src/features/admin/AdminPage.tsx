@@ -11,9 +11,11 @@ import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
 
 import ScheduleFull from './ScheduleFull';
+import './style.css'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+
 
 function Admin(): JSX.Element {
   const tabs: TTab[] = [
@@ -35,25 +37,24 @@ function Admin(): JSX.Element {
   }, []);
 
   return (
-
     <>
-      <div className="navbar">
-        <button className="main_link_button" onClick={() => setSelectedTabId(1)}>
+      <div className="navbarAdmin">
+        <button className="btnNav" onClick={() => setSelectedTabId(1)}>
           Заявки на прием{' '}
         </button>
-        <button className="main_link_button" onClick={() => setSelectedTabId(2)}>
+        <button className="btnNav" onClick={() => setSelectedTabId(2)}>
           Изменить информацию о специалистах{' '}
         </button>
-        <button className="main_link_button" onClick={() => setSelectedTabId(3)}>
+        <button className="btnNav" onClick={() => setSelectedTabId(3)}>
           Изменить перечень услуг
         </button>
-        <button className="main_link_button" onClick={() => setSelectedTabId(4)}>
-          Внести корректировку в расписание
+        <button className="btnNav" onClick={() => setSelectedTabId(4)}>
+          Pасписание
         </button>
-        <button className="main_link_button" onClick={() => setSelectedTabId(5)}>
+        <button className="btnNav" onClick={() => setSelectedTabId(5)}>
           Запись
         </button>
-        <button className="main_link_button" onClick={() => setSelectedTabId(6)}>
+        <button className="btnNav" onClick={() => setSelectedTabId(6)}>
           Чат
         </button>
       </div>
@@ -82,7 +83,7 @@ function Admin(): JSX.Element {
         )}
         {selectedTabId === tabs[3].id && (
           <div>
-            <Services />
+            <ScheduleFull />
           </div>
         )}
         {selectedTabId === tabs[5].id && (
@@ -98,7 +99,7 @@ function Admin(): JSX.Element {
       </div>
     </>
   );
-
 }
+
 
 export default Admin;
