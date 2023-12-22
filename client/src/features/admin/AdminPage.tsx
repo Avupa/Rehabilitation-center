@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FromSite from './FromSite';
 import DoctorAdd from '../doctors/DoctorAdd';
 import type { TTab } from './type';
@@ -7,7 +7,11 @@ import Services from '../procedure/Procedure';
 import Doctors from '../doctors/Doctors';
 import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
+
 import ScheduleFull from './ScheduleFull';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 
 
@@ -21,6 +25,15 @@ function Admin(): JSX.Element {
     { id: 6, label: "Label №6" },
   ];
   const [selectedTabId, setSelectedTabId] = useState(tabs[0].id);
+  const user = useSelector((store: RootState) => store.auth.user)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    
+    if (!user) {
+      navigate('/auth/sign-in')
+    }
+  }, [])
 
   return (
   <>

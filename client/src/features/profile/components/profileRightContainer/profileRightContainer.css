@@ -5,9 +5,9 @@
   align-items: flex-start; /* Выравнивание элементов по верхнему краю */
 }
 
-.profile_right_container div {
+/* .profile_right_container div {
   margin: 10px;
-  padding: 20px 20px 20px 20px; /* Верхний, правый, нижний, левый отступы */
+  padding: 20px 20px 20px 20px; 
   box-sizing: border-box;
-  box-shadow: 2px 2px 2px 1px rgba(1, 1, 2, 0.1); /* Уменьшаем тень: смещение по X, смещение по Y, размер размытия, размер распространения тени, цвет */
-}
+  box-shadow: 2px 2px 2px 1px rgba(1, 1, 2, 0.1); 
+} */

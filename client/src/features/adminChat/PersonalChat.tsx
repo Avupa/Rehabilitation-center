@@ -45,17 +45,11 @@ function PersonalChat({ chatId }: { chatId: number }): JSX.Element {
     api
       .sendMessageFetch(newMessage)
       .then((data) =>
-        data === 'Заполните поле!' ? setErr(data) : setMessages((prev) => [...prev, data]),
+        (typeof data === 'string') ? setErr(data) : setMessages((prev) => [...prev, data ]),
       )
       .catch((error) => console.log(error));
     setNewContent('');
-  };
-
-  const checkButton = (e: React.KeyboardEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    if (e.key === 'Enter') {
-      sendMessage(e);
-    }
+    setErr('');
   };
 
   return (

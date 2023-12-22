@@ -1,0 +1,13 @@
+.appContainer {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.appBTN {
+  width: 267px;
+  height: 70px;
+  color: white;
+  background-color: #55A394;
+  margin: 10px;
+  border-radius: 50px;
+}

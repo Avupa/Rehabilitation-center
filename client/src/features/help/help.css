@@ -3,13 +3,21 @@
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
+  box-shadow: none;
   
 }
 
 .sender {
   text-align: right;
+  box-shadow: none;
 }
 
 .messagesContainer {
   max-width: 1000px;
+  box-shadow: none;
 }
+
+
+/* .profile_right_container div {
+  box-shadow: none;
+} */
