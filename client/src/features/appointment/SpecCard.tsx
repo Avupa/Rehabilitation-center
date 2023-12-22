@@ -1,8 +1,5 @@
 import React from 'react';
-import { Specialization } from './DateType';
-//import ModalWindow from './ModalWindow';
-
-
+import type { Specialization } from './DateType';
 
 function CardSpec({spec}:{spec:Specialization['name']}): JSX.Element {
 

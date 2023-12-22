@@ -7,6 +7,8 @@ import Services from '../procedure/Procedure';
 import Doctors from '../doctors/Doctors';
 import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
+
+import ScheduleFull from './ScheduleFull';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
@@ -39,7 +41,7 @@ function Admin(): JSX.Element {
   <button className='main_link_button' onClick={() => setSelectedTabId(1)}>Заявки  на прием  </button>
   <button className='main_link_button' onClick={() => setSelectedTabId(2)}>Изменить информацию о специалистах  </button>
   <button className='main_link_button' onClick={() => setSelectedTabId(3)}>Изменить перечень услуг</button>
-  <button className='main_link_button' onClick={() => setSelectedTabId(4)}>Внести корректировку в расписание</button>
+  <button className='main_link_button' onClick={() => setSelectedTabId(4)}>Pасписание</button>
   <button className='main_link_button' onClick={() => setSelectedTabId(5)}>Запись</button>
   <button className='main_link_button' onClick={() => setSelectedTabId(6)}>Чат</button>
   </div>
@@ -49,7 +51,7 @@ function Admin(): JSX.Element {
   <div>Добавить информацию о новом специалисте<DoctorAdd/></div>
   <div>Изменить информацию о существующем специалисте<Doctors/></div></div>)}
   {selectedTabId === tabs[2].id && (<div><Services/></div>)}
-  {selectedTabId === tabs[3].id && (<div><Services/></div>)}  
+  {selectedTabId === tabs[3].id && (<div><ScheduleFull/></div>)}  
   {selectedTabId === tabs[5].id && (<div><Chats /></div>)}   
   {selectedTabId === tabs[4].id && (<div><Appointment/></div>)}     
         </div>

@@ -2,10 +2,23 @@
 import React, { useState } from 'react';
 import type { NoNameUser } from '../noNameUser/type';
 import ModalWindow from './ModalWindow';
+
 import './style.css'
+import { useAppDispatch } from '../../store/store';
+import { Strange } from '../appointment/DateSlice';
+import { useNavigate } from 'react-router-dom';
 
 function CardNoName({ noNameUser }: { noNameUser: NoNameUser }): JSX.Element {
   const [active, setActive] = useState(false);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const StrangeFunction= (): void => {
+    dispatch(Strange(noNameUser))
+    navigate('/appointment');
+
+    
+  };
 
   return (
     <>
