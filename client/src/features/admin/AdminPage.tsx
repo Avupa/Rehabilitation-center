@@ -9,7 +9,11 @@ import Services from '../procedure/Procedure';
 import Doctors from '../doctors/Doctors';
 import Chats from '../adminChat/Chats';
 import Appointment from '../appointment/Appointment';
-import type { RootState } from '../../store/store';
+
+import ScheduleFull from './ScheduleFull';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 function Admin(): JSX.Element {
   const tabs: TTab[] = [
@@ -31,6 +35,7 @@ function Admin(): JSX.Element {
   }, []);
 
   return (
+
     <>
       <div className="navbar">
         <button className="main_link_button" onClick={() => setSelectedTabId(1)}>
@@ -93,6 +98,7 @@ function Admin(): JSX.Element {
       </div>
     </>
   );
+
 }
 
 export default Admin;
