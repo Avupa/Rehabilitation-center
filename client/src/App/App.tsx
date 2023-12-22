@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import 'tailwindcss/tailwind.css';
+import { useSelector } from 'react-redux';
 import Navbar from '../features/Navbar/Navbar';
 import Main from '../features/main/components/Main';
 import Profile from '../features/profile/components/myProfile/Profile';
@@ -19,16 +20,15 @@ import Help from '../features/help/Help';
 import Check from '../features/profile/Check';
 import Reviews from '../features/reviews/Reviews';
 
-
 import ErrorPage from '../features/404/404';
+import type { RootState } from '../store/store';
 import { useAppDispatch } from '../store/store';
 import { initNoNameUsers } from '../features/noNameUser/noNameUserSlice';
 import { initDoctors } from '../features/doctors/doctorSlice';
 import { initProcedures } from '../features/procedure/redux/procedureSlice';
 import { initReviews } from '../features/reviews/redux/reviewsSlice';
 
-
-import { check} from '../features/auth/authSlice';
+import { check } from '../features/auth/authSlice';
 import type { User } from '../features/User/userType';
 import { initSchaduleFull, initSpec } from '../features/appointment/DateSlice';
 import { initPrices } from '../features/price/priceSlice';
@@ -36,7 +36,7 @@ import ScheduleFull from '../features/admin/ScheduleFull';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-
+  const user = useSelector((store: RootState) => store.auth.user);
 
   useEffect(() => {
     void dispatch(initNoNameUsers());
@@ -45,10 +45,9 @@ function App(): JSX.Element {
     void dispatch(initSpec());
     void dispatch(initSchaduleFull());
     void dispatch(check());
-    void dispatch(initPrices())
+    void dispatch(initPrices());
     void dispatch(initReviews());
   }, [dispatch]);
-
 
   useEffect(() => {
     fetch('/api/auth/check')
