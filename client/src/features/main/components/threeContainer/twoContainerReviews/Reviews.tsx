@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../../../store/store';
-import MainCardDoctor from './mainCardDoctor/MainCardDoctor';
+import MainCardDoctor from '../oneContainerSpecialists/mainCardDoctor/MainCardDoctor';
 
 function OurCenterSpecialists(): JSX.Element {
   const doctors = useSelector((store: RootState) => store.Doctor.doctors);

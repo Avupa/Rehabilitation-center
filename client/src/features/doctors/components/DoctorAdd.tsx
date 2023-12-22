@@ -1,7 +1,7 @@
 import React, { memo, useRef, useState } from 'react';
-import { useAppDispatch } from '../../store/store';
-import { addDoctors } from './doctorSlice';
-import './style.css';
+import { useAppDispatch } from '../../../store/store';
+import { addDoctors } from '../redux/doctorSlice';
+import '../style.css';
 
 function AddDoctor(): JSX.Element {
   const firstNameInput = useRef<HTMLInputElement>(null);
@@ -24,22 +24,22 @@ function AddDoctor(): JSX.Element {
     const shortDescription = shortDescriptionInput.current?.value;
     const slot = slotInput.current?.value;
 
-    formData.append('firstName', firstName)
-    formData.append('secondName', secondName)
-    formData.append('patronymic', patronymic)
-    formData.append('description', description)
-    formData.append('shortDescription', shortDescription)
-    formData.append('slot', slot)
-    
+    formData.append('firstName', firstName);
+    formData.append('secondName', secondName);
+    formData.append('patronymic', patronymic);
+    formData.append('description', description);
+    formData.append('shortDescription', shortDescription);
+    formData.append('slot', slot);
+
     if (selectedFile) {
-        try {
-          formData.append('photo', selectedFile);
-          dispatch(addDoctors(formData));
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        formData.append('photo', selectedFile);
+        dispatch(addDoctors(formData));
+      } catch (error) {
+        console.error(error);
       }
-}
+    }
+  };
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.files && event.target.files.length > 0) {
       setSelectedFile(event.target.files[0]);

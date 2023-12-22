@@ -1,6 +1,6 @@
 import React from 'react';
 import './mainCardDoctor.css';
-import type { Doctor } from '../../../../../doctors/type';
+import type { Doctor } from '../../../../../doctors/redux/types/type';
 import arrow from '../../../../../../../public/img/icon/arrow/Arrow-white.png';
 
 type TypeMainCardDoctor = {

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+
+// import ModalWindow from './ModalWindow';
 import { useSelector } from 'react-redux';
 import type { TimeSlot } from './DateType';
-import { RootState, useAppDispatch } from '../../store/store';
+import type { RootState } from '../../store/store';
+import { useAppDispatch } from '../../store/store';
 
-import type { IdDoctor } from '../doctors/type';
+import type { IdDoctor } from '../doctors/redux/types/type';
 import { makeAppoint } from './DateSlice';
-
 import ModalWindow from './ModalWindow';
 import ModalWindowNNU from './ModalWindowNNU';
 
@@ -28,10 +30,9 @@ function CardAppoint({
   const [activeNNU, setActiveNNU] = useState<boolean>(false);
   const [status, setStatus] = useState<boolean>(false);
 
-
   const makeApp = ({ id, date, slot, adminComment='' }: { id: IdDoctor; date: string; slot: TimeSlot, adminComment:string }): void => {
     if (user) {
-      dispatch(makeAppoint({ id, date, slot, adminComment}));
+      void dispatch(makeAppoint({ id, date, slot, adminComment}));
       setStatus((prev:boolean) => !prev);
     } else {
       setActive((prev:boolean)=>!prev);

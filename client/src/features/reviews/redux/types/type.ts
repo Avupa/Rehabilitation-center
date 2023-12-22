@@ -1,5 +1,5 @@
 import type { User } from '../../../User/userType';
-import type { Doctor } from '../../../doctors/type';
+import type { Doctor } from '../../../doctors/redux/types/type';
 
 export type State = {
   reviews: Review[];
@@ -18,4 +18,4 @@ export type Review = {
 
 export type IdReview = Review['id'];
 
-export type ReviewWithoutId = Omit<Review, 'id'>
+export type ReviewWithoutId = Omit<Review, 'id'>;
