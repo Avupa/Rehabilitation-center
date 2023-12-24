@@ -2,14 +2,18 @@
 import React, { useState } from 'react';
 import Appointment from '../appointment/Appointment';
 import type { Price } from './type';
+import { useNavigate } from 'react-router-dom';
 
 function CardPrice({ el }: { el: Price}): JSX.Element {
 const [showAll, setShowAll] = useState(false);
-  const [appoint, setAppoint] = useState(false);
+
+  const navigate = useNavigate()
 
   return (
-    <div className="cardSmall">
-      <div>
+    <div className="cardSmall" style={{height: "auto"}} >
+      <div className='text-center' style={
+        {padding: '20px'}
+      }>
         {el.name}
       </div>
       {!showAll && (
@@ -22,15 +26,16 @@ const [showAll, setShowAll] = useState(false);
           X
         </button>
       )}
-      {showAll && <div>{el.description}</div>}
+      {showAll && <div style={
+        {padding: '20px'}
+      }>{el.description}</div>}
       <div>
-        {el.price}
+        {el.price} RUB
       </div>
 
-      <button className="main_link_button h-10 w-40" onClick={() => setAppoint(true)}>
+      <button className="main_link_button h-10 w-40" onClick={() => navigate('/appointment')}>
         Запись{' '}
       </button>
-      {appoint && <Appointment />}
     </div>
   );
 }

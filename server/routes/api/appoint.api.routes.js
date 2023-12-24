@@ -78,7 +78,7 @@ router.get("/admin", async (req, res) => {
           model: User,
           attributes: ["id","firstName", "secondName", "patronymic", "telephone", "email", "isAdmin"]},
           {
-            model: Schedule, where: {data:{[Op.eq]:"2023-12-16"} },
+            model: Schedule, where: {data:{[Op.eq]:"2023-12-26"} },
             attributes: ["data", "timeSlot"],
             include: { model: Doctor, attributes: ["firstName", "patronymic", "secondName"] },
           }]

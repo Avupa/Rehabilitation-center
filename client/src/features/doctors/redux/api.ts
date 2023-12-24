@@ -14,7 +14,7 @@ export const addFetchDoctor = async (obj: FormData): Promise<Doctor> => {
     const { message } = await res.json();
     throw message;
   }
-  const data: Doctor = await res.json();
+  const {data}: {data:Doctor} = await res.json();
   return data;
 };
 

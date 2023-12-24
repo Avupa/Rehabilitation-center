@@ -67,7 +67,7 @@ function App(): JSX.Element {
         <Route path="check" element={<Check />} />
         <Route path="/" element={<Navbar />}>
           <Route index element={<Main />} />
-          <Route path="price" element={<Price />} />
+          <Route path="/price" element={<Price />} />
           <Route path="appointment" element={<Appointment />} />
           <Route path="Schedule" element={<ScheduleFull />} />
           <Route path="doctors" element={<Doctors />} />
