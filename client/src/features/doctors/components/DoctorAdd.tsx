@@ -47,7 +47,7 @@ function AddDoctor(): JSX.Element {
   };
 
   return (
-    <div className="cardSmall">
+    <div className="main_full_container_wrap">
       <form onSubmit={doctorAdd}>
         <div className="mb-6">
           <input name="firstName" type="text" ref={firstNameInput} placeholder="введите имя" />

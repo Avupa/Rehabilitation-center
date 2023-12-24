@@ -54,18 +54,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        {
-          firstName: "Кулим",
-          secondName: "Кирилов",
-          patronymic: "Кирилович",
-          shortDescription: "Сокращенное описание",
-          description:
-            "Военно-Медицинская Академия имени С.М.Кирова, Ординатура ФГБНУ НИИ АГиР имени Д.О.Отта Аспирантура ФГБНУ НИИ АГиР имени Д.О.Отта",
-          img: "img/doctor-web-1.jpg",
-          slot: 30,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+
         {
           firstName: "Евгений",
           secondName: "Зайцев",
@@ -114,18 +103,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        {
-          firstName: "Джамулудин",
-          secondName: "Шаст",
-          patronymic: "Симович",
-          shortDescription: "Сокращенное описание",
-          description:
-            "Военно-Медицинская Академия имени С.М.Кирова, Ординатура ФГБНУ НИИ АГиР имени Д.О.Отта Аспирантура ФГБНУ НИИ АГиР имени Д.О.Отта",
-          img: "img/doctor-web-6.jpg",
-          slot: 30,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+
         {
           firstName: "Владислав",
           secondName: "Кукурузов",

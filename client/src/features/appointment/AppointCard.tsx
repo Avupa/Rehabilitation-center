@@ -48,7 +48,7 @@ function CardAppoint({
           className="main_link_button h-10 w-20"
           onClick={() =>(user?.isAdmin?(setActiveNNU((prev:boolean)=>!prev)):(makeApp({ slot: slot.timeSlot, id, date, adminComment:'' }))) }
         >
-          {slot.timeSlot}
+          {slot.timeSlot.substring(0,5)}
         </button>
       )}
       {active && <ModalWindow setActive={setActive} />}

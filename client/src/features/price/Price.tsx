@@ -9,7 +9,7 @@ function Price(): JSX.Element {
   console.log(AllPrices);
   
   return (
-    <div className='priceCont'>
+    <div className='main_full_container_wrap'>
     {AllPrices.map(el=><CardPrice key={el.id} el={el}/>)}
     </div>
   );
